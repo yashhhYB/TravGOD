@@ -161,16 +161,17 @@ img { max-width: 100%; display: block; }
   margin-bottom: 1.5rem;
 }
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3.25rem;
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
 }
 .hero-subtitle {
-  font-size: 1.1rem;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2rem;
   max-width: 540px;
+  line-height: 1.5;
 }
 
 /* ── White Pill Search Bar ── */
@@ -183,7 +184,7 @@ img { max-width: 100%; display: block; }
   width: 100%;
   max-width: 540px;
   box-shadow: var(--shadow-lg);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 .search-pill .icon { color: var(--text-muted); padding: 0 1rem; font-size: 1.2rem; }
 .search-pill input {

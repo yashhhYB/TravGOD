@@ -40,7 +40,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
       <section class="hero">
         <video autoplay loop muted playsinline class="hero-video">
           <!-- Force browser to load video by appending a query param to bypass weird cache locks -->
-          <source src="/363550.mp4?v=1" type="video/mp4">
+          <source src="/363550.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         
@@ -269,6 +269,12 @@ export function renderLandingView(container, { onDestinationSelect }) {
   // Wire up search button
   const searchInput = container.querySelector('#destination-search');
   const searchBtn   = container.querySelector('#btn-search');
+
+  // Force video playback to fix innerHTML autoplay issue
+  const video = container.querySelector('.hero-video');
+  if (video) {
+    video.play().catch(err => console.log('Video autoplay blocked:', err));
+  }
 
   function handleSearch() {
     const query = searchInput.value.trim().toLowerCase();
