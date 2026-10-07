@@ -94,29 +94,31 @@ export function renderLandingView(container, { onDestinationSelect }) {
 
       <!-- Trust Strip -->
       <section class="trust-strip">
-        <div class="trust-item">
-          <div class="trust-icon-box"><i data-lucide="shield-check"></i></div>
-          <div class="trust-text"><h4>Verified Locals</h4><p>Real people, real profiles</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon-box"><i data-lucide="alert-triangle"></i></div>
-          <div class="trust-text"><h4>Scam Alerts</h4><p>Stay informed, stay safe</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon-box"><i data-lucide="tag"></i></div>
-          <div class="trust-text"><h4>Local Price Guide</h4><p>Know what's fair</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon-box"><i data-lucide="message-circle"></i></div>
-          <div class="trust-text"><h4>Multi-Language Chat</h4><p>Break language barriers</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon-box"><i data-lucide="credit-card"></i></div>
-          <div class="trust-text"><h4>Secure Booking</h4><p>Powered by PayPal</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon-box"><i data-lucide="zap"></i></div>
-          <div class="trust-text"><h4>AI LocalMatch</h4><p>Find your perfect local</p></div>
+        <div class="trust-strip-inner">
+          <div class="trust-item">
+            <div class="trust-icon-box"><i data-lucide="shield-check"></i></div>
+            <div class="trust-text"><h4>Verified Locals</h4><p>Real people, real profiles</p></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i data-lucide="alert-triangle"></i></div>
+            <div class="trust-text"><h4>Scam Alerts</h4><p>Stay informed, stay safe</p></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i data-lucide="tag"></i></div>
+            <div class="trust-text"><h4>Local Price Guide</h4><p>Know what's fair</p></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i data-lucide="message-circle"></i></div>
+            <div class="trust-text"><h4>Multi-Language Chat</h4><p>Break language barriers</p></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i data-lucide="credit-card"></i></div>
+            <div class="trust-text"><h4>Secure Booking</h4><p>Powered by PayPal</p></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon-box"><i data-lucide="zap"></i></div>
+            <div class="trust-text"><h4>AI LocalMatch</h4><p>Find your perfect local</p></div>
+          </div>
         </div>
       </section>
 
