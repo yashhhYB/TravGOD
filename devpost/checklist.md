@@ -9,7 +9,7 @@ Build mode: learn
 
 ## Slices
 
-- [ ] **1. Project scaffolded and landing page renders**
+- [x] **1. Project scaffolded and landing page renders**
   Becomes usable: Running app at `http://localhost:5173` showing the TRAVGOD hero landing page — dark background, search bar ("Where are you going?"), destination chips (Paris, Tokyo, Cairo, Barcelona, Dubai), and full design system (colors, fonts, glassmorphism).
   Why now: Everything else has somewhere to land. Bootstrapping, Vite config, CSS design system, and the first visible screen all live here. Confirms the whole toolchain works before building features.
   PRD ref: `prd.md > 1. Landing Page & Destination Search`
@@ -101,3 +101,4 @@ Reflection: [offered/answered/declined/already covered — personal answer belon
 Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
 
 ## Revisions
+- [Redesigned UI] — [learner requested a light theme with video background and Airbnb-style white sections, overwriting the initial dark premium design].
