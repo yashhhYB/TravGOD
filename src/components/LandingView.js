@@ -19,9 +19,8 @@ export function renderLandingView(container, { onDestinationSelect }) {
       <header class="app-header">
         <div class="header-inner">
           <div class="logo">
-            <div class="logo-icon">🗺️</div>
+            <div class="logo-icon"><i data-lucide="map-pin" style="color:white; width:18px;"></i></div>
             <span>TRAVGOD</span>
-            <span style="font-size:0.6rem; font-weight:normal;">Explore · Connect · Travel Safe</span>
           </div>
           <nav class="header-nav">
             <a href="#" class="active">Home</a>
@@ -31,12 +30,8 @@ export function renderLandingView(container, { onDestinationSelect }) {
             <a href="#">About</a>
           </nav>
           <div class="header-actions">
-            <span class="icon">🔍</span>
-            <span class="icon">🔔</span>
-            <div class="user-profile">
-              <div class="user-avatar" style="background: url('https://i.pravatar.cc/100?img=11') center/cover;"></div>
-              Yash ⌄
-            </div>
+            <i data-lucide="search" style="cursor:pointer; opacity:0.9;"></i>
+            <button class="btn-login" id="btn-sign-in">Sign In</button>
           </div>
         </div>
       </header>
@@ -44,7 +39,8 @@ export function renderLandingView(container, { onDestinationSelect }) {
       <!-- Hero Section with Video Background -->
       <section class="hero">
         <video autoplay loop muted playsinline class="hero-video">
-          <source src="/363550.mp4" type="video/mp4">
+          <!-- Force browser to load video by appending a query param to bypass weird cache locks -->
+          <source src="/363550.mp4?v=1" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         
@@ -52,7 +48,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
           
           <!-- Left side content -->
           <div class="hero-text-side">
-            <div class="hero-eyebrow">✨ Your AI Travel Companion</div>
+            <div class="hero-eyebrow"><i data-lucide="sparkles" style="width:14px; margin-right:4px;"></i> Your AI Travel Companion</div>
             <h1 class="hero-title">
               Discover Amazing Places.<br>
               Connect with <span class="text-blue">Trusted Locals</span>.<br>
@@ -63,12 +59,12 @@ export function renderLandingView(container, { onDestinationSelect }) {
             </p>
             
             <div class="search-pill">
-              <span class="icon">📍</span>
+              <i data-lucide="map-pin" class="icon" style="color:#64748b;"></i>
               <input type="text" id="destination-search" placeholder="Where do you want to go?" autocomplete="off" />
-              <button class="btn-search" id="btn-search">Search 🔍</button>
+              <button class="btn-search" id="btn-search">Search <i data-lucide="search" style="width:18px;"></i></button>
             </div>
             
-            <div class="popular-label">📍 Popular Destinations</div>
+            <div class="popular-label"><i data-lucide="map" style="width:16px;"></i> Popular Destinations</div>
             <div class="destinations-row">
               ${DESTINATIONS.map(dest => `
                 <div class="dest-card" data-destination-id="${dest.id}">
@@ -89,7 +85,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
               <div class="floating-text">
                 <h3>Paris, France</h3>
                 <p>Iconic landmarks, rich culture and unforgettable experiences.</p>
-                <a href="#" class="explore-link" data-destination-id="paris">Explore Paris →</a>
+                <a href="#" class="explore-link" data-destination-id="paris">Explore Paris <i data-lucide="arrow-right" style="width:14px;"></i></a>
               </div>
             </div>
           </div>
@@ -99,69 +95,69 @@ export function renderLandingView(container, { onDestinationSelect }) {
       <!-- Trust Strip -->
       <section class="trust-strip">
         <div class="trust-item">
-          <div class="trust-icon-box">🛡️</div>
+          <div class="trust-icon-box"><i data-lucide="shield-check"></i></div>
           <div class="trust-text"><h4>Verified Locals</h4><p>Real people, real profiles</p></div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon-box">⚠️</div>
+          <div class="trust-icon-box"><i data-lucide="alert-triangle"></i></div>
           <div class="trust-text"><h4>Scam Alerts</h4><p>Stay informed, stay safe</p></div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon-box">🏷️</div>
+          <div class="trust-icon-box"><i data-lucide="tag"></i></div>
           <div class="trust-text"><h4>Local Price Guide</h4><p>Know what's fair</p></div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon-box">💬</div>
+          <div class="trust-icon-box"><i data-lucide="message-circle"></i></div>
           <div class="trust-text"><h4>Multi-Language Chat</h4><p>Break language barriers</p></div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon-box">📅</div>
+          <div class="trust-icon-box"><i data-lucide="credit-card"></i></div>
           <div class="trust-text"><h4>Secure Booking</h4><p>Powered by PayPal</p></div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon-box">✨</div>
+          <div class="trust-icon-box"><i data-lucide="zap"></i></div>
           <div class="trust-text"><h4>AI LocalMatch</h4><p>Find your perfect local</p></div>
         </div>
       </section>
 
       <!-- How It Works -->
       <section class="how-it-works">
-        <div class="section-subtitle">✨ Simple Steps</div>
+        <div class="section-subtitle"><i data-lucide="sparkles" style="width:16px;"></i> Simple Steps</div>
         <div style="display: flex; max-width: 1200px; margin: 0 auto 3rem;">
           <div style="flex: 1; text-align: left;">
             <h2 class="section-title" style="margin-bottom: 1rem;">How TRAVGOD Works</h2>
             <p class="intro-text" style="margin: 0; max-width: 350px;">From discovering your destination to booking trusted locals, we make your travel journey simple, safe and unforgettable.</p>
-            <button class="btn-outline" style="margin-top: 1.5rem;">Learn More →</button>
+            <button class="btn-outline" style="margin-top: 1.5rem;">Learn More <i data-lucide="arrow-right" style="width:16px; vertical-align:middle;"></i></button>
           </div>
           <div style="flex: 2;">
             <div class="steps-container">
               <div class="step">
                 <div class="step-number">1</div>
-                <div class="step-icon">🔍</div>
+                <div class="step-icon"><i data-lucide="search" style="width:28px; height:28px;"></i></div>
                 <h4>Choose Destination</h4>
                 <p>Search or pick from popular cities and countries.</p>
               </div>
               <div class="step">
                 <div class="step-number">2</div>
-                <div class="step-icon">🗺️</div>
+                <div class="step-icon"><i data-lucide="map" style="width:28px; height:28px;"></i></div>
                 <h4>Explore & Plan</h4>
                 <p>View map, places, prices, and safety tips.</p>
               </div>
               <div class="step">
                 <div class="step-number">3</div>
-                <div class="step-icon">👥</div>
+                <div class="step-icon"><i data-lucide="users" style="width:28px; height:28px;"></i></div>
                 <h4>Find Trusted Locals</h4>
                 <p>Browse verified guides and read reviews.</p>
               </div>
               <div class="step">
                 <div class="step-number">4</div>
-                <div class="step-icon">💬</div>
+                <div class="step-icon"><i data-lucide="message-square" style="width:28px; height:28px;"></i></div>
                 <h4>Chat & Book</h4>
                 <p>Start a free chat and book with PayPal.</p>
               </div>
               <div class="step">
                 <div class="step-number">5</div>
-                <div class="step-icon">✈️</div>
+                <div class="step-icon"><i data-lucide="plane" style="width:28px; height:28px;"></i></div>
                 <h4>Enjoy Your Trip</h4>
                 <p>Get local support and create memories.</p>
               </div>
@@ -177,7 +173,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
             <h2>What Our Travelers Say</h2>
             <p>Real stories from real travelers around the world.</p>
           </div>
-          <button class="btn-outline">View More Reviews →</button>
+          <button class="btn-outline">View More Reviews <i data-lucide="arrow-right" style="width:16px; vertical-align:middle;"></i></button>
         </div>
         
         <div class="reviews-grid">
@@ -221,10 +217,12 @@ export function renderLandingView(container, { onDestinationSelect }) {
       <footer class="app-footer">
         <div class="footer-inner">
           <div class="footer-brand">
-            <div class="logo">🗺️ TRAVGOD</div>
+            <div class="logo"><i data-lucide="map-pin"></i> TRAVGOD</div>
             <p>Your trusted travel companion for discovering new places, connecting with locals and traveling safer.</p>
             <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-              <span>FB</span> <span>IG</span> <span>TW</span>
+              <i data-lucide="facebook" style="width:20px; cursor:pointer;"></i>
+              <i data-lucide="instagram" style="width:20px; cursor:pointer;"></i>
+              <i data-lucide="twitter" style="width:20px; cursor:pointer;"></i>
             </div>
           </div>
           <div class="footer-links">
@@ -250,6 +248,11 @@ export function renderLandingView(container, { onDestinationSelect }) {
 
     </div>
   `;
+
+  // Initialize Lucide icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 
   // Wire up destination chip clicks
   container.querySelectorAll('.dest-card, .explore-link').forEach(chip => {

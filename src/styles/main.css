@@ -81,7 +81,21 @@ img { max-width: 100%; display: block; }
 .header-nav a:hover, .header-nav a.active { color: var(--cyan); opacity: 1; }
 .header-nav a.active { border-bottom: 2px solid var(--blue); padding-bottom: 4px; }
 .header-actions { display: flex; align-items: center; gap: 1.5rem; }
-.header-actions .icon { font-size: 1.2rem; opacity: 0.9; cursor: pointer; }
+.btn-login {
+  background: var(--bg-white);
+  color: var(--blue-dark);
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+.btn-login:hover {
+  background: transparent;
+  color: var(--bg-white);
+  border-color: var(--bg-white);
+}
 .user-profile {
   display: flex; align-items: center; gap: 0.5rem;
   font-size: 0.9rem; font-weight: 600; cursor: pointer;
@@ -97,6 +111,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   padding: 80px 4rem 0;
   color: var(--text-inverse);
+  background-color: #020617; /* Fallback dark bg while video loads */
   overflow: hidden;
 }
 .hero-video {
