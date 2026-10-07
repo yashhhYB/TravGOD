@@ -1,0 +1,18 @@
+# Devpost personal learning context (keep private)
+/devpost/learner-profile.md
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Node.js dependencies
+node_modules/
+
+# Vite build output
+dist/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRAVGOD - Technical Spec Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --card-bg: rgba(18, 26, 47, 0.8);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-purple: #8b5cf6;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 40%);
+      color: var(--text-main);
+      padding: 2.5rem 1.5rem;
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1150px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 3rem; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--accent-purple);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
+
+    .section-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Architecture Diagram */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .arch-node {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0.85rem;
+      padding: 1.25rem;
+    }
+
+    .node-type { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.35rem; }
+    .node-title { font-weight: 700; font-size: 1.1rem; color: #fff; margin-bottom: 0.4rem; }
+    .node-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Code & File Tree */
+    .tree-box {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      overflow-x: auto;
+    }
+
+    /* Tabs */
+    .tab-nav {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1rem;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.65rem 1.2rem;
+      border-radius: 0.6rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: rgba(139, 92, 246, 0.5);
+      color: #fff;
+    }
+
+    .panel { display: none; flex-direction: column; gap: 1rem; }
+    .panel.active { display: flex; }
+
+    footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Technical Architecture Blueprint</span>
+      <h1>TRAVGOD</h1>
+      <p class="subtitle">System Architecture, Stack, Data Flow & Deep-Dive Component Specifications</p>
+    </header>
+
+    <!-- Architecture Overview -->
+    <div class="section-card">
+      <div class="section-title">🏗️ System Architecture & Data Flow</div>
+      <div class="arch-grid">
+        <div class="arch-node">
+          <div class="node-type">UI & Build Tool</div>
+          <div class="node-title">Vite + Vanilla JS</div>
+          <div class="node-desc">Fast ES Modules build pipeline powering a modern dark-theme single page app.</div>
+        </div>
+        <div class="arch-node">
+          <div class="node-type">Interactive Maps</div>
+          <div class="node-title">Leaflet.js + CartoDB</div>
+          <div class="node-desc">Custom dark map tiles with click event markers for guides, food, and scam zones.</div>
+        </div>
+        <div class="arch-node">
+          <div class="node-type">Algorithmic Engine</div>
+          <div class="node-title">AI LocalMatch</div>
+          <div class="node-desc">Scoring algorithm computing match percentages & match rationale for guides.</div>
+        </div>
+        <div class="arch-node">
+          <div class="node-type">Payment Gateway</div>
+          <div class="node-title">PayPal SDK Sandbox</div>
+          <div class="node-desc">Native PayPal checkout modal resolving onApprove callbacks to confirm bookings.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Deep-Dive Concepts -->
+    <div class="section-card">
+      <div class="section-title">💡 Deep-Dive Concepts (Learner Focus)</div>
+      
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="showTab('tab-leaflet')">1. Leaflet Marker Hooks</button>
+        <button class="tab-btn" onclick="showTab('tab-aimatch')">2. AI LocalMatch Logic</button>
+        <button class="tab-btn" onclick="showTab('tab-paypal')">3. PayPal Sandbox Callbacks</button>
+        <button class="tab-btn" onclick="showTab('tab-tree')">4. Annotated File Tree</button>
+      </div>
+
+      <div id="tab-leaflet" class="panel active">
+        <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid var(--accent-cyan);">
+          <h3 style="margin-bottom: 0.5rem; color: #fff;">How Leaflet Hooks Map Markers to Click Events</h3>
+          <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 0.75rem;">
+            When Leaflet renders a guide on the map, it creates a custom marker object and binds a click listener:
+          </p>
+          <code style="display: block; background: #020617; padding: 1rem; border-radius: 0.5rem; color: #38bdf8;">
+            const marker = L.marker([48.8566, 2.3522], { icon: guideIcon }).addTo(map);<br>
+            marker.on('click', () => {<br>
+            &nbsp;&nbsp;openGuideModal(guideData); // Displays guide profile popover<br>
+            });
+          </code>
+        </div>
+      </div>
+
+      <div id="tab-aimatch" class="panel">
+        <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid var(--accent-purple);">
+          <h3 style="margin-bottom: 0.5rem; color: #fff;">How AI LocalMatch Calculates Ranking Percentages</h3>
+          <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 0.75rem;">
+            The matching algorithm computes weighted scores across 3 criteria:
+          </p>
+          <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: #cbd5e1;">
+            <li><strong>Language Match (40% weight):</strong> Direct match between tourist & guide languages.</li>
+            <li><strong>Interest Overlap (35% weight):</strong> Shared interests (e.g. food, vintage markets, history).</li>
+            <li><strong>Budget Fit (25% weight):</strong> Guide hourly rate vs tourist target budget.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="tab-paypal" class="panel">
+        <div style="background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid var(--accent-emerald);">
+          <h3 style="margin-bottom: 0.5rem; color: #fff;">How PayPal Sandbox Callbacks Confirm Bookings</h3>
+          <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 0.75rem;">
+            The PayPal JS SDK handles checkout inside an iframe and resolves a promise upon payment completion:
+          </p>
+          <code style="display: block; background: #020617; padding: 1rem; border-radius: 0.5rem; color: #4ade80;">
+            paypal.Buttons({<br>
+            &nbsp;&nbsp;createOrder: (data, actions) => actions.order.create({ ... }),<br>
+            &nbsp;&nbsp;onApprove: async (data, actions) => {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;const details = await actions.order.capture();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;saveBookingToStorage(details); // Stores in localStorage<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;renderBookingConfirmedView(details.id); // Updates UI state<br>
+            &nbsp;&nbsp;}<br>
+            }).render('#paypal-button-container');
+          </code>
+        </div>
+      </div>
+
+      <div id="tab-tree" class="panel">
+        <div class="tree-box">
+travgod/<br>
+├── index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Application shell & entry point<br>
+├── package.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Vite build dependencies<br>
+├── vite.config.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Local dev server config<br>
+└── src/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── main.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# App initialization & routing<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── styles/main.css &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Dark-mode design system<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── data/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Destinations, Guides & Scam data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── components/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Map, Guides, Chat, PayPal components<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── utils/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# AI match engine & localStorage helpers<br>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      TRAVGOD Technical Specification Companion — Devpost Build With AI Hackathon
+    </footer>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>

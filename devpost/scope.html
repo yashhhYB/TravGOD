@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRAVGOD - Scope Plan Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --card-bg: rgba(18, 26, 47, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 40%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .diagram-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .workflow-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .step-box {
+      flex: 1;
+      min-width: 180px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin: 0 auto 0.75rem;
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .boundary-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+
+    .tab-header {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: rgba(59, 130, 246, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .pill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.15rem;
+      border-radius: 0.6rem;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.95rem;
+    }
+
+    .pill-item.in { border-left: 4px solid var(--accent-emerald); }
+    .pill-item.later { border-left: 4px solid var(--accent-amber); }
+    .pill-item.cut { border-left: 4px solid var(--accent-rose); }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .tag-in { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); }
+    .tag-later { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); }
+    .tag-cut { background: rgba(244, 63, 94, 0.2); color: var(--accent-rose); }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Project Scope Visualizer</span>
+      <h1>TRAVGOD</h1>
+      <p class="subtitle">Connecting tourists directly with background-verified local guides to avoid scams, bypass language barriers, and travel safely.</p>
+    </header>
+
+    <!-- Overview Grid -->
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">💡 The Unique Kernel</div>
+        <p>A unified travel safety network where location-based scam alerts and price guides meet language-matched, background-verified local guides for free advice or paid bookings.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">👤 Target User</div>
+        <p>An independent tourist exploring a new city (e.g., Paris) who wants transparent price guidance, protection from tourist traps, and native local support in their preferred languages.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎯 Working Demo Goal</div>
+        <p>A sleek 60-second flow: Select Paris → view scams & fair price ranges → filter guides by English + Spanish → click verified guide → initiate chat or PayPal booking.</p>
+      </div>
+    </div>
+
+    <!-- Interactive Workflow Diagram -->
+    <div class="diagram-container">
+      <h2 style="margin-bottom: 1.5rem; font-size: 1.35rem; text-align: center;">🔄 The 4-Step Core Journey</h2>
+      <div class="workflow-steps">
+        <div class="step-box">
+          <div class="step-num">1</div>
+          <div class="step-title">Select Destination</div>
+          <div class="step-desc">Pick city (e.g. Paris, Tokyo, Cairo)</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">2</div>
+          <div class="step-title">Scam & Price Hub</div>
+          <div class="step-desc">View common scams & budget ranges</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">3</div>
+          <div class="step-title">Filter Native Guides</div>
+          <div class="step-desc">Match languages (e.g., English + Spanish)</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">4</div>
+          <div class="step-title">Chat or Book</div>
+          <div class="step-desc">Free chat or PayPal guide booking</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PoC Scope Boundary Tabs -->
+    <div class="boundary-section">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab('in')">✅ In Proof of Concept (PoC)</button>
+        <button class="tab-btn" onclick="switchTab('later')">⏳ Saved for Later</button>
+        <button class="tab-btn" onclick="switchTab('cut')">✂️ Explicitly Cut</button>
+      </div>
+
+      <div id="tab-in" class="pill-list">
+        <div class="pill-item in">
+          <span class="tag tag-in">Feature</span>
+          <strong>Destination Dashboard:</strong> City view with common local scam warnings and fair price range guides.
+        </div>
+        <div class="pill-item in">
+          <span class="tag tag-in">Feature</span>
+          <strong>Verified Guide Directory:</strong> Guide listings filtered by spoken languages with realistic mock background-check badges.
+        </div>
+        <div class="pill-item in">
+          <span class="tag tag-in">Feature</span>
+          <strong>Free Tourist-Guide Chat:</strong> Interactive direct message container for instant advice.
+        </div>
+        <div class="pill-item in">
+          <span class="tag tag-in">Payment</span>
+          <strong>PayPal Integration:</strong> Native PayPal component for guide booking/consultation payments.
+        </div>
+      </div>
+
+      <div id="tab-later" class="pill-list" style="display: none;">
+        <div class="pill-item later">
+          <span class="tag tag-later">Future</span>
+          <strong>Real-Time Video/Audio Calls:</strong> Live video consultation sessions inside the web app.
+        </div>
+        <div class="pill-item later">
+          <span class="tag tag-later">Future</span>
+          <strong>Auto AI Translation:</strong> In-chat real-time translation across unsupported language pairs.
+        </div>
+      </div>
+
+      <div id="tab-cut" class="pill-list" style="display: none;">
+        <div class="pill-item cut">
+          <span class="tag tag-cut">Cut</span>
+          <strong>Actual Legal Criminal Checks:</strong> Replaced with realistic mock verification badges to maximize PoC focus & speed.
+        </div>
+        <div class="pill-item cut">
+          <span class="tag tag-cut">Cut</span>
+          <strong>Complex Escrow Payouts:</strong> Replaced with standard PayPal sandbox checkout component.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      TRAVGOD Scope Companion — Devpost Build With AI Hackathon
+    </footer>
+  </div>
+
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.pill-list').forEach(list => list.style.display = 'none');
+      
+      event.target.classList.add('active');
+      document.getElementById('tab-' + tabName).style.display = 'flex';
+    }
+  </script>
+</body>
+</html>

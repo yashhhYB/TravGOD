@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRAVGOD - Product Requirements (PRD) Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --card-bg: rgba(18, 26, 47, 0.8);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+      color: var(--text-main);
+      padding: 2.5rem 1.5rem;
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1150px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 3rem; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 50%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
+
+    /* Journey Map */
+    .section-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .journey-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .timeline-step {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 0.85rem;
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .step-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: #fff; }
+    .step-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Feature Tabs */
+    .tab-nav {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1rem;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.65rem 1.2rem;
+      border-radius: 0.6rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: rgba(6, 182, 212, 0.5);
+      color: #fff;
+    }
+
+    .feature-panel { display: none; flex-direction: column; gap: 1rem; }
+    .feature-panel.active { display: flex; }
+
+    .feature-box {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 0.5rem;
+      padding: 1.2rem;
+    }
+
+    .feature-box.green { border-left-color: var(--accent-emerald); }
+    .feature-box.amber { border-left-color: var(--accent-amber); }
+    .feature-box.rose { border-left-color: var(--accent-rose); }
+
+    .feature-header { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.4rem; color: #fff; }
+
+    /* Checklist & Criteria */
+    .criteria-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .criteria-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+    .check-icon { color: var(--accent-emerald); font-weight: bold; }
+
+    footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Product Requirements Specification</span>
+      <h1>TRAVGOD</h1>
+      <p class="subtitle">Complete Product Journey, Screens, Behaviors & Edge-Case Specifications</p>
+    </header>
+
+    <!-- Visual Journey Map -->
+    <div class="section-card">
+      <div class="section-title">🗺️ The Complete Tourist Journey (10 Steps)</div>
+      <div class="journey-timeline">
+        <div class="timeline-step">
+          <div class="step-badge">1</div>
+          <div class="step-name">Landing Page</div>
+          <div class="step-desc">Hero search ("Where are you going?") & quick city chips.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">2</div>
+          <div class="step-name">Select Paris</div>
+          <div class="step-desc">Instant routing to Paris Map Dashboard.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">3</div>
+          <div class="step-name">Interactive Map</div>
+          <div class="step-desc">Explore food, attractions, scam zones & guides.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">4</div>
+          <div class="step-name">ScamSense & Prices</div>
+          <div class="step-desc">View scam red flags & fair local price guides.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">5</div>
+          <div class="step-name">AI LocalMatch</div>
+          <div class="step-desc">Filter guides by language & AI match score (96%).</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">6</div>
+          <div class="step-name">Free Chat</div>
+          <div class="step-desc">Ask questions with AI-assisted translation.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">7</div>
+          <div class="step-name">Booking Summary</div>
+          <div class="step-desc">Review date, time, hourly rate ($25/hr), and total.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">8</div>
+          <div class="step-name">PayPal Checkout</div>
+          <div class="step-desc">Complete payment via PayPal Sandbox modal.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">9</div>
+          <div class="step-name">Booking Confirmed</div>
+          <div class="step-desc">Instant confirmation screen with Reference #.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-badge">10</div>
+          <div class="step-name">My Trips</div>
+          <div class="step-desc">Saved to confirmed trip itinerary lifecycle.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Modules & Behaviors -->
+    <div class="section-card">
+      <div class="section-title">⚡ Feature Specifications & Behaviors</div>
+      
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="showPanel('panel-dashboard')">1. Map & Dashboard</button>
+        <button class="tab-btn" onclick="showPanel('panel-scam')">2. ScamSense & Prices</button>
+        <button class="tab-btn" onclick="showPanel('panel-guides')">3. Verified Guides & AI Match</button>
+        <button class="tab-btn" onclick="showPanel('panel-chat')">4. Free Chat & Translation</button>
+        <button class="tab-btn" onclick="showPanel('panel-booking')">5. PayPal Booking & Confirmation</button>
+        <button class="tab-btn" onclick="showPanel('panel-edge')">6. Edge Cases & Fallbacks</button>
+      </div>
+
+      <!-- Panel 1 -->
+      <div id="panel-dashboard" class="feature-panel active">
+        <div class="feature-box">
+          <div class="feature-header">Interactive Command Dashboard</div>
+          <p style="margin-bottom: 0.75rem;">Central interactive map displaying live markers for Paris. Filterable using category toggles: <em>All, Guides, Hotels, Food, Attractions, Safety</em>.</p>
+          <ul class="criteria-list">
+            <li class="criteria-item"><span class="check-icon">✓</span> Search bar accepts destination input (e.g. Paris, Tokyo, Cairo) and updates map bounds.</li>
+            <li class="criteria-item"><span class="check-icon">✓</span> Clicking a map marker opens a compact detail popover card with photo, title, rating & actions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 2 -->
+      <div id="panel-scam" class="feature-panel">
+        <div class="feature-box amber">
+          <div class="feature-header">ScamSense & Fair Price Guidance</div>
+          <p style="margin-bottom: 0.75rem;">Curated Cards detailing common tourist scams (e.g., Gold Ring, String Bracelet) alongside a Fair Price Comparison widget.</p>
+          <ul class="criteria-list">
+            <li class="criteria-item"><span class="check-icon">✓</span> Displays Scam Type, Location, Red Flags, and Prevention tips.</li>
+            <li class="criteria-item"><span class="check-icon">✓</span> Displays comparison ranges: Tourist Trap Price vs. Expected Fair Local Price.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 3 -->
+      <div id="panel-guides" class="feature-panel">
+        <div class="feature-box green">
+          <div class="feature-header">Verified Guide Directory & AI LocalMatch</div>
+          <p style="margin-bottom: 0.75rem;">Grid of local guide profiles with language tags, hourly rates ($25/hr), glowing "Verified Local" badges, and AI match scoring.</p>
+          <ul class="criteria-list">
+            <li class="criteria-item"><span class="check-icon">✓</span> Filters by spoken language (English, Spanish, French, etc.) and hourly price.</li>
+            <li class="criteria-item"><span class="check-icon">✓</span> AI LocalMatch computes ranking (e.g. "96% Match") and outputs clear match rationale.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 4 -->
+      <div id="panel-chat" class="feature-panel">
+        <div class="feature-box">
+          <div class="feature-header">Free Chat & AI Translation</div>
+          <p style="margin-bottom: 0.75rem;">Instant messaging container before and after booking, featuring quick prompt chips and automatic AI translation.</p>
+          <ul class="criteria-list">
+            <li class="criteria-item"><span class="check-icon">✓</span> Free messaging allows pre-booking inquiries without requiring payment first.</li>
+            <li class="criteria-item"><span class="check-icon">✓</span> AI Translation toggle translates incoming messages with "Show Original Text" option.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 5 -->
+      <div id="panel-booking" class="feature-panel">
+        <div class="feature-box green">
+          <div class="feature-header">PayPal Checkout & Booking Lifecycle</div>
+          <p style="margin-bottom: 0.75rem;">Full end-to-end checkout with PayPal Sandbox integration and immediate booking confirmation screen.</p>
+          <ul class="criteria-list">
+            <li class="criteria-item"><span class="check-icon">✓</span> Shows itemized Booking Summary (Date, Time, Hours, Rate $25/hr, Total).</li>
+            <li class="criteria-item"><span class="check-icon">✓</span> Successful PayPal checkout opens Booking Confirmed screen with reference code (RM-89421-PAR).</li>
+            <li class="criteria-item"><span class="check-icon">✓</span> Saves confirmed booking into My Trips management tab.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Panel 6 -->
+      <div id="panel-edge" class="feature-panel">
+        <div class="feature-box rose">
+          <div class="feature-header">Empty States & Recovery Paths</div>
+          <p style="margin-bottom: 0.75rem;">Graceful handling of unserved languages or unavailable time slots.</p>
+          <ul class="criteria-list">
+            <li class="criteria-item"><span class="check-icon">✓</span> Searching for unserved language (e.g. Icelandic in Paris) renders friendly empty state: <em>"No verified Icelandic-speaking guides available in Paris."</em></li>
+            <li class="criteria-item"><span class="check-icon">✓</span> Provides immediate alternative recovery options: <em>"Show 12 English-speaking guides"</em> or <em>"Notify me"</em>.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      TRAVGOD PRD Visual Specification Companion — Devpost Build With AI Hackathon
+    </footer>
+  </div>
+
+  <script>
+    function showPanel(panelId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.feature-panel').forEach(panel => panel.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(panelId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
