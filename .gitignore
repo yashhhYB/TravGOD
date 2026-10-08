@@ -12,6 +12,9 @@ node_modules/
 # Vite build output
 dist/
 
+# Large media files
+public/*.mp4
+
 # OS & editor files
 .DS_Store
 Thumbs.db
