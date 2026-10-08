@@ -16,55 +16,58 @@ export function renderDashboardView(container, { destination, onBack }) {
   let rankedScores = null; // Will hold AI match scores if run
 
   container.innerHTML = `
-    <div id="dashboard-view" style="display: flex; flex-direction: column; height: 100vh; background: var(--navy); overflow: hidden;">
+    <div class="dash-layout">
       
       <!-- Dashboard Header -->
-      <header class="dash-header" style="height: 64px; display: flex; align-items: center; padding: 0 1.5rem; background: rgba(10,25,47,0.95); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 100;">
-        <button id="btn-back" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-white-70); font-size: 0.9rem; font-weight: 600;">
-          <svg width="16" height="16" data-lucide="arrow-left"></svg> Home
+      <header class="dash-header">
+        <button id="btn-back" class="btn-dash-back">
+          <svg width="18" height="18" data-lucide="arrow-left"></svg> Home
         </button>
-        <div style="margin-left: 2rem; display: flex; align-items: center; gap: 0.5rem;">
+        <div style="margin-left: 1.5rem; display: flex; align-items: center; gap: 0.5rem; flex: 1;">
           <span style="font-size: 1.25rem;">${destination.flag}</span>
-          <h1 style="font-size: 1.1rem; font-weight: 700; color: white; margin: 0;">${destination.name} <span style="color: var(--text-white-50); font-weight: 500;">${destination.country}</span></h1>
+          <h1 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 0;">${destination.name} <span style="color: var(--text-secondary); font-weight: 500;">${destination.country}</span></h1>
         </div>
       </header>
 
       <!-- Dashboard Layout -->
-      <div style="display: flex; flex: 1; overflow: hidden;">
+      <div class="dash-body">
         
-          <!-- Sidebar Tabs -->
-          <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
-            <button id="tab-guides" class="sidebar-tab active" style="flex: 1; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; color: white; background: rgba(255,255,255,0.1); border: none; cursor: pointer; transition: all 0.2s;">
-              <svg width="14" height="14" data-lucide="users" style="display: inline; margin-right: 0.25rem; vertical-align: -2px;"></svg> Guides
-            </button>
-            <button id="tab-safety" class="sidebar-tab" style="flex: 1; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; color: var(--text-white-70); background: transparent; border: none; cursor: pointer; transition: all 0.2s;">
-              <svg width="14" height="14" data-lucide="shield-alert" style="display: inline; margin-right: 0.25rem; vertical-align: -2px;"></svg> ScamSense
-            </button>
-          </div>
-
-          <!-- Guides Content -->
-          <div id="content-guides">
-            <div id="ai-match-container"></div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-              <h2 style="color: white; font-size: 1.1rem; font-weight: 800; margin: 0;">Local Guides</h2>
-              <span style="font-size: 0.75rem; color: var(--text-white-50);">${destGuides.length} available</span>
+          <!-- Sidebar -->
+          <aside class="dash-sidebar">
+            <div class="sidebar-tabs">
+              <button id="tab-guides" class="sidebar-tab active">
+                <svg width="16" height="16" data-lucide="users"></svg> Guides
+              </button>
+              <button id="tab-safety" class="sidebar-tab">
+                <svg width="16" height="16" data-lucide="shield-alert"></svg> ScamSense
+              </button>
             </div>
 
-            <div id="guide-dir-container"></div>
-          </div>
+            <div class="sidebar-scroll-area">
+              <!-- Guides Content -->
+              <div id="content-guides">
+                <div id="ai-match-container"></div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <h2 style="color: var(--text-primary); font-size: 1.1rem; font-weight: 800; margin: 0;">Local Guides</h2>
+                  <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">${destGuides.length} available</span>
+                </div>
 
-          <!-- Safety Content (Hidden by default) -->
-          <div id="content-safety" style="display: none;">
-            <div id="scam-sense-container"></div>
-          </div>
-          
+                <div id="guide-dir-container"></div>
+              </div>
+
+              <!-- Safety Content (Hidden by default) -->
+              <div id="content-safety" style="display: none;">
+                <div id="scam-sense-container"></div>
+              </div>
+            </div>
+          </aside>
 
         <!-- Main Map Area -->
-        <main style="flex: 1; position: relative; display: flex; flex-direction: column;">
+        <main class="dash-map-area">
           
           <!-- Category Filters -->
-          <div style="position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1000; display: flex; gap: 0.5rem; background: rgba(10,25,47,0.85); backdrop-filter: blur(10px); padding: 0.5rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div class="map-filters">
             <button class="filter-pill active">All</button>
             <button class="filter-pill">Guides</button>
             <button class="filter-pill">Food</button>
@@ -151,8 +154,8 @@ export function renderDashboardView(container, { destination, onBack }) {
     const divIcon = L.divIcon({
       html: iconHtml,
       className: 'guide-marker',
-      iconSize: [40, 40],
-      iconAnchor: [20, 20]
+      iconSize: [44, 44],
+      iconAnchor: [22, 22]
     });
 
     const marker = mapViewer.addMarker(g.coords, { icon: divIcon });
@@ -177,17 +180,17 @@ export function renderDashboardView(container, { destination, onBack }) {
   // Add Scam Markers to Map
   destScams.forEach(s => {
     const isHighRisk = s.risk === 'high';
-    const color = isHighRisk ? '#f43f5e' : '#fbbf24';
+    const riskClass = isHighRisk ? 'high' : 'medium';
     const iconHtml = `
-      <div style="width: 32px; height: 32px; border-radius: 50%; background: ${color}; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 2px solid white; color: white;" title="${s.title}">
-        <svg width="16" height="16" data-lucide="alert-triangle"></svg>
+      <div class="scam-marker-inner ${riskClass}" title="${s.title}">
+        <svg width="18" height="18" data-lucide="alert-triangle"></svg>
       </div>
     `;
     const divIcon = L.divIcon({
       html: iconHtml,
       className: 'scam-marker',
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
+      iconSize: [36, 36],
+      iconAnchor: [18, 18]
     });
     
     const marker = mapViewer.addMarker(s.coords, { icon: divIcon });
@@ -205,19 +208,15 @@ export function renderDashboardView(container, { destination, onBack }) {
   const contentSafety = container.querySelector('#content-safety');
 
   tabGuides.addEventListener('click', () => {
-    tabGuides.style.background = 'rgba(255,255,255,0.1)';
-    tabGuides.style.color = 'white';
-    tabSafety.style.background = 'transparent';
-    tabSafety.style.color = 'var(--text-white-70)';
+    tabGuides.classList.add('active');
+    tabSafety.classList.remove('active');
     contentGuides.style.display = 'block';
     contentSafety.style.display = 'none';
   });
 
   tabSafety.addEventListener('click', () => {
-    tabSafety.style.background = 'rgba(255,255,255,0.1)';
-    tabSafety.style.color = 'white';
-    tabGuides.style.background = 'transparent';
-    tabGuides.style.color = 'var(--text-white-70)';
+    tabSafety.classList.add('active');
+    tabGuides.classList.remove('active');
     contentGuides.style.display = 'none';
     contentSafety.style.display = 'block';
   });

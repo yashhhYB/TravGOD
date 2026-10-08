@@ -24,44 +24,36 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
     const isTopMatch = rankedScores && index === 0 && guide.matchScore > 50;
     
     return `
-      <div class="guide-card ${isTopMatch ? 'top-match' : ''}" id="guide-card-${guide.id}" style="
-        background: rgba(255,255,255,0.05);
-        border: 1px solid ${isTopMatch ? '#38bdf8' : 'rgba(255,255,255,0.1)'};
-        border-radius: 12px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        transition: all 0.2s;
-        box-shadow: ${isTopMatch ? '0 0 15px rgba(14,165,233,0.3)' : 'none'};
-      ">
-        ${isTopMatch ? `<div style="font-size: 0.7rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.25rem;"><svg width="12" height="12" data-lucide="star"></svg> Best Match (${guide.matchScore}%)</div>` : ''}
-        ${!isTopMatch && rankedScores ? `<div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 0.5rem;">Match: ${guide.matchScore}%</div>` : ''}
+      <div class="guide-card ${isTopMatch ? 'top-match' : ''}" id="guide-card-${guide.id}">
+        ${isTopMatch ? `<div style="font-size: 0.75rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.25rem;"><svg width="14" height="14" data-lucide="star" style="fill: var(--blue);"></svg> Best Match (${guide.matchScore}%)</div>` : ''}
+        ${!isTopMatch && rankedScores ? `<div style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.75rem;">Match: ${guide.matchScore}%</div>` : ''}
         
-        <div style="display: flex; gap: 1rem; margin-bottom: 0.75rem;">
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
           <div style="position: relative;">
-            <img src="${guide.avatar}" alt="${guide.name}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" />
-            ${guide.verified ? `<div style="position: absolute; bottom: 0; right: 0; background: var(--blue); color: white; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" title="Verified Local"><svg width="10" height="10" data-lucide="check"></svg></div>` : ''}
+            <img src="${guide.avatar}" alt="${guide.name}" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-sm);" />
+            ${guide.verified ? `<div style="position: absolute; bottom: -2px; right: -2px; background: var(--blue); color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-white);" title="Verified Local"><svg width="12" height="12" data-lucide="check"></svg></div>` : ''}
           </div>
           <div style="flex: 1;">
-            <h4 style="font-size: 0.95rem; font-weight: 700; color: white; margin: 0 0 0.15rem 0;">${guide.name}</h4>
-            <div style="font-size: 0.75rem; color: var(--text-white-50); display: flex; align-items: center; gap: 0.4rem;">
-              <svg width="12" height="12" data-lucide="star" style="color: #fbbf24;"></svg> ${guide.rating} (${guide.reviews})
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.15rem 0;">${guide.name}</h4>
+            <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 0.25rem; margin-bottom: 0.25rem;">
+              <svg width="14" height="14" data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></svg> ${guide.rating} (${guide.reviews})
             </div>
-            <div style="font-size: 0.75rem; color: var(--text-white-70); margin-top: 0.15rem;">€${guide.rate}/hr</div>
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-primary);">€${guide.rate}<span style="color: var(--text-secondary); font-weight: 500;">/hr</span></div>
           </div>
         </div>
 
-        <div style="font-size: 0.8rem; color: var(--text-white-70); line-height: 1.4; margin-bottom: 0.75rem;">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
           ${guide.bio}
         </div>
 
-        ${rankedScores ? `<div style="font-size: 0.75rem; color: #bae6fd; background: rgba(14,165,233,0.1); padding: 0.5rem; border-radius: 6px; margin-bottom: 0.75rem;"><strong>Why:</strong> ${guide.matchReason}</div>` : ''}
+        ${rankedScores ? `<div style="font-size: 0.8rem; color: var(--blue-deeper); background: var(--bg-light); padding: 0.75rem; border-radius: var(--radius-sm); margin-bottom: 1rem;"><strong>Why:</strong> ${guide.matchReason}</div>` : ''}
 
-        <div style="display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-          ${guide.languages.map(l => `<span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: rgba(255,255,255,0.1); border-radius: 4px; color: var(--text-white-70);">${l}</span>`).join('')}
+        <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 1rem;">
+          ${guide.languages.map(l => `<span style="font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; background: var(--bg-gray); border: 1px solid var(--border); border-radius: var(--radius-pill); color: var(--text-secondary);">${l}</span>`).join('')}
         </div>
 
-        <button class="btn-chat" data-guide-id="${guide.id}" style="width: 100%; padding: 0.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 6px; font-weight: 600; font-size: 0.8rem; transition: all 0.2s;">
-          Free Chat
+        <button class="btn-chat" data-guide-id="${guide.id}" style="width: 100%; padding: 0.75rem; background: var(--bg-white); border: 1px solid var(--border); color: var(--text-primary); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);">
+          Message
         </button>
 
       </div>
