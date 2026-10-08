@@ -124,11 +124,11 @@ export function renderDashboardView(container, { destination, onBack }) {
 
   // Add Guide Markers to Map
   destGuides.forEach(g => {
-    const iconHtml = \`
-      <div class="guide-marker-inner" title="\${g.name}">
-        <img src="\${g.avatar}" />
+    const iconHtml = `
+      <div class="guide-marker-inner" title="${g.name}">
+        <img src="${g.avatar}" />
       </div>
-    \`;
+    `;
     const divIcon = L.divIcon({
       html: iconHtml,
       className: 'guide-marker',
@@ -139,7 +139,7 @@ export function renderDashboardView(container, { destination, onBack }) {
     const marker = mapViewer.addMarker(g.coords, { icon: divIcon });
     marker.on('click', () => {
       // Scroll to guide card in sidebar
-      const card = document.getElementById(\`guide-card-\${g.id}\`);
+      const card = document.getElementById(`guide-card-${g.id}`);
       if (card) {
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
         card.style.borderColor = '#38bdf8';
