@@ -844,7 +844,7 @@ img { display: block; max-width: 100%; }
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   border: none;
   background: transparent;
   cursor: pointer;
@@ -852,7 +852,6 @@ img { display: block; max-width: 100%; }
 }
 .filter-pill:hover {
   background: rgba(0,0,0,0.05);
-  color: var(--text-primary);
 }
 .filter-pill.active {
   background: var(--blue);
