@@ -4,12 +4,15 @@
  */
 import { MapViewer } from './MapViewer.js';
 import { GUIDES } from '../data/guides.js';
+import { SCAMS, PRICES } from '../data/scams.js';
 import { renderAIMatchWidget } from './AIMatch.js';
 import { renderGuideDirectory } from './GuideDirectory.js';
+import { renderScamSense } from './ScamSense.js';
 import { calculateMatch } from '../utils/aiMatch.js';
 
 export function renderDashboardView(container, { destination, onBack }) {
   const destGuides = GUIDES.filter(g => g.destinationId === destination.id);
+  const destScams = SCAMS.filter(s => s.destinationId === destination.id);
   let rankedScores = null; // Will hold AI match scores if run
 
   container.innerHTML = `
@@ -29,19 +32,33 @@ export function renderDashboardView(container, { destination, onBack }) {
       <!-- Dashboard Layout -->
       <div style="display: flex; flex: 1; overflow: hidden;">
         
-        <!-- Sidebar -->
-        <aside style="width: 400px; background: #0b1121; border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; padding: 1.5rem; overflow-y: auto;">
-          
-          <div id="ai-match-container"></div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <h2 style="color: white; font-size: 1.1rem; font-weight: 800; margin: 0;">Local Guides</h2>
-            <span style="font-size: 0.75rem; color: var(--text-white-50);">${destGuides.length} available</span>
+          <!-- Sidebar Tabs -->
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+            <button id="tab-guides" class="sidebar-tab active" style="flex: 1; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; color: white; background: rgba(255,255,255,0.1); border: none; cursor: pointer; transition: all 0.2s;">
+              <svg width="14" height="14" data-lucide="users" style="display: inline; margin-right: 0.25rem; vertical-align: -2px;"></svg> Guides
+            </button>
+            <button id="tab-safety" class="sidebar-tab" style="flex: 1; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; color: var(--text-white-70); background: transparent; border: none; cursor: pointer; transition: all 0.2s;">
+              <svg width="14" height="14" data-lucide="shield-alert" style="display: inline; margin-right: 0.25rem; vertical-align: -2px;"></svg> ScamSense
+            </button>
           </div>
 
-          <div id="guide-dir-container"></div>
+          <!-- Guides Content -->
+          <div id="content-guides">
+            <div id="ai-match-container"></div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h2 style="color: white; font-size: 1.1rem; font-weight: 800; margin: 0;">Local Guides</h2>
+              <span style="font-size: 0.75rem; color: var(--text-white-50);">${destGuides.length} available</span>
+            </div>
+
+            <div id="guide-dir-container"></div>
+          </div>
+
+          <!-- Safety Content (Hidden by default) -->
+          <div id="content-safety" style="display: none;">
+            <div id="scam-sense-container"></div>
+          </div>
           
-        </aside>
 
         <!-- Main Map Area -->
         <main style="flex: 1; position: relative; display: flex; flex-direction: column;">
@@ -103,6 +120,7 @@ export function renderDashboardView(container, { destination, onBack }) {
   // Render components
   const aiContainer = container.querySelector('#ai-match-container');
   const dirContainer = container.querySelector('#guide-dir-container');
+  const scamContainer = container.querySelector('#scam-sense-container');
 
   function updateGuideDirectory() {
     renderGuideDirectory(dirContainer, destGuides, rankedScores, (guideId) => {
@@ -121,6 +139,7 @@ export function renderDashboardView(container, { destination, onBack }) {
   });
 
   updateGuideDirectory();
+  renderScamSense(scamContainer, destScams, PRICES);
 
   // Add Guide Markers to Map
   destGuides.forEach(g => {
@@ -138,6 +157,9 @@ export function renderDashboardView(container, { destination, onBack }) {
 
     const marker = mapViewer.addMarker(g.coords, { icon: divIcon });
     marker.on('click', () => {
+      // Switch tab to guides if not already
+      container.querySelector('#tab-guides').click();
+      
       // Scroll to guide card in sidebar
       const card = document.getElementById(`guide-card-${g.id}`);
       if (card) {
@@ -150,6 +172,54 @@ export function renderDashboardView(container, { destination, onBack }) {
         }, 1500);
       }
     });
+  });
+
+  // Add Scam Markers to Map
+  destScams.forEach(s => {
+    const isHighRisk = s.risk === 'high';
+    const color = isHighRisk ? '#f43f5e' : '#fbbf24';
+    const iconHtml = `
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: ${color}; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 2px solid white; color: white;" title="${s.title}">
+        <svg width="16" height="16" data-lucide="alert-triangle"></svg>
+      </div>
+    `;
+    const divIcon = L.divIcon({
+      html: iconHtml,
+      className: 'scam-marker',
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    });
+    
+    const marker = mapViewer.addMarker(s.coords, { icon: divIcon });
+    marker.on('click', () => {
+      container.querySelector('#tab-safety').click();
+    });
+  });
+
+  if (window.lucide) window.lucide.createIcons();
+
+  // Tab toggle logic
+  const tabGuides = container.querySelector('#tab-guides');
+  const tabSafety = container.querySelector('#tab-safety');
+  const contentGuides = container.querySelector('#content-guides');
+  const contentSafety = container.querySelector('#content-safety');
+
+  tabGuides.addEventListener('click', () => {
+    tabGuides.style.background = 'rgba(255,255,255,0.1)';
+    tabGuides.style.color = 'white';
+    tabSafety.style.background = 'transparent';
+    tabSafety.style.color = 'var(--text-white-70)';
+    contentGuides.style.display = 'block';
+    contentSafety.style.display = 'none';
+  });
+
+  tabSafety.addEventListener('click', () => {
+    tabSafety.style.background = 'rgba(255,255,255,0.1)';
+    tabSafety.style.color = 'white';
+    tabGuides.style.background = 'transparent';
+    tabGuides.style.color = 'var(--text-white-70)';
+    contentGuides.style.display = 'none';
+    contentSafety.style.display = 'block';
   });
 
   // Filter toggle logic

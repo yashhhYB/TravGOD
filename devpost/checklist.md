@@ -39,7 +39,7 @@ Build mode: learn
   Learner check: Set your preferences to English + €20-€40/hr + food & vintage markets and run AI LocalMatch. Does Alexandre show as the top match with a clear explanation of why?
   Commit: `feat: guide directory, map markers, and AI LocalMatch engine`
 
-- [ ] **4. ScamSense panel with scam cards and price comparison guides**
+- [x] **4. ScamSense panel with scam cards and price comparison guides**
   Becomes usable: The ScamSense section on the dashboard shows Paris scam alert cards (scam type, location, red flags, prevention tip) and a Fair Price Guide widget comparing tourist trap prices to fair local ranges.
   Why now: ScamSense is the safety pillar of TRAVGOD's value proposition. It can be built independently of payment/chat and verified quickly against seeded data.
   PRD ref: `prd.md > 3. Safety & ScamSense Hub + Price Guidance`
