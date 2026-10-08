@@ -1,297 +1,356 @@
 /**
- * LandingView.js
- * Renders the new TRAVGOD hero landing page matching the light-theme UI inspiration.
+ * LandingView.js — TRAVGOD Landing Page
+ * Full professional build with video background, Lucide icons,
+ * smooth transitions, header scroll effect, and search routing.
  */
 
 const DESTINATIONS = [
-  { id: 'paris',     name: 'Paris',     country: 'France',  img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=200&q=80', coords: [48.8566, 2.3522] },
-  { id: 'tokyo',     name: 'Tokyo',     country: 'Japan',   img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=200&q=80', coords: [35.6762, 139.6503] },
-  { id: 'cairo',     name: 'Cairo',     country: 'Egypt',   img: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=200&q=80', coords: [30.0444, 31.2357] },
-  { id: 'barcelona', name: 'Barcelona', country: 'Spain',   img: 'https://images.unsplash.com/photo-1583422409516-2895a77ef244?auto=format&fit=crop&w=200&q=80', coords: [41.3874, 2.1686] },
-  { id: 'dubai',     name: 'Dubai',     country: 'UAE',     img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=200&q=80', coords: [25.2048, 55.2708] },
+  { id: 'paris',     name: 'Paris',     country: 'France',   img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=120&q=80', coords: [48.8566, 2.3522] },
+  { id: 'tokyo',     name: 'Tokyo',     country: 'Japan',    img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=120&q=80', coords: [35.6762, 139.6503] },
+  { id: 'cairo',     name: 'Cairo',     country: 'Egypt',    img: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=120&q=80', coords: [30.0444, 31.2357] },
+  { id: 'barcelona', name: 'Barcelona', country: 'Spain',    img: 'https://images.unsplash.com/photo-1583422409516-2895a77ef244?auto=format&fit=crop&w=120&q=80', coords: [41.3874, 2.1686] },
+  { id: 'dubai',     name: 'Dubai',     country: 'UAE',      img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=120&q=80', coords: [25.2048, 55.2708] },
+  { id: 'newyork',   name: 'New York',  country: 'USA',      img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=120&q=80', coords: [40.7128, -74.0060] },
 ];
 
+const TRUST_ITEMS = [
+  { icon: 'shield-check',   title: 'Verified Locals',      desc: 'Real people, real profiles' },
+  { icon: 'alert-triangle', title: 'Scam Alerts',          desc: 'Stay informed, stay safe' },
+  { icon: 'tag',            title: 'Local Price Guide',    desc: "Know what's fair" },
+  { icon: 'message-circle', title: 'Multi-Language Chat',  desc: 'Break language barriers' },
+  { icon: 'credit-card',    title: 'Secure Booking',       desc: 'Powered by PayPal' },
+  { icon: 'zap',            title: 'AI LocalMatch',        desc: 'Find your perfect local' },
+];
+
+const STEPS = [
+  { icon: 'search',        num: 1, title: 'Choose Destination', desc: 'Search or pick from popular cities.' },
+  { icon: 'map',           num: 2, title: 'Explore & Plan',     desc: 'View map, places, prices and safety tips.' },
+  { icon: 'users',         num: 3, title: 'Find Trusted Locals', desc: 'Browse verified guides and read reviews.' },
+  { icon: 'message-square',num: 4, title: 'Chat & Book',        desc: 'Start a free chat and book with PayPal.' },
+  { icon: 'plane',         num: 5, title: 'Enjoy Your Trip',    desc: 'Get local support and create memories.' },
+];
+
+const REVIEWS = [
+  { name: 'Sarah Johnson', trip: 'Trip to Paris',     avatar: 'https://i.pravatar.cc/100?img=5',  stars: '★★★★★ 5.0', text: 'TRAVGOD made my Paris trip so much easier! I found an amazing local guide who showed me the real Paris. The safety alerts were super helpful and the booking was smooth.' },
+  { name: 'James Miller',  trip: 'Trip to Tokyo',     avatar: 'https://i.pravatar.cc/100?img=12', stars: '★★★★★ 4.9', text: 'The map feature is incredible! I could see nearby restaurants, hotels and even verified guides. AI matching got me the perfect local who spoke my language.' },
+  { name: 'Emily Davis',   trip: 'Trip to Barcelona', avatar: 'https://i.pravatar.cc/100?img=9',  stars: '★★★★★ 5.0', text: 'I loved the local price guide and scam alerts. It helped me avoid tourist traps and save money. TRAVGOD truly feels like a travel companion!' },
+];
+
+// ── Helpers ─────────────────────────────────────────────────
+const icon = (name, size = 20) =>
+  `<svg width="${size}" height="${size}" data-lucide="${name}" style="flex-shrink:0;"></svg>`;
+
+// ── Render ───────────────────────────────────────────────────
 export function renderLandingView(container, { onDestinationSelect }) {
   container.innerHTML = `
     <div id="landing-view">
-      
-      <!-- Global Header (Transparent over Video) -->
-      <header class="app-header">
+
+      <!-- ──── Header ──── -->
+      <header class="app-header" id="app-header">
         <div class="header-inner">
-          <div class="logo">
-            <div class="logo-icon"><i data-lucide="map-pin" style="color:white; width:18px;"></i></div>
-            <span>TRAVGOD</span>
-          </div>
-          <nav class="header-nav">
+          <a href="#" class="logo" aria-label="TRAVGOD home">
+            <div class="logo-icon">${icon('map-pin', 18)}</div>
+            <div>
+              <div class="logo-name">TRAVGOD</div>
+              <div class="logo-tag">Explore · Connect · Travel Safe</div>
+            </div>
+          </a>
+
+          <nav class="header-nav" aria-label="Main navigation">
             <a href="#" class="active">Home</a>
             <a href="#">Explore</a>
             <a href="#">Locals</a>
             <a href="#">Trips</a>
             <a href="#">About</a>
           </nav>
+
           <div class="header-actions">
-            <i data-lucide="search" style="cursor:pointer; opacity:0.9;"></i>
-            <button class="btn-login" id="btn-sign-in">Sign In</button>
+            <button class="btn-signin" id="btn-sign-in" aria-label="Sign in">Sign In</button>
           </div>
         </div>
       </header>
 
-      <!-- Hero Section with Video Background -->
-      <section class="hero">
-        <video autoplay loop muted playsinline class="hero-video">
-          <!-- Force browser to load video by appending a query param to bypass weird cache locks -->
-          <source src="/363550.mp4" type="video/mp4">
+      <!-- ──── Hero ──── -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <video class="hero-video" id="hero-video" autoplay loop muted playsinline preload="auto">
+          <source src="/363550.mp4" type="video/mp4" />
         </video>
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content-wrapper">
-          
-          <!-- Left side content -->
-          <div class="hero-text-side">
-            <div class="hero-eyebrow"><i data-lucide="sparkles" style="width:14px; margin-right:4px;"></i> Your AI Travel Companion</div>
-            <h1 class="hero-title">
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+          <!-- Left -->
+          <div class="hero-left">
+            <div class="hero-eyebrow">
+              ${icon('sparkles', 14)} Your AI Travel Companion
+            </div>
+
+            <h1 class="hero-title" id="hero-heading">
               Discover Amazing Places.<br>
-              Connect with <span class="text-blue">Trusted Locals</span>.<br>
+              Connect with <span class="highlight">Trusted Locals</span>.<br>
               Travel Safer.
             </h1>
+
             <p class="hero-subtitle">
-              Get personalized recommendations, verified local guides, real-time safety alerts and everything you need for a better travel experience.
+              Get personalized recommendations, verified local guides,
+              real-time safety alerts and everything you need for a
+              better travel experience.
             </p>
-            
-            <div class="search-pill">
-              <i data-lucide="map-pin" class="icon" style="color:#64748b;"></i>
-              <input type="text" id="destination-search" placeholder="Where do you want to go?" autocomplete="off" />
-              <button class="btn-search" id="btn-search">Search <i data-lucide="search" style="width:18px;"></i></button>
+
+            <div class="hero-search-wrap">
+              <div class="search-pill" role="search">
+                ${icon('map-pin', 18)}
+                <input
+                  type="search"
+                  id="destination-search"
+                  placeholder="Where do you want to go?"
+                  autocomplete="off"
+                  aria-label="Search destinations"
+                />
+                <button class="btn-search" id="btn-search" aria-label="Search">
+                  Search ${icon('search', 16)}
+                </button>
+              </div>
             </div>
-            
-            <div class="popular-label"><i data-lucide="map" style="width:16px;"></i> Popular Destinations</div>
-            <div class="destinations-row">
-              ${DESTINATIONS.map(dest => `
-                <div class="dest-card" data-destination-id="${dest.id}">
-                  <img src="${dest.img}" alt="${dest.name}" class="dest-img" />
-                  <div class="dest-info">
-                    <span class="dest-name">${dest.name}</span>
-                    <span class="dest-country">${dest.country}</span>
-                  </div>
+
+            <div class="popular-section">
+              <div class="popular-label">
+                ${icon('map-pin', 14)} Popular Destinations
+              </div>
+              <div class="destinations-row">
+                ${DESTINATIONS.map(d => `
+                  <button class="dest-chip" data-destination-id="${d.id}" aria-label="Explore ${d.name}">
+                    <img src="${d.img}" alt="${d.name}" loading="lazy" />
+                    <div class="dest-chip-info">
+                      <span class="dest-chip-name">${d.name}</span>
+                      <span class="dest-chip-country">${d.country}</span>
+                    </div>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Floating Card -->
+          <div class="hero-right">
+            <div class="float-card">
+              <img
+                src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=300&q=80"
+                alt="Paris, France"
+                class="float-card-img"
+                loading="lazy"
+              />
+              <div class="float-card-text">
+                <h3>Paris, France</h3>
+                <p>Iconic landmarks, rich culture and unforgettable experiences await.</p>
+                <a href="#" class="float-card-link" data-destination-id="paris" id="float-card-cta">
+                  Explore Paris ${icon('arrow-right', 14)}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──── Trust Strip ──── -->
+      <section class="trust-strip" aria-label="Platform features">
+        <div class="trust-strip-inner">
+          ${TRUST_ITEMS.map(t => `
+            <div class="trust-item">
+              <div class="trust-icon">${icon(t.icon, 20)}</div>
+              <div class="trust-label">
+                <h4>${t.title}</h4>
+                <p>${t.desc}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+
+      <!-- ──── How It Works ──── -->
+      <section class="how-it-works" aria-labelledby="how-heading">
+        <div class="how-inner">
+          <div class="how-lead">
+            <div class="section-eyebrow">${icon('sparkles', 14)} Simple Steps</div>
+            <h2 class="section-title" id="how-heading">How TRAVGOD Works</h2>
+            <p class="section-desc">
+              From discovering your destination to booking trusted locals,
+              we make your travel journey simple, safe and unforgettable.
+            </p>
+            <a href="#" class="btn-outline">Learn More ${icon('arrow-right', 16)}</a>
+          </div>
+
+          <div class="how-steps">
+            <div class="steps-flow">
+              ${STEPS.map(s => `
+                <div class="step">
+                  <div class="step-num">${s.num}</div>
+                  <div class="step-icon">${icon(s.icon, 26)}</div>
+                  <h4>${s.title}</h4>
+                  <p>${s.desc}</p>
                 </div>
               `).join('')}
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Right side content -->
-          <div class="hero-image-side">
-            <div class="floating-card">
-              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=300&q=80" alt="Paris" class="floating-img" />
-              <div class="floating-text">
-                <h3>Paris, France</h3>
-                <p>Iconic landmarks, rich culture and unforgettable experiences.</p>
-                <a href="#" class="explore-link" data-destination-id="paris">Explore Paris <i data-lucide="arrow-right" style="width:14px;"></i></a>
-              </div>
+      <!-- ──── Testimonials ──── -->
+      <section class="testimonials" aria-labelledby="reviews-heading">
+        <div class="testimonials-inner">
+          <div class="testimonials-head">
+            <div>
+              <h2 id="reviews-heading">What Our Travelers Say</h2>
+              <p>Real stories from real travelers around the world.</p>
             </div>
+            <button class="btn-outline" style="align-self:flex-end;">
+              View More ${icon('arrow-right', 16)}
+            </button>
+          </div>
+
+          <div class="reviews-grid">
+            ${REVIEWS.map(r => `
+              <article class="review-card">
+                <div class="reviewer">
+                  <img src="${r.avatar}" alt="${r.name}" class="reviewer-avatar" loading="lazy" />
+                  <div>
+                    <div class="reviewer-name">${r.name}</div>
+                    <div class="reviewer-trip">${r.trip}</div>
+                  </div>
+                </div>
+                <div class="review-stars">${r.stars}</div>
+                <p class="review-text">"${r.text}"</p>
+              </article>
+            `).join('')}
           </div>
         </div>
       </section>
 
-      <!-- Trust Strip -->
-      <section class="trust-strip">
-        <div class="trust-strip-inner">
-          <div class="trust-item">
-            <div class="trust-icon-box"><i data-lucide="shield-check"></i></div>
-            <div class="trust-text"><h4>Verified Locals</h4><p>Real people, real profiles</p></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon-box"><i data-lucide="alert-triangle"></i></div>
-            <div class="trust-text"><h4>Scam Alerts</h4><p>Stay informed, stay safe</p></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon-box"><i data-lucide="tag"></i></div>
-            <div class="trust-text"><h4>Local Price Guide</h4><p>Know what's fair</p></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon-box"><i data-lucide="message-circle"></i></div>
-            <div class="trust-text"><h4>Multi-Language Chat</h4><p>Break language barriers</p></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon-box"><i data-lucide="credit-card"></i></div>
-            <div class="trust-text"><h4>Secure Booking</h4><p>Powered by PayPal</p></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon-box"><i data-lucide="zap"></i></div>
-            <div class="trust-text"><h4>AI LocalMatch</h4><p>Find your perfect local</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- How It Works -->
-      <section class="how-it-works">
-        <div class="section-subtitle"><i data-lucide="sparkles" style="width:16px;"></i> Simple Steps</div>
-        <div style="display: flex; max-width: 1200px; margin: 0 auto 3rem;">
-          <div style="flex: 1; text-align: left;">
-            <h2 class="section-title" style="margin-bottom: 1rem;">How TRAVGOD Works</h2>
-            <p class="intro-text" style="margin: 0; max-width: 350px;">From discovering your destination to booking trusted locals, we make your travel journey simple, safe and unforgettable.</p>
-            <button class="btn-outline" style="margin-top: 1.5rem;">Learn More <i data-lucide="arrow-right" style="width:16px; vertical-align:middle;"></i></button>
-          </div>
-          <div style="flex: 2;">
-            <div class="steps-container">
-              <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-icon"><i data-lucide="search" style="width:28px; height:28px;"></i></div>
-                <h4>Choose Destination</h4>
-                <p>Search or pick from popular cities and countries.</p>
-              </div>
-              <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-icon"><i data-lucide="map" style="width:28px; height:28px;"></i></div>
-                <h4>Explore & Plan</h4>
-                <p>View map, places, prices, and safety tips.</p>
-              </div>
-              <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-icon"><i data-lucide="users" style="width:28px; height:28px;"></i></div>
-                <h4>Find Trusted Locals</h4>
-                <p>Browse verified guides and read reviews.</p>
-              </div>
-              <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-icon"><i data-lucide="message-square" style="width:28px; height:28px;"></i></div>
-                <h4>Chat & Book</h4>
-                <p>Start a free chat and book with PayPal.</p>
-              </div>
-              <div class="step">
-                <div class="step-number">5</div>
-                <div class="step-icon"><i data-lucide="plane" style="width:28px; height:28px;"></i></div>
-                <h4>Enjoy Your Trip</h4>
-                <p>Get local support and create memories.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials -->
-      <section class="testimonials">
-        <div class="testimonials-header">
-          <div>
-            <h2>What Our Travelers Say</h2>
-            <p>Real stories from real travelers around the world.</p>
-          </div>
-          <button class="btn-outline">View More Reviews <i data-lucide="arrow-right" style="width:16px; vertical-align:middle;"></i></button>
-        </div>
-        
-        <div class="reviews-grid">
-          <!-- Review 1 -->
-          <div class="review-card">
-            <div class="reviewer">
-              <img src="https://i.pravatar.cc/100?img=5" class="reviewer-avatar" />
-              <div class="reviewer-info">
-                <h4>Sarah Johnson</h4><p>Trip to Paris</p>
-              </div>
-            </div>
-            <div class="stars">★★★★★ 5.0</div>
-            <p class="review-text">"TRAVGOD made my Paris trip so much easier! I found an amazing local guide who showed me the real Paris. The safety alerts were super helpful and the booking process was smooth."</p>
-          </div>
-          <!-- Review 2 -->
-          <div class="review-card">
-            <div class="reviewer">
-              <img src="https://i.pravatar.cc/100?img=12" class="reviewer-avatar" />
-              <div class="reviewer-info">
-                <h4>James Miller</h4><p>Trip to Tokyo</p>
-              </div>
-            </div>
-            <div class="stars">★★★★☆ 4.9</div>
-            <p class="review-text">"The map feature is incredible! I could see nearby restaurants, hotels and even verified guides. The AI matching got me the perfect local who spoke my language."</p>
-          </div>
-          <!-- Review 3 -->
-          <div class="review-card">
-            <div class="reviewer">
-              <img src="https://i.pravatar.cc/100?img=9" class="reviewer-avatar" />
-              <div class="reviewer-info">
-                <h4>Emily Davis</h4><p>Trip to Barcelona</p>
-              </div>
-            </div>
-            <div class="stars">★★★★★ 5.0</div>
-            <p class="review-text">"I loved the local price guide and scam alerts. It helped me avoid tourist traps and save money. TRAVGOD truly feels like a travel companion!"</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
+      <!-- ──── Footer ──── -->
       <footer class="app-footer">
-        <div class="footer-inner">
+        <div class="footer-top">
           <div class="footer-brand">
-            <div class="logo"><i data-lucide="map-pin"></i> TRAVGOD</div>
+            <div class="logo">
+              <div class="logo-icon">${icon('map-pin', 18)}</div>
+              <div>
+                <div class="logo-name">TRAVGOD</div>
+                <div class="logo-tag">Explore · Connect · Travel Safe</div>
+              </div>
+            </div>
             <p>Your trusted travel companion for discovering new places, connecting with locals and traveling safer.</p>
-            <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-              <i data-lucide="facebook" style="width:20px; cursor:pointer;"></i>
-              <i data-lucide="instagram" style="width:20px; cursor:pointer;"></i>
-              <i data-lucide="twitter" style="width:20px; cursor:pointer;"></i>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook">${icon('facebook', 16)}</a>
+              <a href="#" aria-label="Instagram">${icon('instagram', 16)}</a>
+              <a href="#" aria-label="Twitter">${icon('twitter', 16)}</a>
+              <a href="#" aria-label="YouTube">${icon('youtube', 16)}</a>
             </div>
           </div>
-          <div class="footer-links">
+          <div class="footer-col">
             <h4>Quick Links</h4>
-            <ul><li><a href="#">Home</a></li><li><a href="#">Explore</a></li><li><a href="#">Locals</a></li><li><a href="#">Trips</a></li><li><a href="#">About Us</a></li></ul>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Explore</a></li>
+              <li><a href="#">Locals</a></li>
+              <li><a href="#">Trips</a></li>
+              <li><a href="#">About Us</a></li>
+            </ul>
           </div>
-          <div class="footer-links">
+          <div class="footer-col">
             <h4>Destinations</h4>
-            <ul><li><a href="#">Paris</a></li><li><a href="#">Tokyo</a></li><li><a href="#">Cairo</a></li><li><a href="#">Barcelona</a></li><li><a href="#">Dubai</a></li></ul>
+            <ul>
+              <li><a href="#" data-destination-id="paris">Paris</a></li>
+              <li><a href="#" data-destination-id="tokyo">Tokyo</a></li>
+              <li><a href="#" data-destination-id="cairo">Cairo</a></li>
+              <li><a href="#" data-destination-id="barcelona">Barcelona</a></li>
+              <li><a href="#" data-destination-id="dubai">Dubai</a></li>
+            </ul>
           </div>
-          <div class="footer-links">
+          <div class="footer-col">
             <h4>Support</h4>
-            <ul><li><a href="#">Help Center</a></li><li><a href="#">Safety Guide</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Contact Us</a></li></ul>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety Guide</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
           </div>
-          <div class="newsletter">
+          <div class="footer-newsletter">
             <h4>Newsletter</h4>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Get travel tips, updates and special offers.</p>
-            <input type="email" placeholder="Enter your email address" />
-            <button>Subscribe</button>
+            <p>Get travel tips, updates and special offers.</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email address" aria-label="Email for newsletter" />
+              <button type="button">Subscribe</button>
+            </div>
           </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2025 TRAVGOD. All rights reserved.</span>
+          <span>Made with ♥ for travelers</span>
         </div>
       </footer>
 
     </div>
   `;
 
-  // Initialize Lucide icons
-  if (window.lucide) {
-    window.lucide.createIcons();
+  // ── Render Lucide icons ──────────────────────────────────
+  if (window.lucide) window.lucide.createIcons();
+
+  // ── Force video play (fixes autoplay in dynamically injected HTML) ──
+  const video = container.querySelector('#hero-video');
+  if (video) {
+    video.load(); // Reload the source after injection
+    video.play().catch(() => {
+      // Autoplay blocked — the dark background fallback will show
+      console.info('TRAVGOD: Video autoplay was blocked by browser policy.');
+    });
   }
 
-  // Wire up destination chip clicks
-  container.querySelectorAll('.dest-card, .explore-link').forEach(chip => {
-    chip.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = chip.dataset.destinationId;
-      const dest = DESTINATIONS.find(d => d.id === id);
-      if (dest) onDestinationSelect(dest);
-    });
+  // ── Header scroll effect ─────────────────────────────────
+  const header = document.getElementById('app-header');
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Destination routing ──────────────────────────────────
+  function go(id) {
+    const dest = DESTINATIONS.find(d => d.id === id);
+    if (dest) onDestinationSelect(dest);
+  }
+
+  // Chip buttons
+  container.querySelectorAll('.dest-chip').forEach(btn => {
+    btn.addEventListener('click', () => go(btn.dataset.destinationId));
+  });
+  // Floating card CTA
+  container.querySelector('#float-card-cta')?.addEventListener('click', e => {
+    e.preventDefault(); go('paris');
+  });
+  // Footer destination links
+  container.querySelectorAll('.footer-col a[data-destination-id]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); go(a.dataset.destinationId); });
   });
 
-  // Wire up search button
+  // ── Search ───────────────────────────────────────────────
   const searchInput = container.querySelector('#destination-search');
   const searchBtn   = container.querySelector('#btn-search');
 
-  // Force video playback to fix innerHTML autoplay issue
-  const video = container.querySelector('.hero-video');
-  if (video) {
-    video.play().catch(err => console.log('Video autoplay blocked:', err));
-  }
-
   function handleSearch() {
-    const query = searchInput.value.trim().toLowerCase();
-    const dest = DESTINATIONS.find(d => d.name.toLowerCase().startsWith(query));
+    const q = searchInput.value.trim().toLowerCase();
+    const dest = DESTINATIONS.find(d => d.name.toLowerCase().startsWith(q));
     if (dest) {
-      onDestinationSelect(dest);
-    } else if (query) {
-      // Highlight the input to signal no match found
-      searchInput.style.outline = '2px solid red';
-      setTimeout(() => (searchInput.style.outline = 'none'), 1500);
+      go(dest.id);
+    } else if (q) {
+      searchInput.style.boxShadow = 'inset 0 0 0 2px #ef4444';
+      searchInput.focus();
+      setTimeout(() => (searchInput.style.boxShadow = ''), 1800);
     }
   }
-
   searchBtn.addEventListener('click', handleSearch);
-  searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSearch();
-  });
+  searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
+
+  // ── Cleanup on view unmount ──────────────────────────────
+  return () => window.removeEventListener('scroll', onScroll);
 }
 
 export { DESTINATIONS };
