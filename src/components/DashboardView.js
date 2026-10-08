@@ -83,36 +83,6 @@ export function renderDashboardView(container, { destination, onBack }) {
     </div>
   `;
 
-  // Filter Pill CSS (injected for scoping)
-  const style = document.createElement('style');
-  style.textContent = `
-    .filter-pill {
-      padding: 0.4rem 1.25rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-white-70);
-      transition: all 0.2s;
-    }
-    .filter-pill:hover { color: white; background: rgba(255,255,255,0.1); }
-    .filter-pill.active { background: var(--blue); color: white; }
-    
-    /* Custom Leaflet Marker */
-    .guide-marker {
-      background: none;
-      border: none;
-    }
-    .guide-marker-inner {
-      width: 40px; height: 40px; border-radius: 50%; border: 3px solid #38bdf8;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5); overflow: hidden; background: #0b1121;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.2s;
-    }
-    .guide-marker-inner:hover { transform: scale(1.1); border-color: white; }
-    .guide-marker-inner img { width: 100%; height: 100%; object-fit: cover; }
-  `;
-  container.appendChild(style);
-
   if (window.lucide) window.lucide.createIcons();
 
   container.querySelector('#btn-back').addEventListener('click', onBack);
