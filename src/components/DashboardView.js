@@ -3,8 +3,15 @@
  * Shows the interactive map and (in future slices) guides and scams.
  */
 import { MapViewer } from './MapViewer.js';
+import { GUIDES } from '../data/guides.js';
+import { renderAIMatchWidget } from './AIMatch.js';
+import { renderGuideDirectory } from './GuideDirectory.js';
+import { calculateMatch } from '../utils/aiMatch.js';
 
 export function renderDashboardView(container, { destination, onBack }) {
+  const destGuides = GUIDES.filter(g => g.destinationId === destination.id);
+  let rankedScores = null; // Will hold AI match scores if run
+
   container.innerHTML = `
     <div id="dashboard-view" style="display: flex; flex-direction: column; height: 100vh; background: var(--navy); overflow: hidden;">
       
@@ -22,17 +29,18 @@ export function renderDashboardView(container, { destination, onBack }) {
       <!-- Dashboard Layout -->
       <div style="display: flex; flex: 1; overflow: hidden;">
         
-        <!-- Sidebar Placeholder (Will hold Guides & ScamSense later) -->
+        <!-- Sidebar -->
         <aside style="width: 400px; background: #0b1121; border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; padding: 1.5rem; overflow-y: auto;">
-          <h2 style="color: white; font-size: 1.25rem; font-weight: 800; margin-bottom: 1.5rem;">Explore</h2>
           
-          <div style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 2rem; text-align: center; color: var(--text-white-70);">
-            <p>Guide Directory and AI Match coming in Slice 3</p>
-          </div>
+          <div id="ai-match-container"></div>
           
-          <div style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 2rem; text-align: center; color: var(--text-white-70); margin-top: 1.5rem;">
-            <p>ScamSense coming in Slice 4</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h2 style="color: white; font-size: 1.1rem; font-weight: 800; margin: 0;">Local Guides</h2>
+            <span style="font-size: 0.75rem; color: var(--text-white-50);">${destGuides.length} available</span>
           </div>
+
+          <div id="guide-dir-container"></div>
+          
         </aside>
 
         <!-- Main Map Area -->
@@ -68,12 +76,81 @@ export function renderDashboardView(container, { destination, onBack }) {
     }
     .filter-pill:hover { color: white; background: rgba(255,255,255,0.1); }
     .filter-pill.active { background: var(--blue); color: white; }
+    
+    /* Custom Leaflet Marker */
+    .guide-marker {
+      background: none;
+      border: none;
+    }
+    .guide-marker-inner {
+      width: 40px; height: 40px; border-radius: 50%; border: 3px solid #38bdf8;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5); overflow: hidden; background: #0b1121;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s;
+    }
+    .guide-marker-inner:hover { transform: scale(1.1); border-color: white; }
+    .guide-marker-inner img { width: 100%; height: 100%; object-fit: cover; }
   `;
   container.appendChild(style);
 
   if (window.lucide) window.lucide.createIcons();
 
   container.querySelector('#btn-back').addEventListener('click', onBack);
+
+  // Initialize Map
+  const mapViewer = new MapViewer('map', destination.coords);
+
+  // Render components
+  const aiContainer = container.querySelector('#ai-match-container');
+  const dirContainer = container.querySelector('#guide-dir-container');
+
+  function updateGuideDirectory() {
+    renderGuideDirectory(dirContainer, destGuides, rankedScores, (guideId) => {
+      alert(`Chat coming in Slice 5! (Clicked guide: ${guideId})`);
+    });
+  }
+
+  renderAIMatchWidget(aiContainer, (userPrefs) => {
+    // Run AI Match algorithm
+    rankedScores = {};
+    destGuides.forEach(g => {
+      rankedScores[g.id] = calculateMatch(userPrefs, g);
+    });
+    // Re-render directory
+    updateGuideDirectory();
+  });
+
+  updateGuideDirectory();
+
+  // Add Guide Markers to Map
+  destGuides.forEach(g => {
+    const iconHtml = \`
+      <div class="guide-marker-inner" title="\${g.name}">
+        <img src="\${g.avatar}" />
+      </div>
+    \`;
+    const divIcon = L.divIcon({
+      html: iconHtml,
+      className: 'guide-marker',
+      iconSize: [40, 40],
+      iconAnchor: [20, 20]
+    });
+
+    const marker = mapViewer.addMarker(g.coords, { icon: divIcon });
+    marker.on('click', () => {
+      // Scroll to guide card in sidebar
+      const card = document.getElementById(\`guide-card-\${g.id}\`);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.borderColor = '#38bdf8';
+        card.style.boxShadow = '0 0 15px rgba(14,165,233,0.3)';
+        setTimeout(() => {
+          card.style.borderColor = 'rgba(255,255,255,0.1)';
+          card.style.boxShadow = 'none';
+        }, 1500);
+      }
+    });
+  });
 
   // Filter toggle logic
   const pills = container.querySelectorAll('.filter-pill');
@@ -83,9 +160,6 @@ export function renderDashboardView(container, { destination, onBack }) {
       pill.classList.add('active');
     });
   });
-
-  // Initialize Map
-  const mapViewer = new MapViewer('map', destination.coords);
 
   // Cleanup function returned for router
   return () => {

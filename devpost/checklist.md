@@ -29,7 +29,7 @@ Build mode: learn
   Learner check: Click Paris, then try each category filter toggle. Does the map feel alive and responsive? (This is the Leaflet marker hook in action — we'll look at the code together after.)
   Commit: `feat: destination dashboard with interactive Leaflet map`
 
-- [ ] **3. Guide markers on map and guide directory with AI LocalMatch**
+- [x] **3. Guide markers on map and guide directory with AI LocalMatch**
   Becomes usable: Verified guide markers appear on the Paris map. The guide directory panel shows filterable guide cards (photo, name, languages, rate, Verified badge, match %). The AI LocalMatch widget computes and displays ranked match scores with plain-language explanations.
   Why now: This is the other half of the unique kernel — connecting tourists with verified locals. The AI match algorithm is one of the three concepts to deeply understand; building it here, before payment, lets us see it clearly.
   PRD ref: `prd.md > 4. Verified Local Guides Directory & AI LocalMatch`
