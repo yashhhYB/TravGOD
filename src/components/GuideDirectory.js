@@ -3,7 +3,7 @@
  * Renders the list of local guides in the sidebar
  */
 
-export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick) {
+export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick, onBookClick) {
   let displayGuides = [...guides];
 
   // If we have AI Match scores, attach them and sort by score descending
@@ -52,9 +52,14 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
           ${guide.languages.map(l => `<span style="font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.6rem; background: var(--bg-gray); border: 1px solid var(--border); border-radius: var(--radius-pill); color: var(--text-secondary);">${l}</span>`).join('')}
         </div>
 
-        <button class="btn-chat" data-guide-id="${guide.id}" style="width: 100%; padding: 0.75rem; background: var(--bg-white); border: 1px solid var(--border); color: var(--text-primary); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);">
-          Message
-        </button>
+        <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+          <button class="btn-chat" data-guide-id="${guide.id}" style="flex: 1; padding: 0.75rem; background: var(--bg-gray); border: 1px solid var(--border); color: var(--text-primary); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+            Message
+          </button>
+          <button class="btn-book" data-guide-id="${guide.id}" style="flex: 1; padding: 0.75rem; background: var(--blue); border: none; color: white; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);">
+            Book Guide
+          </button>
+        </div>
 
       </div>
     `;
@@ -65,6 +70,12 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
   container.querySelectorAll('.btn-chat').forEach(btn => {
     btn.addEventListener('click', () => {
       onChatClick(btn.dataset.guideId);
+    });
+  });
+
+  container.querySelectorAll('.btn-book').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (onBookClick) onBookClick(btn.dataset.guideId);
     });
   });
 }

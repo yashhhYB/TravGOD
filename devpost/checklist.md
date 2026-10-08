@@ -59,7 +59,7 @@ Build mode: learn
   Learner check: Start a chat with a guide and try the translation toggle. Does the conversation feel natural? Does it clearly label when a message has been translated?
   Commit: `feat: free chat window with AI translation toggle`
 
-- [ ] **6. PayPal Sandbox booking flow and Booking Confirmed state**
+- [x] **6. PayPal Sandbox booking flow and Booking Confirmed state**
   Becomes usable: Clicking "Book Guide — $25/hr" opens a Booking Summary modal with date/time selection and itemized cost. The PayPal Sandbox button renders and processes a test payment. On completion, the screen transitions to a Booking Confirmed card with reference ID, guide info, and action buttons (Open Chat, View Booking, Add to Calendar). The booking saves to `localStorage`.
   Why now: This is the final major feature and the PayPal callback is the third deep-dive concept. It completes the full core journey end-to-end.
   PRD ref: `prd.md > 6. PayPal Booking & Trip Management`

@@ -9,6 +9,7 @@ import { renderAIMatchWidget } from './AIMatch.js';
 import { renderGuideDirectory } from './GuideDirectory.js';
 import { renderScamSense } from './ScamSense.js';
 import { renderChatWindow } from './ChatWindow.js';
+import { renderPayPalModal } from './PayPalModal.js';
 import { calculateMatch } from '../utils/aiMatch.js';
 
 export function renderDashboardView(container, { destination, onBack }) {
@@ -85,6 +86,9 @@ export function renderDashboardView(container, { destination, onBack }) {
     
     <!-- Chat Container -->
     <div id="chat-container"></div>
+
+    <!-- Modal Container -->
+    <div id="modal-container"></div>
   `;
 
   if (window.lucide) window.lucide.createIcons();
@@ -100,16 +104,28 @@ export function renderDashboardView(container, { destination, onBack }) {
   const scamContainer = container.querySelector('#scam-sense-container');
 
   function updateGuideDirectory() {
-    renderGuideDirectory(dirContainer, destGuides, rankedScores, (guideId) => {
-      // Find guide data
-      const guide = destGuides.find(g => g.id === guideId);
-      if (guide) {
-        const chatContainer = container.querySelector('#chat-container');
-        renderChatWindow(chatContainer, guide, () => {
-          chatContainer.innerHTML = ''; // Cleanup on close
-        });
+    renderGuideDirectory(dirContainer, destGuides, rankedScores, 
+      // onChatClick
+      (guideId) => {
+        const guide = destGuides.find(g => g.id === guideId);
+        if (guide) {
+          const chatContainer = container.querySelector('#chat-container');
+          renderChatWindow(chatContainer, guide, () => {
+            chatContainer.innerHTML = '';
+          });
+        }
+      },
+      // onBookClick
+      (guideId) => {
+        const guide = destGuides.find(g => g.id === guideId);
+        if (guide) {
+          const modalContainer = container.querySelector('#modal-container');
+          renderPayPalModal(modalContainer, guide, () => {
+            modalContainer.innerHTML = '';
+          });
+        }
       }
-    });
+    );
   }
 
   renderAIMatchWidget(aiContainer, (userPrefs) => {
