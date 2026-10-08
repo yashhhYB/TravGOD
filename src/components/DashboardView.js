@@ -10,7 +10,9 @@ import { renderGuideDirectory } from './GuideDirectory.js';
 import { renderScamSense } from './ScamSense.js';
 import { renderChatWindow } from './ChatWindow.js';
 import { renderPayPalModal } from './PayPalModal.js';
+import { renderMyTrips } from './MyTrips.js';
 import { calculateMatch } from '../utils/aiMatch.js';
+import { Storage } from '../utils/storage.js';
 
 export function renderDashboardView(container, { destination, onBack }) {
   const destGuides = GUIDES.filter(g => g.destinationId === destination.id);
@@ -29,6 +31,9 @@ export function renderDashboardView(container, { destination, onBack }) {
           <span style="font-size: 1.25rem;">${destination.flag}</span>
           <h1 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 0;">${destination.name} <span style="color: var(--text-secondary); font-weight: 500;">${destination.country}</span></h1>
         </div>
+        <button id="btn-my-trips" style="padding: 0.5rem 1.25rem; background: var(--blue-dark); color: white; border: none; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); transition: all 0.2s;">
+          <svg width="16" height="16" data-lucide="briefcase"></svg> My Trips
+        </button>
       </header>
 
       <!-- Dashboard Layout -->
@@ -89,11 +94,21 @@ export function renderDashboardView(container, { destination, onBack }) {
 
     <!-- Modal Container -->
     <div id="modal-container"></div>
+    
+    <!-- My Trips Container -->
+    <div id="trips-container"></div>
   `;
 
   if (window.lucide) window.lucide.createIcons();
 
   container.querySelector('#btn-back').addEventListener('click', onBack);
+  
+  container.querySelector('#btn-my-trips').addEventListener('click', () => {
+    const tripsContainer = container.querySelector('#trips-container');
+    renderMyTrips(tripsContainer, () => {
+      tripsContainer.innerHTML = '';
+    });
+  });
 
   // Initialize Map
   const mapViewer = new MapViewer('map', destination.coords);
@@ -102,6 +117,8 @@ export function renderDashboardView(container, { destination, onBack }) {
   const aiContainer = container.querySelector('#ai-match-container');
   const dirContainer = container.querySelector('#guide-dir-container');
   const scamContainer = container.querySelector('#scam-sense-container');
+
+  let currentFallbackMessage = null;
 
   function updateGuideDirectory() {
     renderGuideDirectory(dirContainer, destGuides, rankedScores, 
@@ -119,16 +136,37 @@ export function renderDashboardView(container, { destination, onBack }) {
       (guideId) => {
         const guide = destGuides.find(g => g.id === guideId);
         if (guide) {
+          // Slot conflict guard
+          const bookings = Storage.get('travgod_bookings', []);
+          const existing = bookings.find(b => b.guideId === guide.id);
+          if (existing) {
+            alert(`You already have a booking with ${guide.name} on ${existing.date}.`);
+            return;
+          }
+
           const modalContainer = container.querySelector('#modal-container');
           renderPayPalModal(modalContainer, guide, () => {
             modalContainer.innerHTML = '';
           });
         }
-      }
+      },
+      currentFallbackMessage
     );
   }
 
   renderAIMatchWidget(aiContainer, (userPrefs) => {
+    currentFallbackMessage = null;
+    let matchLanguage = userPrefs.language;
+
+    // Empty state fallback logic
+    if (matchLanguage) {
+      const matchCount = destGuides.filter(g => g.languages.includes(matchLanguage)).length;
+      if (matchCount === 0) {
+        currentFallbackMessage = `No verified ${matchLanguage}-speaking guides in ${destination.name} — showing ${destGuides.length} English-speaking guides instead.`;
+        userPrefs.language = 'English'; // Fallback for scoring
+      }
+    }
+
     // Run AI Match algorithm
     rankedScores = {};
     destGuides.forEach(g => {

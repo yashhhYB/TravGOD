@@ -69,7 +69,7 @@ Build mode: learn
   Learner check: Complete the full Paris booking flow. When the Booking Confirmed screen appears, what happens in the code? (We'll trace the `onApprove` callback path through to the UI update together.)
   Commit: `feat: PayPal sandbox booking flow and Booking Confirmed state`
 
-- [ ] **7. My Trips panel and empty-state fallbacks**
+- [x] **7. My Trips panel and empty-state fallbacks**
   Becomes usable: My Trips panel reads confirmed bookings from `localStorage` and displays them with status badges (Confirmed, Upcoming). Empty states render correctly when no guides match the active language filter. Guide slot-unavailable state shows a friendly message with alternatives.
   Why now: This finishes the full lifecycle and ensures the app handles edge cases gracefully, making the demo feel like a real product rather than a happy-path prototype.
   PRD ref: `prd.md > 6. PayPal Booking & Trip Management`, `prd.md > States and Boundaries`

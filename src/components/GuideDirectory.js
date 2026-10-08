@@ -1,9 +1,7 @@
 /**
  * GuideDirectory.js
  * Renders the list of local guides in the sidebar
- */
-
-export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick, onBookClick) {
+export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick, onBookClick, fallbackMessage = null) {
   let displayGuides = [...guides];
 
   // If we have AI Match scores, attach them and sort by score descending
@@ -20,7 +18,16 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
     return;
   }
 
-  container.innerHTML = displayGuides.map((guide, index) => {
+  const fallbackHtml = fallbackMessage ? `
+    <div style="background: #fffbeb; border: 1px solid #fde68a; padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; display: flex; gap: 0.75rem; align-items: flex-start;">
+      <svg width="20" height="20" data-lucide="alert-circle" style="color: #d97706; flex-shrink: 0; margin-top: 0.1rem;"></svg>
+      <div style="font-size: 0.85rem; color: #92400e; line-height: 1.4; font-weight: 600;">
+        ${fallbackMessage}
+      </div>
+    </div>
+  ` : '';
+
+  container.innerHTML = fallbackHtml + displayGuides.map((guide, index) => {
     const isTopMatch = rankedScores && index === 0 && guide.matchScore > 50;
     
     return `
