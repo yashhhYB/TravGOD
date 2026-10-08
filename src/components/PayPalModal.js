@@ -107,8 +107,8 @@ export function renderPayPalModal(container, guide, onClose) {
   container.querySelector('#book-hours').addEventListener('change', (e) => {
     hours = parseInt(e.target.value, 10);
     total = guide.rate * hours;
-    container.querySelector('#summary-hours').innerText = \`\${hours} hour\${hours > 1 ? 's' : ''}\`;
-    container.querySelector('#summary-total').innerText = \`€\${total.toFixed(2)}\`;
+    container.querySelector('#summary-hours').innerText = `${hours} hour${hours > 1 ? 's' : ''}`;
+    container.querySelector('#summary-total').innerText = `€${total.toFixed(2)}`;
   });
 
   // Render PayPal Button
@@ -117,7 +117,7 @@ export function renderPayPalModal(container, guide, onClose) {
       createOrder: function(data, actions) {
         return actions.order.create({
           purchase_units: [{
-            description: \`TRAVGOD Guide Booking: \${guide.name}\`,
+            description: `TRAVGOD Guide Booking: ${guide.name}`,
             amount: {
               currency_code: 'USD',
               value: total.toString() // In reality, we'd convert EUR to USD or use EUR natively, simplifying for demo
@@ -131,7 +131,7 @@ export function renderPayPalModal(container, guide, onClose) {
           const date = container.querySelector('#book-date').value;
           const time = container.querySelector('#book-time').value;
           
-          const bookingId = \`TG-\${Math.random().toString(36).substring(2, 8).toUpperCase()}-PAR\`;
+          const bookingId = `TG-${Math.random().toString(36).substring(2, 8).toUpperCase()}-PAR`;
           
           // Save to LocalStorage
           const bookings = Storage.get('travgod_bookings', []);
