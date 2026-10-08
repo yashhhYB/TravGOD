@@ -19,7 +19,7 @@ Build mode: learn
   Learner check: Open `http://localhost:5173` — does the landing page look premium and match the Stripe/Airbnb visual feel we described?
   Commit: `feat: scaffold project and render landing page`
 
-- [ ] **2. Destination dashboard with interactive Leaflet map**
+- [x] **2. Destination dashboard with interactive Leaflet map**
   Becomes usable: Clicking a destination chip (e.g. Paris) opens the full Destination Dashboard with a live dark-themed interactive Leaflet map centered on that city, with category filter toggles (All, Guides, Food, Attractions, Safety) and the dashboard header.
   Why now: The map is the kernel of TRAVGOD. Proving it works early — with real Leaflet tiles and click interaction — eliminates the biggest technical risk before building any other feature around it.
   PRD ref: `prd.md > 2. Map-First Destination Dashboard`
