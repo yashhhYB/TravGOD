@@ -49,12 +49,12 @@ export function renderLandingView(container, { onDestinationSelect }) {
             </div>
           </a>
 
-          <nav class="header-nav" aria-label="Main navigation">
+          <nav class="header-nav" aria-label="Main navigation" id="landing-nav">
             <a href="#" class="active">Home</a>
-            <a href="#">Explore</a>
-            <a href="#">Locals</a>
-            <a href="#">Trips</a>
-            <a href="#">About</a>
+            <a href="#" data-nav="explore">Explore</a>
+            <a href="#" data-nav="locals">Locals</a>
+            <a href="#" data-nav="trips">Trips</a>
+            <a href="#" data-nav="about">About</a>
           </nav>
 
           <div class="header-actions">
@@ -278,6 +278,8 @@ export function renderLandingView(container, { onDestinationSelect }) {
         </div>
       </footer>
 
+      <!-- Modal Container for Trips -->
+      <div id="trips-container"></div>
     </div>
   `;
 
@@ -337,6 +339,31 @@ export function renderLandingView(container, { onDestinationSelect }) {
   }
   searchBtn.addEventListener('click', handleSearch);
   searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
+
+  // ── Header Navigation Mock ───────────────────────────────
+  const navLinks = container.querySelectorAll('.header-nav a:not(.active)');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (e.target.textContent === 'Trips') {
+        import('./MyTrips.js').then(({ renderMyTrips }) => {
+          const tripsContainer = container.querySelector('#trips-container');
+          renderMyTrips(tripsContainer, () => {
+            tripsContainer.innerHTML = '';
+          });
+        });
+      } else {
+        alert('This feature is coming soon! For this prototype, search for "Paris" to see the core flow.');
+      }
+    });
+  });
+
+  const signInBtn = container.querySelector('#btn-sign-in');
+  if (signInBtn) {
+    signInBtn.addEventListener('click', () => {
+      alert('Sign in functionality is coming soon! This prototype works without an account.');
+    });
+  }
 
   // ── Cleanup on view unmount ──────────────────────────────
   return () => window.removeEventListener('scroll', onScroll);

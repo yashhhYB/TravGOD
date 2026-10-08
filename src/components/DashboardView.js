@@ -74,12 +74,12 @@ export function renderDashboardView(container, { destination, onBack }) {
         <main class="dash-map-area">
           
           <!-- Category Filters -->
-          <div class="map-filters">
-            <button class="filter-pill active">All</button>
-            <button class="filter-pill">Guides</button>
-            <button class="filter-pill">Food</button>
-            <button class="filter-pill">Attractions</button>
-            <button class="filter-pill">Safety</button>
+          <div class="map-filters" id="map-filters-nav">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="guides">Guides</button>
+            <button class="filter-pill" data-filter="food">Food</button>
+            <button class="filter-pill" data-filter="attractions">Attractions</button>
+            <button class="filter-pill" data-filter="safety">Safety</button>
           </div>
 
           <!-- Map Container -->
@@ -262,6 +262,11 @@ export function renderDashboardView(container, { destination, onBack }) {
     pill.addEventListener('click', () => {
       pills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
+      
+      const filter = pill.dataset.filter;
+      if (filter && filter !== 'all' && filter !== 'guides') {
+        alert(`Filtering map by ${filter} is coming soon! This prototype focuses on the Guide Booking flow.`);
+      }
     });
   });
 
