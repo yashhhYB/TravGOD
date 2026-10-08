@@ -49,7 +49,7 @@ Build mode: learn
   Learner check: Scroll through the ScamSense section. Do the scam warnings feel realistic and clear? Does the price comparison make the tourist vs. local difference obvious at a glance?
   Commit: `feat: ScamSense scam alert cards and fair price guide`
 
-- [ ] **5. Free chat window with AI translation toggle**
+- [x] **5. Free chat window with AI translation toggle**
   Becomes usable: Clicking "Free Chat" on a guide card opens a chat window. Tourist can send messages and receive simulated guide responses. An AI translation toggle switches incoming messages between the guide's language and English.
   Why now: Chat is required for the core journey before booking (tourists consult, then commit). Simulated responses keep this buildable without a real backend, keeping it in scope.
   PRD ref: `prd.md > 5. Interactive Chat & AI Translation`

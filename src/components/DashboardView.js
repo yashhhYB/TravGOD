@@ -8,6 +8,7 @@ import { SCAMS, PRICES } from '../data/scams.js';
 import { renderAIMatchWidget } from './AIMatch.js';
 import { renderGuideDirectory } from './GuideDirectory.js';
 import { renderScamSense } from './ScamSense.js';
+import { renderChatWindow } from './ChatWindow.js';
 import { calculateMatch } from '../utils/aiMatch.js';
 
 export function renderDashboardView(container, { destination, onBack }) {
@@ -81,6 +82,9 @@ export function renderDashboardView(container, { destination, onBack }) {
 
       </div>
     </div>
+    
+    <!-- Chat Container -->
+    <div id="chat-container"></div>
   `;
 
   if (window.lucide) window.lucide.createIcons();
@@ -97,7 +101,14 @@ export function renderDashboardView(container, { destination, onBack }) {
 
   function updateGuideDirectory() {
     renderGuideDirectory(dirContainer, destGuides, rankedScores, (guideId) => {
-      alert(`Chat coming in Slice 5! (Clicked guide: ${guideId})`);
+      // Find guide data
+      const guide = destGuides.find(g => g.id === guideId);
+      if (guide) {
+        const chatContainer = container.querySelector('#chat-container');
+        renderChatWindow(chatContainer, guide, () => {
+          chatContainer.innerHTML = ''; // Cleanup on close
+        });
+      }
     });
   }
 
