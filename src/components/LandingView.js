@@ -5,12 +5,12 @@
  */
 
 const DESTINATIONS = [
-  { id: 'paris',     name: 'Paris',     country: 'France',   img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=120&q=80', coords: [48.8566, 2.3522] },
-  { id: 'tokyo',     name: 'Tokyo',     country: 'Japan',    img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=120&q=80', coords: [35.6762, 139.6503] },
-  { id: 'cairo',     name: 'Cairo',     country: 'Egypt',    img: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=120&q=80', coords: [30.0444, 31.2357] },
-  { id: 'barcelona', name: 'Barcelona', country: 'Spain',    img: 'https://images.unsplash.com/photo-1583422409516-2895a77ef244?auto=format&fit=crop&w=120&q=80', coords: [41.3874, 2.1686] },
-  { id: 'dubai',     name: 'Dubai',     country: 'UAE',      img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=120&q=80', coords: [25.2048, 55.2708] },
-  { id: 'newyork',   name: 'New York',  country: 'USA',      img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=120&q=80', coords: [40.7128, -74.0060] },
+  { id: 'paris',     name: 'Paris',     country: 'France',  img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=100&q=80', coords: [48.8566, 2.3522] },
+  { id: 'tokyo',     name: 'Tokyo',     country: 'Japan',   img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=100&q=80', coords: [35.6762, 139.6503] },
+  { id: 'cairo',     name: 'Cairo',     country: 'Egypt',   img: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=100&q=80', coords: [30.0444, 31.2357] },
+  { id: 'barcelona', name: 'Barcelona', country: 'Spain',   img: 'https://images.unsplash.com/photo-1464790719320-516ecd75af6c?auto=format&fit=crop&w=100&q=80', coords: [41.3874, 2.1686] },
+  { id: 'dubai',     name: 'Dubai',     country: 'UAE',     img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=100&q=80', coords: [25.2048, 55.2708] },
+  { id: 'newyork',   name: 'New York',  country: 'USA',     img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=100&q=80', coords: [40.7128, -74.0060] },
 ];
 
 const TRUST_ITEMS = [
@@ -80,10 +80,6 @@ export function renderLandingView(container, { onDestinationSelect }) {
         <div class="hero-inner">
           <!-- Left -->
           <div class="hero-left">
-            <div class="hero-eyebrow">
-              ${icon('sparkles', 14)} Your AI Travel Companion
-            </div>
-
             <h1 class="hero-title" id="hero-heading">
               Discover Amazing Places.<br>
               Connect with <span class="highlight">Trusted Locals</span>.<br>
@@ -119,7 +115,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
               <div class="destinations-row">
                 ${DESTINATIONS.map(d => `
                   <button class="dest-chip" data-destination-id="${d.id}" aria-label="Explore ${d.name}">
-                    <img src="${d.img}" alt="${d.name}" loading="lazy" />
+                    <img src="${d.img}" alt="" loading="lazy" />
                     <div class="dest-chip-info">
                       <span class="dest-chip-name">${d.name}</span>
                       <span class="dest-chip-country">${d.country}</span>
