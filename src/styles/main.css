@@ -260,9 +260,9 @@ img { display: block; max-width: 100%; }
 .hero-eyebrow svg { width: 14px; height: 14px; }
 
 .hero-title {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.18;
   color: var(--text-white);
   letter-spacing: -0.03em;
   margin-bottom: 1.25rem;
@@ -382,6 +382,13 @@ img { display: block; max-width: 100%; }
   object-fit: cover;
   flex-shrink: 0;
   display: block;
+}
+.dest-chip-flag {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 .dest-chip-info { display: flex; flex-direction: column; line-height: 1.15; }
 .dest-chip-name { font-size: 0.82rem; font-weight: 700; color: var(--text-white); }
