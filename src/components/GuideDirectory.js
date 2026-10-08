@@ -1,6 +1,8 @@
 /**
  * GuideDirectory.js
  * Renders the list of local guides in the sidebar
+ */
+
 export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick, onBookClick, fallbackMessage = null) {
   let displayGuides = [...guides];
 
