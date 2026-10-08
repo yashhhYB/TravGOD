@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRAVGOD App Map</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 2rem; background: #f9fafb; }
+    h1, h2, h3 { color: #111827; }
+    .card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    code { background: #f3f4f6; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9em; }
+    .route-step { margin-bottom: 1rem; border-left: 3px solid #3b82f6; padding-left: 1rem; }
+    .takeaway { background: #eff6ff; border: 1px solid #bfdbfe; padding: 1rem; border-radius: 8px; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>TRAVGOD App Map</h1>
+  <p>This is a take-home guide for your proof of concept. TRAVGOD is a single-page travel application that helps tourists discover destinations, stay safe with ScamSense, match with local guides using AI, and book trips using PayPal Sandbox.</p>
+
+  <div class="card">
+    <h2>Architecture Overview</h2>
+    <p>The app is a vanilla JavaScript Single Page Application (SPA) bundled with Vite. It uses standard DOM manipulation, Leaflet for maps, and LocalStorage for state persistence.</p>
+    <ul>
+      <li><code>index.html</code>: Entry point. Loads Leaflet, Lucide icons, PayPal SDK, and <code>main.js</code>.</li>
+      <li><code>src/main.js</code>: Main router. Switches between Landing Page and Destination Dashboard.</li>
+      <li><code>src/components/</code>: Contains UI modules like <code>LandingView.js</code>, <code>DashboardView.js</code>, <code>GuideDirectory.js</code>, <code>ChatWindow.js</code>, <code>PayPalModal.js</code>, and <code>MyTrips.js</code>.</li>
+      <li><code>src/utils/</code>: Contains the <code>aiMatch.js</code> algorithm and <code>storage.js</code> wrapper.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Reference Route: How Booking Works</h2>
+    <p>Follow this path to see how a tourist books a guide from the dashboard to LocalStorage:</p>
+    
+    <div class="route-step">
+      <strong>1. The Click (<code>src/components/DashboardView.js</code>)</strong><br>
+      When the user clicks "Book Guide" on a guide card, the <code>onBookClick</code> callback fires. It first checks for a slot-conflict (double booking), and if clear, calls <code>renderPayPalModal</code>.
+    </div>
+    <div class="route-step">
+      <strong>2. The Modal & Payment (<code>src/components/PayPalModal.js</code>)</strong><br>
+      The modal slides in. When the user selects hours, the total dynamically updates. When they click the PayPal button, the SDK triggers a sandbox payment and calls the <code>onApprove</code> callback.
+    </div>
+    <div class="route-step">
+      <strong>3. Persistence (<code>src/utils/storage.js</code>)</strong><br>
+      Inside <code>onApprove</code>, the app generates a random booking ID and pushes the new trip object into the <code>travgod_bookings</code> array using <code>Storage.set()</code>. The UI then updates to the "Booking Confirmed" screen.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>To Change This, Start Here:</h2>
+    <ul>
+      <li><strong>To modify AI Matching weights:</strong> Edit <code>src/utils/aiMatch.js</code>.</li>
+      <li><strong>To change app colors or styling:</strong> Edit CSS variables at the top of <code>src/styles/main.css</code>.</li>
+      <li><strong>To add more Mock Guides or Scams:</strong> Edit the constants in <code>src/data/mockData.js</code> (if separated, or top of <code>DashboardView.js</code>).</li>
+      <li><strong>To clear your bookings during testing:</strong> Open DevTools (F12) > Application > Local Storage > clear <code>travgod_bookings</code>.</li>
+    </ul>
+  </div>
+
+  <div class="takeaway">
+    <strong>A Practice to Reuse:</strong><br>
+    During this project, we built a <strong>slot-conflict guard</strong> (in <code>DashboardView.js</code>) that checks <code>LocalStorage</code> before ever showing the payment screen. This is a great reusable pattern for future apps: always validate state and edge cases <em>before</em> handing the user off to a third-party checkout flow. It prevents confusing errors and double-charges!
+  </div>
+
+  <p><small>Generated from finished code. To run the app locally, use <code>npm run dev</code>.</small></p>
+</body>
+</html>

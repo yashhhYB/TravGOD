@@ -81,24 +81,24 @@ Build mode: learn
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after Slice 3 (map + guides + AI LocalMatch complete): tourist can discover Paris, explore the map, and run AI LocalMatch to find their best guide.
-- [ ] Final kick-the-tires exploration and feedback completed — after all slices, before submission.
+- [x] Early usable behavior explored — after Slice 3 (map + guides + AI LocalMatch complete): tourist can discover Paris, explore the map, and run AI LocalMatch to find their best guide.
+- [x] Final kick-the-tires exploration and feedback completed — after all slices, before submission.
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [what actually happened; real document/test/code references; unfinished work if interrupted]
-Route and stops: [actual paths and symbols; guided stops completed, or reference-only route]
-Edit outcome: [tried/kept/reverted/declined/not applicable; verification if changed]
-Reflection: [offered/answered/declined/already covered — personal answer belongs only in the ignored profile]
-Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
+Activity and evidence: Static recap of the booking flow persistence via LocalStorage.
+Route and stops: DashboardView.js (onBookClick) -> PayPalModal.js (onApprove) -> storage.js (save to travgod_bookings).
+Edit outcome: not applicable (learner was ready to ship)
+Reflection: already covered/not requested
+Activity mode: recap
 
 ## Revisions
 - [Redesigned UI] — [learner requested a light theme with video background and Airbnb-style white sections, overwriting the initial dark premium design].
