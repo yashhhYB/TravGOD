@@ -1,0 +1,2051 @@
+{
+ "meta": {
+  "city": "Rome",
+  "country": "Italy",
+  "currency": "EUR",
+  "verified_at": "2026-10-05",
+  "status": "Hackathon seed v1. Items with conf below high must be re-verified before public launch. Coordinates are approximate (about 50 m).",
+  "demo_notice": "All guides, experiences, reviews and chats in this file are FICTIONAL demo content and must be labeled as such in the UI.",
+  "sources": {
+   "s_fco": "https://www.airporttransferportal.com/en/airport-guides/fco (cites Roma Capitale fixed fares; official: Roma Servizi per la Mobilita)",
+   "s_trevi": "https://www.gpb.org/node/1437701 (AP, Feb 2 2026)",
+   "s_trevi2": "https://www.idealista.it/en/news/lifestyle-in-italy/2026/01/21/305037-trevi-fountain-and-rome-s-museums-to-introduce-admission-fees-what-will-change-from",
+   "s_tickets": "https://www.visitrome.com/rome/travel-guides/tours-and-attractions",
+   "s_colosseum": "https://visitrome.com/rome/travel-guides/common-rome-questions/best-colosseum-tours",
+   "s_steps": "https://thepointsguy.com/news/sitting-on-spanish-steps-rome-banned",
+   "s_ees": "https://visasnews.com/en/schengen-ees-gains-momentum-ahead-of-etias-launch-in-late-2026/",
+   "s_ees_eu": "https://eu4armenia.eu/?p=56188",
+   "s_gk": "General knowledge, not re-verified on 2026-10-05"
+  }
+ },
+ "destination": {
+  "id": "rome",
+  "name": "Rome",
+  "tz": "Europe/Rome",
+  "languages": [
+   "Italian",
+   "English (tourist areas)"
+  ],
+  "emergency": {
+   "general": "112",
+   "police": "113 or 112 (Carabinieri)",
+   "ambulance": "118",
+   "fire": "115",
+   "conf": "high",
+   "src": [
+    "s_gk"
+   ]
+  },
+  "plug": "Type F/L, 230V",
+  "tipping": "Not expected. Rounding up or leaving 1-2 EUR is a courtesy.",
+  "tap_water": "Safe. Free public drinking fountains (nasoni) across the city.",
+  "entry": {
+   "summary": "Italy is in the Schengen area. The EU Entry/Exit System (biometric registration for non-EU short-stay visitors) has been fully operational at all Schengen external borders since 10 April 2026. ETIAS (pre-travel authorisation for visa-exempt nationals) is expected to start in Q4 2026; the exact date is to be announced and enforcement is expected to follow a transition period. Check official EU pages before you travel.",
+   "conf": "high",
+   "src": [
+    "s_ees",
+    "s_ees_eu"
+   ]
+  },
+  "safety_snapshot": {
+   "level": "Normal caution",
+   "note": "The main risks for visitors are pickpocketing and overcharging in tourist areas. Violent crime against tourists is uncommon.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  }
+ },
+ "transport": [
+  {
+   "id": "t_leo",
+   "name": "Leonardo Express (Fiumicino to Roma Termini)",
+   "price_eur": 14,
+   "mins": 32,
+   "note": "Non-stop, about every 15 min, roughly 05:38-23:27 from the airport. Platforms 23-24 at Termini.",
+   "conf": "high",
+   "src": [
+    "s_fco"
+   ]
+  },
+  {
+   "id": "t_taxi_fco",
+   "name": "Official taxi, Fiumicino to inside the Aurelian Walls",
+   "price_eur": 55,
+   "mins": 45,
+   "note": "Fixed fare per car, supplements included, day or night. Outside the walls the meter applies. Ciampino to centre is a fixed 40 EUR.",
+   "conf": "high",
+   "src": [
+    "s_fco"
+   ]
+  },
+  {
+   "id": "t_fl1",
+   "name": "FL1 regional train (Fiumicino)",
+   "price_eur": 8,
+   "mins": 45,
+   "note": "Does not stop at Termini (stops at Trastevere, Ostiense, Tiburtina). Cheaper, less direct.",
+   "conf": "medium",
+   "src": [
+    "s_fco"
+   ]
+  },
+  {
+   "id": "t_metro",
+   "name": "Metro, bus and tram single ticket",
+   "price_eur": 1.5,
+   "mins": null,
+   "note": "Time-limited ticket for buses and trams, one metro ride. Validate on entry or on board.",
+   "conf": "medium",
+   "src": [
+    "s_tickets",
+    "s_gk"
+   ]
+  }
+ ],
+ "safety_zones": [
+  {
+   "id": "z_termini",
+   "name": "Termini station area",
+   "lat": 41.9009,
+   "lng": 12.502,
+   "r_m": 400,
+   "kind": "scam_pickpocket",
+   "active": "any",
+   "night_caution": true,
+   "note": "Touts, unofficial taxis, ticket-machine 'helpers', pickpockets. Busy and well used, but be careful late at night."
+  },
+  {
+   "id": "z_colosseum",
+   "name": "Colosseum perimeter",
+   "lat": 41.8902,
+   "lng": 12.4922,
+   "r_m": 250,
+   "kind": "scam",
+   "active": "day",
+   "night_caution": false,
+   "note": "Costumed 'gladiator' photo fees, unofficial tour touts, fake skip-the-line sellers."
+  },
+  {
+   "id": "z_trevi",
+   "name": "Trevi Fountain and Spanish Steps",
+   "lat": 41.9033,
+   "lng": 12.483,
+   "r_m": 450,
+   "kind": "pickpocket_scam",
+   "active": "any",
+   "night_caution": false,
+   "note": "Dense crowds, pickpockets, rose and bracelet sellers."
+  },
+  {
+   "id": "z_vatican",
+   "name": "St. Peter's and Vatican Museums queues",
+   "lat": 41.904,
+   "lng": 12.456,
+   "r_m": 450,
+   "kind": "scam",
+   "active": "day",
+   "night_caution": false,
+   "note": "Queue touts, overpriced 'skip the line' tours, rosary or blessing hustles."
+  },
+  {
+   "id": "z_navona",
+   "name": "Piazza Navona, Pantheon and Campo de' Fiori restaurants",
+   "lat": 41.8985,
+   "lng": 12.4745,
+   "r_m": 450,
+   "kind": "overcharging",
+   "active": "any",
+   "night_caution": false,
+   "note": "Menus without prices, photo menus, hidden cover and service charges, restaurant touts."
+  },
+  {
+   "id": "z_trastevere",
+   "name": "Trastevere late-night streets",
+   "lat": 41.8893,
+   "lng": 12.4698,
+   "r_m": 400,
+   "kind": "pickpocket",
+   "active": "night",
+   "night_caution": true,
+   "note": "Lively nightlife. Pickpockets and phone snatching are more likely in crowds after dark."
+  }
+ ],
+ "places": [
+  {
+   "id": "p_colosseum",
+   "name": "Colosseum",
+   "cat": "monument",
+   "hood": "Celio / Monti",
+   "lat": 41.8902,
+   "lng": 12.4922,
+   "why": "Rome's defining ancient amphitheatre.",
+   "price": "Standard ticket about 16 EUR plus 2 EUR online booking fee (Colosseum, Roman Forum and Palatine Hill on a 24h combo). SUPER ticket about 35 EUR adds the underground and arena floor.",
+   "book": "required_recommended",
+   "mins": 90,
+   "best": "First slot of the day",
+   "crowd": "extreme",
+   "rules": [
+    "r_security",
+    "r_guides"
+   ],
+   "scams": [
+    "sc_gladiator",
+    "sc_tours"
+   ],
+   "tips": [
+    "Buy only from the official site (CoopCulture) or the ticket office.",
+    "Large bags are not allowed in. Bring ID that matches the ticket name."
+   ],
+   "tags": [
+    "history",
+    "must-see"
+   ],
+   "access": "Partial; lifts to the upper tier exist, check current access.",
+   "conf": "medium",
+   "src": [
+    "s_colosseum"
+   ]
+  },
+  {
+   "id": "p_forum",
+   "name": "Roman Forum and Palatine Hill",
+   "cat": "monument",
+   "hood": "Celio / Monti",
+   "lat": 41.8925,
+   "lng": 12.4853,
+   "why": "The political and religious heart of ancient Rome, with big views from the Palatine.",
+   "price": "Included in the Colosseum combo ticket.",
+   "book": "included",
+   "mins": 120,
+   "best": "Morning before the heat",
+   "crowd": "high",
+   "rules": [],
+   "scams": [
+    "sc_tours"
+   ],
+   "tips": [
+    "Little shade. Bring water and a hat in summer."
+   ],
+   "tags": [
+    "history"
+   ],
+   "access": "Uneven ground.",
+   "conf": "medium",
+   "src": [
+    "s_colosseum"
+   ]
+  },
+  {
+   "id": "p_pantheon",
+   "name": "Pantheon",
+   "cat": "monument",
+   "hood": "Centro Storico",
+   "lat": 41.8986,
+   "lng": 12.4769,
+   "why": "Nearly 2,000-year-old temple with the world's largest unreinforced concrete dome.",
+   "price": "A ticket of about 5 EUR for non-residents has applied since 2023; verify current price.",
+   "book": "recommended",
+   "mins": 40,
+   "best": "Early morning",
+   "crowd": "high",
+   "rules": [
+    "r_dress"
+   ],
+   "scams": [
+    "sc_overcharge"
+   ],
+   "tips": [
+    "It is a working church. Visits can be limited during Mass."
+   ],
+   "tags": [
+    "architecture",
+    "must-see"
+   ],
+   "access": "Step-free main entrance.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_trevi",
+   "name": "Trevi Fountain",
+   "cat": "monument",
+   "hood": "Trevi",
+   "lat": 41.9009,
+   "lng": 12.4833,
+   "why": "Rome's most famous fountain.",
+   "price": "Free to view from the square. Since 2 Feb 2026 non-residents pay 2 EUR to go down to the basin area (timed access, crowd cap).",
+   "book": "optional_online",
+   "mins": 25,
+   "best": "Before 08:00 or late evening",
+   "crowd": "extreme",
+   "rules": [
+    "r_fountain",
+    "r_eating"
+   ],
+   "scams": [
+    "sc_pickpocket",
+    "sc_rose"
+   ],
+   "tips": [
+    "Pay at the fountain or online to skip the line. Residents are exempt."
+   ],
+   "tags": [
+    "landmark"
+   ],
+   "access": "Viewing is step-free from the square; basin access has steps.",
+   "conf": "high",
+   "src": [
+    "s_trevi",
+    "s_trevi2"
+   ]
+  },
+  {
+   "id": "p_steps",
+   "name": "Spanish Steps",
+   "cat": "monument",
+   "hood": "Campo Marzio",
+   "lat": 41.906,
+   "lng": 12.4828,
+   "why": "Iconic baroque staircase leading to Trinita dei Monti church.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 30,
+   "best": "Sunrise or sunset",
+   "crowd": "high",
+   "rules": [
+    "r_steps"
+   ],
+   "scams": [
+    "sc_rose",
+    "sc_pickpocket"
+   ],
+   "tips": [
+    "Stand or walk. Sitting on the steps can be fined."
+   ],
+   "tags": [
+    "landmark",
+    "free"
+   ],
+   "access": "Stairs; a lift is available nearby at the Spagna metro station.",
+   "conf": "medium",
+   "src": [
+    "s_steps"
+   ]
+  },
+  {
+   "id": "p_navona",
+   "name": "Piazza Navona",
+   "cat": "square",
+   "hood": "Centro Storico",
+   "lat": 41.8992,
+   "lng": 12.4731,
+   "why": "Baroque square with Bernini's Fountain of the Four Rivers.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 30,
+   "best": "Evening",
+   "crowd": "high",
+   "rules": [],
+   "scams": [
+    "sc_overcharge",
+    "sc_pickpocket"
+   ],
+   "tips": [
+    "Drink prices on the square are high. Walk two streets away to eat."
+   ],
+   "tags": [
+    "baroque",
+    "free"
+   ],
+   "access": "Step-free.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_vatican",
+   "name": "Vatican Museums and Sistine Chapel",
+   "cat": "museum",
+   "hood": "Vatican / Prati",
+   "lat": 41.9065,
+   "lng": 12.4536,
+   "why": "Vast papal art collections ending in Michelangelo's Sistine Chapel.",
+   "price": "Ticket about 17 EUR; online reservation brings it to about 22 EUR. Special Friday evening openings in the warm months cost more.",
+   "book": "required_recommended",
+   "mins": 180,
+   "best": "First entry slot",
+   "crowd": "extreme",
+   "rules": [
+    "r_dress",
+    "r_security"
+   ],
+   "scams": [
+    "sc_tours",
+    "sc_rosary"
+   ],
+   "tips": [
+    "Closed most Sundays (free last Sunday, extremely crowded). Check the official calendar.",
+    "Photography is not allowed in the Sistine Chapel.",
+    "Exception: the museums open free on the last Sunday of the month (verify), with very long queues."
+   ],
+   "tags": [
+    "art",
+    "must-see"
+   ],
+   "access": "Mostly accessible; long distances.",
+   "conf": "medium",
+   "src": [
+    "s_tickets"
+   ],
+   "closed_weekday": "Sunday"
+  },
+  {
+   "id": "p_stpeters",
+   "name": "St. Peter's Basilica",
+   "cat": "church",
+   "hood": "Vatican",
+   "lat": 41.9022,
+   "lng": 12.4539,
+   "why": "The largest church in Christendom, with Michelangelo's dome.",
+   "price": "Entry is free. The dome climb is paid.",
+   "book": "no",
+   "mins": 75,
+   "best": "Early morning",
+   "crowd": "high",
+   "rules": [
+    "r_dress",
+    "r_security"
+   ],
+   "scams": [
+    "sc_rosary",
+    "sc_tours"
+   ],
+   "tips": [
+    "Shoulders and knees must be covered. Security queue can be long."
+   ],
+   "tags": [
+    "church",
+    "free"
+   ],
+   "access": "Step-free main nave.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_castel",
+   "name": "Castel Sant'Angelo",
+   "cat": "monument",
+   "hood": "Prati",
+   "lat": 41.9031,
+   "lng": 12.4663,
+   "why": "Hadrian's mausoleum turned papal fortress with rooftop views.",
+   "price": "Roughly 15 EUR (sources vary 10-15 EUR; verify).",
+   "book": "recommended",
+   "mins": 90,
+   "best": "Late afternoon",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Walk the Ponte Sant'Angelo at sunset for free."
+   ],
+   "tags": [
+    "history",
+    "views"
+   ],
+   "access": "Limited; many stairs.",
+   "conf": "low",
+   "src": [
+    "s_tickets"
+   ]
+  },
+  {
+   "id": "p_capitoline",
+   "name": "Capitoline Museums",
+   "cat": "museum",
+   "hood": "Campidoglio",
+   "lat": 41.8933,
+   "lng": 12.4828,
+   "why": "One of the world's oldest public museums; great view over the Forum.",
+   "price": "Non-residents pay an admission fee since 1 Feb 2026 (exact price: verify). Residents of the Rome metropolitan area enter free.",
+   "book": "recommended",
+   "mins": 120,
+   "best": "Afternoon",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Michelangelo's Campidoglio square is free."
+   ],
+   "tags": [
+    "art",
+    "history"
+   ],
+   "access": "Accessible.",
+   "conf": "medium",
+   "src": [
+    "s_trevi2"
+   ]
+  },
+  {
+   "id": "p_borghese",
+   "name": "Galleria Borghese",
+   "cat": "museum",
+   "hood": "Villa Borghese",
+   "lat": 41.9142,
+   "lng": 12.4921,
+   "why": "Bernini and Caravaggio masterpieces in an intimate villa.",
+   "price": "About 15 EUR plus booking fee (verify).",
+   "book": "required",
+   "mins": 120,
+   "best": "Pre-booked slot",
+   "crowd": "controlled",
+   "rules": [
+    "r_booking"
+   ],
+   "scams": [],
+   "tips": [
+    "Entry is by timed reservation only, in about two-hour slots. Arrive 20 minutes early."
+   ],
+   "tags": [
+    "art"
+   ],
+   "access": "Accessible.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ],
+   "closed_weekday": "Monday"
+  },
+  {
+   "id": "p_villa",
+   "name": "Villa Borghese gardens",
+   "cat": "park",
+   "hood": "Villa Borghese",
+   "lat": 41.9142,
+   "lng": 12.4923,
+   "why": "Rome's central park: bike rental, rowing lake, Pincio terrace sunset view.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 90,
+   "best": "Late afternoon",
+   "crowd": "low",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Walk up to the Pincio terrace for Piazza del Popolo views."
+   ],
+   "tags": [
+    "nature",
+    "free"
+   ],
+   "access": "Mostly flat.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_trastevere",
+   "name": "Trastevere",
+   "cat": "neighborhood",
+   "hood": "Trastevere",
+   "lat": 41.8893,
+   "lng": 12.4698,
+   "why": "Cobbled lanes, trattorie and lively evenings.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 150,
+   "best": "Evening",
+   "crowd": "high",
+   "rules": [],
+   "scams": [
+    "sc_pickpocket"
+   ],
+   "tips": [
+    "Book dinner. Eat away from the main square."
+   ],
+   "tags": [
+    "food",
+    "nightlife"
+   ],
+   "access": "Cobblestones.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_campo",
+   "name": "Campo de' Fiori",
+   "cat": "square",
+   "hood": "Centro Storico",
+   "lat": 41.8956,
+   "lng": 12.4722,
+   "why": "Morning market, evening bars.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 40,
+   "best": "Morning",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [
+    "sc_overcharge"
+   ],
+   "tips": [
+    "Souvenir-style stalls; compare prices."
+   ],
+   "tags": [
+    "market"
+   ],
+   "access": "Step-free.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_testaccio",
+   "name": "Testaccio Market",
+   "cat": "market",
+   "hood": "Testaccio",
+   "lat": 41.877,
+   "lng": 12.4755,
+   "why": "Local food market with street-food stalls (supplì, sandwiches, pizza).",
+   "price": "Free entry; food from about 3-12 EUR.",
+   "book": "no",
+   "mins": 75,
+   "best": "Late morning (closed Sundays)",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Mostly a morning market; check days and hours."
+   ],
+   "tags": [
+    "food",
+    "local"
+   ],
+   "access": "Step-free.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ],
+   "closed_weekday": "Sunday"
+  },
+  {
+   "id": "p_janiculum",
+   "name": "Janiculum Hill (Gianicolo)",
+   "cat": "viewpoint",
+   "hood": "Gianicolo",
+   "lat": 41.8892,
+   "lng": 12.4617,
+   "why": "One of Rome's best free panoramas, with a noon cannon tradition.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 60,
+   "best": "Sunset",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Walk up from Trastevere (about 20 minutes uphill)."
+   ],
+   "tags": [
+    "views",
+    "free"
+   ],
+   "access": "Steep approach.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_caracalla",
+   "name": "Baths of Caracalla",
+   "cat": "monument",
+   "hood": "Aventino / Terme",
+   "lat": 41.8789,
+   "lng": 12.4924,
+   "why": "Vast, quieter imperial bath complex.",
+   "price": "Ticket required (verify price).",
+   "book": "recommended",
+   "mins": 75,
+   "best": "Morning",
+   "crowd": "low",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "A good quieter alternative to the Forum crowds."
+   ],
+   "tags": [
+    "history",
+    "quiet"
+   ],
+   "access": "Partial.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_appia",
+   "name": "Appian Way Regional Park",
+   "cat": "park",
+   "hood": "Appia Antica",
+   "lat": 41.8556,
+   "lng": 12.516,
+   "why": "Ancient road lined with tombs and catacombs; walk or bike.",
+   "price": "Free park; catacombs ticketed.",
+   "book": "no",
+   "mins": 180,
+   "best": "Sunday (traffic-limited) morning",
+   "crowd": "low",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Much of the road is closed to cars on Sundays and holidays; check."
+   ],
+   "tags": [
+    "nature",
+    "history"
+   ],
+   "access": "Cobbles; bike rental nearby.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "food": [
+  {
+   "id": "f_roman4",
+   "kind": "dish_guide",
+   "name": "The Roman pasta four",
+   "desc": "Carbonara (guanciale, egg, pecorino; no cream), cacio e pepe (pecorino and pepper), amatriciana (guanciale, tomato, pecorino), gricia (carbonara without egg).",
+   "tip": "Cream in carbonara is not traditional. Menus with photos and touts outside are a warning sign.",
+   "price_eur": "11-16 in a trattoria",
+   "conf": "high",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_supli",
+   "kind": "dish_guide",
+   "name": "Supplì and pizza al taglio",
+   "desc": "Fried rice croquettes with melted mozzarella; Roman pizza sold by weight.",
+   "tip": "Check the price per 100 g (etto) before the slice is cut and weighed.",
+   "price_eur": "supplì 1.5-3; pizza al taglio 2.5-6 a slice",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_roscioli",
+   "kind": "spot",
+   "name": "Roscioli Salumeria con Cucina",
+   "hood": "Centro Storico",
+   "lat": 41.8935,
+   "lng": 12.4745,
+   "desc": "Deli and restaurant famed for carbonara and cured meats.",
+   "tip": "Reserve ahead. Confirm it is open before listing publicly.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_enzo",
+   "kind": "spot",
+   "name": "Da Enzo al 29",
+   "hood": "Trastevere",
+   "lat": 41.8882,
+   "lng": 12.477,
+   "desc": "Small family trattoria known for Roman classics.",
+   "tip": "Expect a queue; confirm booking policy.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_felice",
+   "kind": "spot",
+   "name": "Felice a Testaccio",
+   "hood": "Testaccio",
+   "lat": 41.8794,
+   "lng": 12.4772,
+   "desc": "Known for cacio e pepe tossed at the table.",
+   "tip": "Reserve.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_pizzarium",
+   "kind": "spot",
+   "name": "Pizzarium (Bonci)",
+   "hood": "Prati",
+   "lat": 41.9073,
+   "lng": 12.4455,
+   "desc": "Creative pizza al taglio near the Vatican Museums.",
+   "tip": "Good lunch stop after the museums.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_giolitti",
+   "kind": "spot",
+   "name": "Giolitti",
+   "hood": "Centro Storico",
+   "lat": 41.9,
+   "lng": 12.4776,
+   "desc": "Historic gelateria near the Pantheon.",
+   "tip": "Pay at the cashier first, then show the receipt at the counter.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_santeustachio",
+   "kind": "spot",
+   "name": "Sant'Eustachio Il Caffe",
+   "hood": "Centro Storico",
+   "lat": 41.8983,
+   "lng": 12.4748,
+   "desc": "Famous espresso near the Pantheon.",
+   "tip": "Standing at the bar costs less than a table.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_regoli",
+   "kind": "spot",
+   "name": "Pasticceria Regoli",
+   "hood": "Esquilino",
+   "lat": 41.8949,
+   "lng": 12.5045,
+   "desc": "Old-school bakery known for maritozzi (cream-filled buns).",
+   "tip": "Go in the morning.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_coperto",
+   "kind": "etiquette",
+   "name": "Coperto and service charge",
+   "desc": "A per-person cover charge is common and legal when shown on the menu. A separate service charge may also appear. Tipping beyond that is optional.",
+   "tip": "Check the menu footer before ordering. Ask for the total if prices are listed by weight.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "hidden_spots": [
+  {
+   "id": "h_keyhole",
+   "name": "Aventine Keyhole",
+   "lat": 41.8832,
+   "lng": 12.4795,
+   "why": "Peek through a keyhole in the Knights of Malta priory door to see St. Peter's dome framed by a hedge.",
+   "best": "Late afternoon, short queue",
+   "etiquette": "Quiet residential square. Be brief and respectful.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_orange",
+   "name": "Giardino degli Aranci (Orange Garden)",
+   "lat": 41.885,
+   "lng": 12.4797,
+   "why": "Calm terrace with sweeping views over Rome, much quieter than the Janiculum at peak times.",
+   "best": "Sunset",
+   "etiquette": "Public garden with opening hours.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_coppede",
+   "name": "Quartiere Coppede",
+   "lat": 41.9186,
+   "lng": 12.5008,
+   "why": "Fantastical early-20th-century architecture mixing Art Nouveau and medieval styles.",
+   "best": "Morning",
+   "etiquette": "Residential. Keep voices low.",
+   "keep_quiet": true,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_clemente",
+   "name": "Basilica di San Clemente",
+   "lat": 41.8893,
+   "lng": 12.4979,
+   "why": "Three layers of history: medieval church over a 4th-century church over a Roman house and a Mithraic temple.",
+   "best": "Midday",
+   "etiquette": "Active church; modest dress.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_garbatella",
+   "name": "Garbatella",
+   "lat": 41.8586,
+   "lng": 12.4881,
+   "why": "Garden-city neighborhood of courtyards and murals where locals live.",
+   "best": "Morning or aperitivo time",
+   "etiquette": "Residential courtyards: no loud groups or drones.",
+   "keep_quiet": true,
+   "origin": "curated",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "scams": [
+  {
+   "id": "sc_taxi",
+   "title": "Unofficial taxi or inflated fare from the airport or Termini",
+   "cat": "transport",
+   "sev": "high",
+   "zones": [
+    "z_termini"
+   ],
+   "active": "any",
+   "how": "A man offers a 'taxi' inside the terminal. The car has no meter, no license number or a fake one, and the price is agreed after you are inside.",
+   "avoid": "Use the official white taxis at the rank. From Fiumicino to inside the Aurelian Walls the fare is fixed at 55 EUR. Or take the 14 EUR Leonardo Express.",
+   "if_happened": "Note the plate and time. Report to the local police or Polizia Locale and to your card issuer if you paid by card.",
+   "conf": "high",
+   "src": [
+    "s_fco"
+   ]
+  },
+  {
+   "id": "sc_gladiator",
+   "title": "Costumed 'gladiators' demand a photo fee",
+   "cat": "street",
+   "sev": "medium",
+   "zones": [
+    "z_colosseum"
+   ],
+   "active": "day",
+   "how": "Costumed performers pose with you, then insist on a high payment, sometimes pressuring a group.",
+   "avoid": "Decline politely and keep walking. If you take a photo, agree on a price first.",
+   "if_happened": "Do not argue. Pay a small agreed amount if you feel unsafe, then report persistent harassment to police.",
+   "conf": "high",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_tours",
+   "title": "Skip-the-line touts and fake tickets",
+   "cat": "fake_guide",
+   "sev": "high",
+   "zones": [
+    "z_colosseum",
+    "z_vatican"
+   ],
+   "active": "day",
+   "how": "Touts near entrances sell 'skip-the-line' tours or tickets at inflated prices, sometimes unofficial or invalid.",
+   "avoid": "Book timed tickets online from the official site in advance. A licensed guide will not approach you on the street.",
+   "if_happened": "Keep receipts and screenshots. Ask the seller's bank or card issuer for a dispute.",
+   "conf": "high",
+   "src": [
+    "s_colosseum",
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_overcharge",
+   "title": "Tourist-trap restaurants and hidden charges",
+   "cat": "payment",
+   "sev": "medium",
+   "zones": [
+    "z_navona"
+   ],
+   "active": "any",
+   "how": "Menus without prices, photo menus, fish or steak priced per 100 g (etto) without a stated total, large cover and service charges.",
+   "avoid": "Read the full menu and footer. Ask for the total before ordering weighed items. Eat two or three streets away from major squares.",
+   "if_happened": "Ask for an itemised receipt (scontrino). You can report overcharging to Polizia Locale.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_pickpocket",
+   "title": "Pickpockets in crowds and on buses",
+   "cat": "street",
+   "sev": "high",
+   "zones": [
+    "z_termini",
+    "z_trevi",
+    "z_trastevere"
+   ],
+   "active": "any",
+   "how": "Teams use crowding and distraction on buses, the metro and at major sights.",
+   "avoid": "Keep bags zipped and in front. Do not keep phones in back pockets. Be extra careful on crowded buses to the Vatican.",
+   "if_happened": "Block your cards, report to police (and get a report for insurance), and use Find My Device.",
+   "conf": "high",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_rose",
+   "title": "'Free' roses, bracelets or gifts",
+   "cat": "street",
+   "sev": "low",
+   "zones": [
+    "z_trevi"
+   ],
+   "active": "any",
+   "how": "A seller hands you a rose or ties a bracelet, then demands money.",
+   "avoid": "Keep your hands free, say no clearly and keep walking.",
+   "if_happened": "Do not engage. Return the item if possible.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_machine",
+   "title": "Ticket-machine 'helpers'",
+   "cat": "payment",
+   "sev": "medium",
+   "zones": [
+    "z_termini"
+   ],
+   "active": "any",
+   "how": "Helpers operate the machine for you, then demand payment or switch the change.",
+   "avoid": "Decline help. Use machines carefully or buy at staffed windows or apps.",
+   "if_happened": "Report to station staff.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_rosary",
+   "title": "Rosary or 'blessing' hustle near the Vatican",
+   "cat": "street",
+   "sev": "low",
+   "zones": [
+    "z_vatican"
+   ],
+   "active": "day",
+   "how": "Someone offers a rosary or a blessing and then asks for a donation.",
+   "avoid": "Decline politely. Only trust official Vatican staff and posted information.",
+   "if_happened": "Walk away; report aggressive behavior.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_dcc",
+   "title": "Dynamic currency conversion at ATMs and card terminals",
+   "cat": "payment",
+   "sev": "medium",
+   "zones": [],
+   "active": "any",
+   "how": "The machine offers to charge you in your home currency at a poor rate.",
+   "avoid": "Always choose to pay in euros.",
+   "if_happened": "Ask your bank about the fee and check your statement.",
+   "conf": "high",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_qr",
+   "title": "Fake QR code stickers",
+   "cat": "digital",
+   "sev": "medium",
+   "zones": [],
+   "active": "any",
+   "how": "A sticker covers a genuine QR code on a menu, parking meter or kiosk and sends you to a payment page that steals card details.",
+   "avoid": "Check for stickers placed over printed codes and prefer official apps and sites.",
+   "if_happened": "Contact your card issuer immediately.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "r_entry",
+   "topic": "entry",
+   "sev": "info",
+   "title": "Entry and EU border systems",
+   "summary": "Italy is in Schengen. The EU Entry/Exit System has been fully in operation since 10 April 2026. ETIAS is expected in Q4 2026 and is not yet confirmed as required.",
+   "instead": "Check your nationality's visa and ETIAS status on the official EU site before booking.",
+   "juris": "EU/Schengen",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_ees",
+    "s_ees_eu"
+   ]
+  },
+  {
+   "id": "r_steps",
+   "topic": "behavior",
+   "sev": "careful",
+   "title": "No sitting on the Spanish Steps",
+   "summary": "Rome municipal rules ban sitting or lounging on the Spanish Steps. Press reports describe fines of about 250 EUR for sitting and up to about 400 EUR for dirtying or damaging them. Amounts differ between sources.",
+   "instead": "Rest on benches nearby or at the Pincio terrace.",
+   "juris": "Roma Capitale",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_steps"
+   ]
+  },
+  {
+   "id": "r_fountain",
+   "topic": "behavior",
+   "sev": "careful",
+   "title": "Do not wade or bathe in fountains",
+   "summary": "Entering the water of Rome's monumental fountains is prohibited and finable, with penalties reported in the hundreds of euros.",
+   "instead": "Throw a coin from the allowed distance and enjoy the view.",
+   "juris": "Roma Capitale",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_steps",
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_trevi",
+   "topic": "ticketing",
+   "sev": "info",
+   "title": "Trevi Fountain access fee for non-residents",
+   "summary": "Since 2 February 2026, non-residents pay 2 EUR to access the basin area near the Trevi Fountain. Viewing from the square remains free. Residents of Rome and some groups are exempt.",
+   "instead": "Buy online to skip the queue or view from the square for free.",
+   "juris": "Roma Capitale",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_trevi",
+    "s_trevi2"
+   ]
+  },
+  {
+   "id": "r_eating",
+   "topic": "behavior",
+   "sev": "careful",
+   "title": "No messy eating at monuments",
+   "summary": "Local rules ban 'messy eating' on monument steps and around some historic sites.",
+   "instead": "Eat in a cafe, park or piazza designated for it.",
+   "juris": "Roma Capitale",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_steps"
+   ]
+  },
+  {
+   "id": "r_dress",
+   "topic": "dress",
+   "sev": "careful",
+   "title": "Cover shoulders and knees in churches",
+   "summary": "St. Peter's, the Vatican Museums and many churches enforce a dress code: shoulders and knees covered.",
+   "instead": "Carry a light scarf or shawl.",
+   "juris": "Vatican / Church sites",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_security",
+   "topic": "security",
+   "sev": "info",
+   "title": "Security checks and bag rules",
+   "summary": "Major sights have airport-style screening and may refuse large bags or sharp objects.",
+   "instead": "Travel light and check each site's prohibited-items list.",
+   "juris": "Individual sites",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_booking",
+   "topic": "ticketing",
+   "sev": "info",
+   "title": "Timed reservations at popular sites",
+   "summary": "The Borghese Gallery requires a timed reservation. Colosseum and Vatican entries are strongly recommended in advance.",
+   "instead": "Reserve online from official sites weeks ahead.",
+   "juris": "Individual sites",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk",
+    "s_colosseum"
+   ]
+  },
+  {
+   "id": "r_guides",
+   "topic": "guides",
+   "sev": "careful",
+   "title": "Paid guiding may require a licence",
+   "summary": "Paid guiding at many state-run monuments and museums is regulated and may require a licensed guide. Rules differ by site and are subject to change.",
+   "instead": "Choose licensed guides for site tours and label informal local companions as such. Needs legal verification before launch.",
+   "juris": "Italy / Ministry of Culture / Roma Capitale",
+   "conf": "low",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_transit",
+   "topic": "transport",
+   "sev": "careful",
+   "title": "Validate transport tickets",
+   "summary": "Tickets must be validated on entry or on board where required. Inspectors issue fines to those without a valid ticket.",
+   "instead": "Validate at the machine and keep your ticket until you exit.",
+   "juris": "Roma Capitale / ATAC",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_drone",
+   "topic": "drones",
+   "sev": "serious",
+   "title": "Drones are heavily restricted",
+   "summary": "Flying drones over central Rome is restricted or prohibited without authorisation. Penalties can be serious.",
+   "instead": "Do not fly in the historic centre. Check Italy's aviation authority (ENAC) rules first.",
+   "juris": "Italy / ENAC",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_alcohol",
+   "topic": "alcohol",
+   "sev": "info",
+   "title": "Alcohol and public drinking",
+   "summary": "The legal purchase age is 18. Some areas restrict takeaway alcohol late at night and public drunkenness can be penalised.",
+   "instead": "Drink in bars and restaurants.",
+   "juris": "Italy / Roma Capitale",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "fair_prices": [
+  {
+   "item": "Official taxi, Fiumicino to inside the walls",
+   "low": 55,
+   "high": 55,
+   "unit": "EUR per car, fixed",
+   "note": "Anything more is overcharging. Ciampino to the centre is 40 EUR fixed.",
+   "conf": "high",
+   "src": [
+    "s_fco"
+   ]
+  },
+  {
+   "item": "Leonardo Express to Termini",
+   "low": 14,
+   "high": 14,
+   "unit": "EUR per adult",
+   "note": "32 minutes, non-stop.",
+   "conf": "high",
+   "src": [
+    "s_fco"
+   ]
+  },
+  {
+   "item": "Metro, bus or tram single ticket",
+   "low": 1.5,
+   "high": 1.5,
+   "unit": "EUR",
+   "note": "Validate it.",
+   "conf": "medium",
+   "src": [
+    "s_tickets"
+   ]
+  },
+  {
+   "item": "Colosseum standard ticket (official)",
+   "low": 16,
+   "high": 18,
+   "unit": "EUR",
+   "note": "About 16 EUR plus a 2 EUR online fee. Anything much higher is a reseller.",
+   "conf": "medium",
+   "src": [
+    "s_colosseum"
+   ]
+  },
+  {
+   "item": "Vatican Museums ticket",
+   "low": 17,
+   "high": 22,
+   "unit": "EUR",
+   "note": "About 17 EUR at the door; about 22 EUR with online reservation.",
+   "conf": "medium",
+   "src": [
+    "s_tickets"
+   ]
+  },
+  {
+   "item": "Trevi Fountain basin access (non-residents)",
+   "low": 2,
+   "high": 2,
+   "unit": "EUR",
+   "note": "Viewing from the square is free.",
+   "conf": "high",
+   "src": [
+    "s_trevi"
+   ]
+  },
+  {
+   "item": "Espresso standing at the bar",
+   "low": 1.2,
+   "high": 1.8,
+   "unit": "EUR",
+   "note": "Sitting at a table, especially on a main square, can double or triple it.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Cappuccino at the bar",
+   "low": 1.5,
+   "high": 2.5,
+   "unit": "EUR",
+   "note": "Italians rarely order it after a meal.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Pasta (carbonara or cacio e pepe) in a trattoria",
+   "low": 11,
+   "high": 16,
+   "unit": "EUR",
+   "note": "Above 20 EUR near major landmarks is a tourist premium.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Gelato, small cup or cone",
+   "low": 2.5,
+   "high": 4,
+   "unit": "EUR",
+   "note": "Avoid giant neon-coloured piles; natural colours and covered metal tubs are better signs.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Cover charge (coperto) per person",
+   "low": 1,
+   "high": 3,
+   "unit": "EUR",
+   "note": "Legal only if shown on the menu.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Half-day private guide (marketplace estimate)",
+   "low": 120,
+   "high": 300,
+   "unit": "EUR",
+   "note": "Varies with language, licence and group size.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "phrases": [
+  {
+   "id": "ph_meter",
+   "en": "Please use the meter.",
+   "local": "Usi il tassametro, per favore.",
+   "say": "OO-zee eel tas-sah-MEH-troh, per fah-VOH-reh",
+   "card": true
+  },
+  {
+   "id": "ph_noguide",
+   "en": "No thank you, I do not need a guide.",
+   "local": "No grazie, non ho bisogno di una guida.",
+   "say": "noh GRAH-tsyeh, non oh bee-ZOHN-yoh dee OO-nah GWEE-dah",
+   "card": true
+  },
+  {
+   "id": "ph_bill",
+   "en": "The bill, please. Is the service included?",
+   "local": "Il conto, per favore. Il servizio e incluso?",
+   "say": "eel KOHN-toh, per fah-VOH-reh. eel ser-VEE-tsyoh eh een-KLOO-zoh",
+   "card": true
+  },
+  {
+   "id": "ph_price",
+   "en": "How much is it in total?",
+   "local": "Quanto costa in totale?",
+   "say": "KWAHN-toh KOH-stah een toh-TAH-leh",
+   "card": true
+  },
+  {
+   "id": "ph_doctor",
+   "en": "I need a doctor.",
+   "local": "Ho bisogno di un medico.",
+   "say": "oh bee-ZOHN-yoh dee oon MEH-dee-koh",
+   "card": true
+  },
+  {
+   "id": "ph_police",
+   "en": "Please call the police.",
+   "local": "Chiami la polizia, per favore.",
+   "say": "KYAH-mee lah poh-lee-TSEE-ah",
+   "card": true
+  },
+  {
+   "id": "ph_stop",
+   "en": "Leave me alone.",
+   "local": "Mi lasci in pace.",
+   "say": "mee LAH-shee een PAH-cheh",
+   "card": true
+  },
+  {
+   "id": "ph_hello",
+   "en": "Hello / Good evening.",
+   "local": "Buongiorno / Buonasera.",
+   "say": "bwon-JOR-noh / bwoh-nah-SEH-rah",
+   "card": false
+  },
+  {
+   "id": "ph_thanks",
+   "en": "Thank you.",
+   "local": "Grazie.",
+   "say": "GRAH-tsyeh",
+   "card": false
+  },
+  {
+   "id": "ph_where",
+   "en": "Where is the toilet?",
+   "local": "Dov'e il bagno?",
+   "say": "doh-VEH eel BAH-nyoh",
+   "card": false
+  },
+  {
+   "id": "ph_vegan",
+   "en": "I have a food allergy.",
+   "local": "Ho un'allergia alimentare.",
+   "say": "oh oon-ahl-ler-JEE-ah ah-lee-men-TAH-reh",
+   "card": true
+  },
+  {
+   "id": "ph_wallet",
+   "en": "My wallet has been stolen.",
+   "local": "Mi hanno rubato il portafoglio.",
+   "say": "mee AHN-noh roo-BAH-toh eel por-tah-FOH-lyoh",
+   "card": true
+  }
+ ],
+ "guides": [
+  {
+   "id": "g_ro1",
+   "demo": true,
+   "name": "Giulia R. (Demo)",
+   "langs": [
+    [
+     "Italian",
+     "native"
+    ],
+    [
+     "English",
+     "C1"
+    ],
+    [
+     "French",
+     "B2"
+    ]
+   ],
+   "specialties": [
+    "Food",
+    "Markets"
+   ],
+   "rate_eur": 40,
+   "level": 2,
+   "licence": "none_companion",
+   "bio": "Demo profile. Grew up in Testaccio; loves showing visitors where Romans actually eat.",
+   "response_h": 1
+  },
+  {
+   "id": "g_ro2",
+   "demo": true,
+   "name": "Marco T. (Demo)",
+   "langs": [
+    [
+     "Italian",
+     "native"
+    ],
+    [
+     "English",
+     "C2"
+    ],
+    [
+     "Spanish",
+     "B2"
+    ]
+   ],
+   "specialties": [
+    "Ancient history",
+    "Archaeology"
+   ],
+   "rate_eur": 55,
+   "level": 3,
+   "licence": "licensed_guide_demo",
+   "bio": "Demo profile. Licensed-guide example for Colosseum, Forum and Palatine tours.",
+   "response_h": 3
+  },
+  {
+   "id": "g_ro3",
+   "demo": true,
+   "name": "Haruka M. (Demo)",
+   "langs": [
+    [
+     "Japanese",
+     "native"
+    ],
+    [
+     "Italian",
+     "C1"
+    ],
+    [
+     "English",
+     "B2"
+    ]
+   ],
+   "specialties": [
+    "Art",
+    "Vatican",
+    "First-timers"
+   ],
+   "rate_eur": 50,
+   "level": 2,
+   "licence": "licensed_guide_demo",
+   "bio": "Demo profile. Japanese-Italian bilingual guide for visitors who want calm explanations in Japanese.",
+   "response_h": 2
+  },
+  {
+   "id": "g_ro4",
+   "demo": true,
+   "name": "Luca B. (Demo)",
+   "langs": [
+    [
+     "Italian",
+     "native"
+    ],
+    [
+     "English",
+     "C1"
+    ]
+   ],
+   "specialties": [
+    "Trastevere",
+    "Wine",
+    "Evening walks"
+   ],
+   "rate_eur": 45,
+   "level": 2,
+   "licence": "none_companion",
+   "bio": "Demo profile. Evening companion walks, safe-bar picks and honest price advice.",
+   "response_h": 1
+  },
+  {
+   "id": "g_ro5",
+   "demo": true,
+   "name": "Amira K. (Demo)",
+   "langs": [
+    [
+     "Arabic",
+     "native"
+    ],
+    [
+     "Italian",
+     "C1"
+    ],
+    [
+     "English",
+     "C1"
+    ],
+    [
+     "French",
+     "B1"
+    ]
+   ],
+   "specialties": [
+    "Family-friendly",
+    "Accessibility-aware"
+   ],
+   "rate_eur": 42,
+   "level": 3,
+   "licence": "none_companion",
+   "bio": "Demo profile. Plans step-free routes, rest stops and kid-friendly stops.",
+   "response_h": 2
+  }
+ ],
+ "experiences": [
+  {
+   "id": "x_ro1",
+   "guide": "g_ro1",
+   "title": "Testaccio market and a Roman lunch",
+   "hours": 3,
+   "price_eur": 120,
+   "max": 4,
+   "type": "local_companion",
+   "stops": [
+    "p_testaccio",
+    "f_felice"
+   ],
+   "includes": "Guide time and market tastings; lunch paid separately.",
+   "hub": "Piramide metro exit",
+   "safety": "Public meeting place. Pay through the app only."
+  },
+  {
+   "id": "x_ro2",
+   "guide": "g_ro2",
+   "title": "Colosseum, Forum and Palatine with a licensed guide",
+   "hours": 3,
+   "price_eur": 190,
+   "max": 6,
+   "type": "licensed_tour",
+   "stops": [
+    "p_colosseum",
+    "p_forum"
+   ],
+   "includes": "Guide time. Tickets are booked and paid separately via the official site.",
+   "hub": "Colosseo metro exit",
+   "safety": "Tickets only from official sources."
+  },
+  {
+   "id": "x_ro3",
+   "guide": "g_ro3",
+   "title": "Vatican highlights in Japanese",
+   "hours": 3,
+   "price_eur": 175,
+   "max": 5,
+   "type": "licensed_tour",
+   "stops": [
+    "p_vatican",
+    "p_stpeters"
+   ],
+   "includes": "Guide time. Entry tickets separate.",
+   "hub": "Ottaviano metro exit",
+   "safety": "Dress code applies."
+  },
+  {
+   "id": "x_ro4",
+   "guide": "g_ro4",
+   "title": "Trastevere evening walk and aperitivo",
+   "hours": 2.5,
+   "price_eur": 100,
+   "max": 4,
+   "type": "local_companion",
+   "stops": [
+    "p_trastevere",
+    "p_janiculum"
+   ],
+   "includes": "Guide time; drinks separate.",
+   "hub": "Piazza Trilussa",
+   "safety": "Late-night: stay together, keep valuables close."
+  },
+  {
+   "id": "x_ro5",
+   "guide": "g_ro5",
+   "title": "Step-free family Rome: Villa Borghese and the Pincio",
+   "hours": 3,
+   "price_eur": 115,
+   "max": 5,
+   "type": "local_companion",
+   "stops": [
+    "p_villa"
+   ],
+   "includes": "Guide time and a route planned for strollers and wheelchairs.",
+   "hub": "Flaminio metro exit",
+   "safety": "Accessible route confirmed before booking."
+  },
+  {
+   "id": "x_ro6",
+   "guide": "g_ro1",
+   "title": "Hidden Rome: Orange Garden, Aventine Keyhole and San Clemente",
+   "hours": 3,
+   "price_eur": 125,
+   "max": 4,
+   "type": "local_companion",
+   "stops": [
+    "h_keyhole",
+    "h_orange",
+    "h_clemente"
+   ],
+   "includes": "Guide time; small entry fee at San Clemente separate.",
+   "hub": "Circo Massimo metro exit",
+   "safety": "Quiet residential areas; respect residents."
+  }
+ ],
+ "reviews": [
+  {
+   "id": "rv_ro1",
+   "demo": true,
+   "experience": "x_ro1",
+   "rating": 5,
+   "text": "Demo review. We ate three things we would never have found alone, and nobody tried to upsell us.",
+   "checkin": true
+  },
+  {
+   "id": "rv_ro2",
+   "demo": true,
+   "experience": "x_ro2",
+   "rating": 5,
+   "text": "Demo review. Clear explanations and no queue stress because the official tickets were already booked.",
+   "checkin": true
+  },
+  {
+   "id": "rv_ro3",
+   "demo": true,
+   "experience": "x_ro3",
+   "rating": 5,
+   "text": "Demo review. Having the Vatican explained in Japanese made the whole day calmer.",
+   "checkin": true
+  },
+  {
+   "id": "rv_ro4",
+   "demo": true,
+   "experience": "x_ro4",
+   "rating": 4,
+   "text": "Demo review. Great atmosphere. We were reminded to keep phones in front pockets, which was useful.",
+   "checkin": true
+  },
+  {
+   "id": "rv_ro5",
+   "demo": true,
+   "experience": "x_ro5",
+   "rating": 5,
+   "text": "Demo review. The step-free route was checked ahead and the stops suited our toddler.",
+   "checkin": true
+  },
+  {
+   "id": "rv_ro6",
+   "demo": true,
+   "experience": "x_ro6",
+   "rating": 5,
+   "text": "Demo review. Quiet corners we would never have found. Our guide asked us to keep noise down in the residential areas.",
+   "checkin": true
+  }
+ ],
+ "sample_trip": {
+  "id": "trip_ro_3d",
+  "title": "Rome in 3 days: essentials without the traps",
+  "traveler": "Aiko (demo persona)",
+  "party": 2,
+  "pace": "balanced",
+  "base": "Monti",
+  "days": [
+   {
+    "day": 1,
+    "title": "Arrival and ancient Rome",
+    "stops": [
+     {
+      "time": "10:30",
+      "place": "t_leo",
+      "note": "Leonardo Express to Termini (14 EUR), then walk or metro to Monti.",
+      "cost_eur": 28,
+      "flags": [
+       "scam:sc_taxi",
+       "scam:sc_machine"
+      ]
+     },
+     {
+      "time": "15:00",
+      "place": "p_colosseum",
+      "mins": 90,
+      "note": "Pre-booked official ticket.",
+      "cost_eur": 36,
+      "flags": [
+       "book:done",
+       "scam:sc_gladiator",
+       "scam:sc_tours"
+      ]
+     },
+     {
+      "time": "16:45",
+      "place": "p_forum",
+      "mins": 90,
+      "note": "Same ticket, then sunset from the Palatine.",
+      "cost_eur": 0,
+      "flags": []
+     },
+     {
+      "time": "20:00",
+      "place": "f_roman4",
+      "mins": 90,
+      "note": "Dinner in Monti, away from tourist squares.",
+      "cost_eur": 50,
+      "flags": [
+       "rule:coperto"
+      ]
+     }
+    ],
+    "weekday": "Thursday"
+   },
+   {
+    "day": 2,
+    "title": "Vatican and the river",
+    "stops": [
+     {
+      "time": "08:30",
+      "place": "p_vatican",
+      "mins": 180,
+      "note": "First timed slot. Shoulders and knees covered.",
+      "cost_eur": 44,
+      "flags": [
+       "book:done",
+       "rule:r_dress"
+      ]
+     },
+     {
+      "time": "12:00",
+      "place": "p_stpeters",
+      "mins": 60,
+      "note": "Free entry; security queue.",
+      "cost_eur": 0,
+      "flags": [
+       "rule:r_dress",
+       "scam:sc_rosary"
+      ]
+     },
+     {
+      "time": "13:15",
+      "place": "f_pizzarium",
+      "mins": 45,
+      "note": "Lunch by the slice. Check price per 100 g.",
+      "cost_eur": 16,
+      "flags": []
+     },
+     {
+      "time": "15:30",
+      "place": "p_castel",
+      "mins": 75,
+      "note": "Optional; walk the bridge at sunset instead if tired.",
+      "cost_eur": 30,
+      "flags": []
+     },
+     {
+      "time": "19:30",
+      "place": "p_trastevere",
+      "mins": 120,
+      "note": "Dinner. Keep phone in front pocket in crowds.",
+      "cost_eur": 55,
+      "flags": [
+       "scam:sc_pickpocket",
+       "night"
+      ]
+     }
+    ],
+    "weekday": "Friday"
+   },
+   {
+    "day": 3,
+    "title": "Art, fountains and sunset",
+    "stops": [
+     {
+      "time": "09:00",
+      "place": "p_borghese",
+      "mins": 120,
+      "note": "Timed reservation. Arrive 20 min early.",
+      "cost_eur": 34,
+      "flags": [
+       "book:required"
+      ]
+     },
+     {
+      "time": "11:45",
+      "place": "p_steps",
+      "mins": 20,
+      "note": "Stand, do not sit.",
+      "cost_eur": 0,
+      "flags": [
+       "rule:r_steps",
+       "scam:sc_rose"
+      ]
+     },
+     {
+      "time": "12:30",
+      "place": "p_trevi",
+      "mins": 25,
+      "note": "2 EUR basin access per person.",
+      "cost_eur": 4,
+      "flags": [
+       "rule:r_trevi",
+       "scam:sc_pickpocket"
+      ]
+     },
+     {
+      "time": "13:15",
+      "place": "p_pantheon",
+      "mins": 40,
+      "note": "Small ticket for non-residents; verify price.",
+      "cost_eur": 10,
+      "flags": []
+     },
+     {
+      "time": "18:30",
+      "place": "p_janiculum",
+      "mins": 60,
+      "note": "Sunset view.",
+      "cost_eur": 0,
+      "flags": []
+     }
+    ],
+    "weekday": "Saturday"
+   }
+  ],
+  "start_weekday": "Thursday"
+ },
+ "audit_demo": {
+  "draft": [
+   {
+    "day": 1,
+    "date_weekday": "Sunday",
+    "time": "09:00",
+    "place": "p_vatican",
+    "weekday_note": "Sunday"
+   },
+   {
+    "day": 1,
+    "time": "10:00",
+    "place": "p_borghese",
+    "booked": false
+   },
+   {
+    "day": 1,
+    "time": "10:45",
+    "place": "p_colosseum"
+   },
+   {
+    "day": 1,
+    "time": "23:30",
+    "place": "p_trastevere"
+   }
+  ],
+  "expected_findings": [
+   {
+    "code": "CLOSED_DAY",
+    "severity": "blocking",
+    "stop": "p_vatican",
+    "msg": "Vatican Museums are closed on most Sundays. Check the official calendar or move to another day."
+   },
+   {
+    "code": "RESERVATION_MISSING",
+    "severity": "blocking",
+    "stop": "p_borghese",
+    "msg": "Galleria Borghese needs a timed reservation and visits last about two hours."
+   },
+   {
+    "code": "OVERLAP",
+    "severity": "blocking",
+    "stop": "p_colosseum",
+    "msg": "Borghese (10:00, two hours) overlaps with the Colosseum at 10:45 and the cities are 30+ minutes apart."
+   },
+   {
+    "code": "NIGHT_CROWD",
+    "severity": "warn",
+    "stop": "p_trastevere",
+    "msg": "Late night in a crowded nightlife area raises pickpocket risk. Keep valuables in front pockets, use licensed taxis or night buses."
+   }
+  ],
+  "draft_weekday": "Sunday"
+ },
+ "sample_chat": [
+  {
+   "from": "traveler",
+   "lang": "ja",
+   "text": "こんにちは！ゆっくり歩く母でも、バチカンのツアーは大丈夫ですか？",
+   "text_en": "Hello! Is the Vatican tour suitable for my mother, who walks slowly?",
+   "translated_it": "Ciao! Il tour del Vaticano e adatto a mia madre, che cammina lentamente?"
+  },
+  {
+   "from": "guide",
+   "lang": "ja",
+   "text": "はい。休憩を入れて、短いルートで案内します。予約の時間に合わせてバリアフリーの状況を確認します。",
+   "text_en": "Yes. I plan rest stops and use the shorter route. I will check access at the time you book.",
+   "flag": null
+  },
+  {
+   "from": "guide",
+   "lang": "it",
+   "text": "Se vuoi pagare con bonifico, mandalo sul mio conto.",
+   "text_en": "If you want to pay by bank transfer, send it to my account.",
+   "flag": "offplatform_payment",
+   "warning": "Requests to pay outside the app are a common scam pattern. Only pay through Local Guide Connect."
+  }
+ ]
+}

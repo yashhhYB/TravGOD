@@ -5,6 +5,8 @@
  */
 
 import { DESTINATIONS } from '../data/destinations.js';
+import { renderOnboardingModal } from './OnboardingModal.js';
+import { setupHeaderAuth } from '../utils/headerAuth.js';
 
 const TRUST_ITEMS = [
   { icon: 'shield-check',   title: 'Verified Locals',      desc: 'Real people, real profiles' },
@@ -41,7 +43,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
       <!-- ──── Header ──── -->
       <header class="app-header" id="app-header">
         <div class="header-inner">
-          <a href="#" class="logo" aria-label="TRAVGOD home">
+          <a href="#/" class="logo" aria-label="TRAVGOD home">
             <div class="logo-icon">${icon('map-pin', 18)}</div>
             <div>
               <div class="logo-name">TRAVGOD</div>
@@ -50,11 +52,10 @@ export function renderLandingView(container, { onDestinationSelect }) {
           </a>
 
           <nav class="header-nav" aria-label="Main navigation" id="landing-nav">
-            <a href="#" class="active">Home</a>
-            <a href="#" data-nav="explore">Explore</a>
-            <a href="#" data-nav="locals">Locals</a>
-            <a href="#" data-nav="trips">Trips</a>
-            <a href="#" data-nav="about">About</a>
+            <a href="#/" class="active">Home</a>
+            <a href="#/explore">Explore</a>
+            <a href="#/trips">My Trips</a>
+            <a href="#/about">About</a>
           </nav>
 
           <div class="header-actions">
@@ -65,8 +66,8 @@ export function renderLandingView(container, { onDestinationSelect }) {
 
       <!-- ──── Hero ──── -->
       <section class="hero" aria-labelledby="hero-heading">
-        <video class="hero-video" id="hero-video" autoplay loop muted playsinline preload="auto">
-          <source src="/363550.mp4" type="video/mp4" />
+        <video class="hero-video" id="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=2068&auto=format&fit=crop">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-and-buildings-41548-large.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -107,10 +108,10 @@ export function renderLandingView(container, { onDestinationSelect }) {
               </div>
               <div class="destinations-row">
                 ${DESTINATIONS.map(d => `
-                  <button class="dest-chip" data-destination-id="${d.id}" aria-label="Explore ${d.name}">
+                  <button class="dest-chip ${d.comingSoon ? 'coming-soon' : ''}" data-destination-id="${d.id}" aria-label="Explore ${d.name}" ${d.comingSoon ? 'disabled style="opacity: 0.65; cursor: not-allowed;"' : ''}>
                     <span class="dest-chip-flag">${d.flag}</span>
                     <div class="dest-chip-info">
-                      <span class="dest-chip-name">${d.name}</span>
+                      <span class="dest-chip-name">${d.name} ${d.comingSoon ? '<span style="font-size: 0.65rem; background: #e2e8f0; color: #64748b; padding: 1px 6px; border-radius: 4px; font-weight: 700; margin-left: 3px;">Soon</span>' : ''}</span>
                       <span class="dest-chip-country">${d.country}</span>
                     </div>
                   </button>
@@ -165,7 +166,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
               From discovering your destination to booking trusted locals,
               we make your travel journey simple, safe and unforgettable.
             </p>
-            <a href="#" class="btn-outline">Learn More ${icon('arrow-right', 16)}</a>
+            <a href="#/explore" class="btn-outline">Learn More ${icon('arrow-right', 16)}</a>
           </div>
 
           <div class="how-steps">
@@ -191,9 +192,9 @@ export function renderLandingView(container, { onDestinationSelect }) {
               <h2 id="reviews-heading">What Our Travelers Say</h2>
               <p>Real stories from real travelers around the world.</p>
             </div>
-            <button class="btn-outline" style="align-self:flex-end;">
+            <a href="#/explore" class="btn-outline" style="align-self:flex-end;">
               View More ${icon('arrow-right', 16)}
-            </button>
+            </a>
           </div>
 
           <div class="reviews-grid">
@@ -236,11 +237,10 @@ export function renderLandingView(container, { onDestinationSelect }) {
           <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Explore</a></li>
-              <li><a href="#">Locals</a></li>
-              <li><a href="#">Trips</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><a href="#/">Home</a></li>
+              <li><a href="#/explore">Explore Destinations</a></li>
+              <li><a href="#/trips">My Trips</a></li>
+              <li><a href="#/about">About Us</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -256,11 +256,11 @@ export function renderLandingView(container, { onDestinationSelect }) {
           <div class="footer-col">
             <h4>Support</h4>
             <ul>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Safety Guide</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="#/about">Help Center</a></li>
+              <li><a href="#/about">Safety Guide</a></li>
+              <li><a href="#/about">Terms of Service</a></li>
+              <li><a href="#/about">Privacy Policy</a></li>
+              <li><a href="#/about">Contact Us</a></li>
             </ul>
           </div>
           <div class="footer-newsletter">
@@ -268,38 +268,36 @@ export function renderLandingView(container, { onDestinationSelect }) {
             <p>Get travel tips, updates and special offers.</p>
             <div class="newsletter-form">
               <input type="email" placeholder="Enter your email address" aria-label="Email for newsletter" />
-              <button type="button">Subscribe</button>
+              <button type="button" onclick="alert('Thank you for subscribing to TRAVGOD updates!')">Subscribe</button>
             </div>
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2025 TRAVGOD. All rights reserved.</span>
+          <span>© 2026 TRAVGOD. All rights reserved.</span>
           <span>Made with ♥ for travelers</span>
         </div>
       </footer>
 
-      <!-- Modal Container for Trips -->
-      <div id="trips-container"></div>
+      <!-- Modal Container -->
+      <div id="modal-container"></div>
     </div>
   `;
 
   // ── Render Lucide icons ──────────────────────────────────
   if (window.lucide) window.lucide.createIcons();
 
-  // ── Force video play (fixes autoplay in dynamically injected HTML) ──
+  // ── Force video play safely ──
   const video = container.querySelector('#hero-video');
-  if (video) {
-    video.load(); // Reload the source after injection
-    video.play().catch(() => {
-      // Autoplay blocked — the dark background fallback will show
-      console.info('TRAVGOD: Video autoplay was blocked by browser policy.');
+  if (video && typeof video.play === 'function') {
+    video.play().catch(err => {
+      console.info('TRAVGOD: Video autoplay blocked by browser policy:', err);
     });
   }
 
   // ── Header scroll effect ─────────────────────────────────
   const header = document.getElementById('app-header');
   const onScroll = () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
+    if (header) header.classList.toggle('scrolled', window.scrollY > 40);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -328,7 +326,7 @@ export function renderLandingView(container, { onDestinationSelect }) {
 
   function handleSearch() {
     const q = searchInput.value.trim().toLowerCase();
-    const dest = DESTINATIONS.find(d => d.name.toLowerCase().startsWith(q));
+    const dest = DESTINATIONS.find(d => d.name.toLowerCase().includes(q) || d.country.toLowerCase().includes(q));
     if (dest) {
       go(dest.id);
     } else if (q) {
@@ -337,36 +335,16 @@ export function renderLandingView(container, { onDestinationSelect }) {
       setTimeout(() => (searchInput.style.boxShadow = ''), 1800);
     }
   }
-  searchBtn.addEventListener('click', handleSearch);
-  searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
+  if (searchBtn) searchBtn.addEventListener('click', handleSearch);
+  if (searchInput) searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
 
-  // ── Header Navigation Mock ───────────────────────────────
-  const navLinks = container.querySelectorAll('.header-nav a:not(.active)');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (e.target.textContent === 'Trips') {
-        import('./MyTrips.js').then(({ renderMyTrips }) => {
-          const tripsContainer = container.querySelector('#trips-container');
-          renderMyTrips(tripsContainer, () => {
-            tripsContainer.innerHTML = '';
-          });
-        });
-      } else {
-        alert('This feature is coming soon! For this prototype, search for "Paris" to see the core flow.');
-      }
-    });
-  });
-
-  const signInBtn = container.querySelector('#btn-sign-in');
-  if (signInBtn) {
-    signInBtn.addEventListener('click', () => {
-      alert('Sign in functionality is coming soon! This prototype works without an account.');
-    });
-  }
+  // ── Header Auth Setup ──
+  const headerElem = container.querySelector('#app-header');
+  if (headerElem) setupHeaderAuth(headerElem);
 
   // ── Cleanup on view unmount ──────────────────────────────
   return () => window.removeEventListener('scroll', onScroll);
 }
 
 export { DESTINATIONS };
+

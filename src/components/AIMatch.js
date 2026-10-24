@@ -22,6 +22,7 @@ export function renderAIMatchWidget(container, onMatch) {
             <option value="">Any Language</option>
             <option value="English">English</option>
             <option value="French">French</option>
+            <option value="Italian">Italian</option>
             <option value="Spanish">Spanish</option>
             <option value="German">German</option>
           </select>

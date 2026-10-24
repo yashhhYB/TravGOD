@@ -3,47 +3,32 @@ doc: scope
 status: approved
 ---
 
-# TRAVGOD (LocalGuide & Anti-Scam Network)
+# Local Guide Connect (TRAVGOD Engine)
 
-A web platform enabling tourists to discover destinations, avoid local scams with real pricing guidance, and connect directly with verified native guides for advice, chat, and paid guided bookings.
+Tagline: Travel safer. Connect real.
+
+A travel platform connecting tourists with verified local guides while providing location-specific scam intelligence, sourced legal rules, fair price benchmarks, and safety-aware AI trip planning.
 
 ## The Unique Kernel
-Connecting travelers directly with background-checked local guides while providing location-specific scam alerts and realistic local budget ranges—tackling both language barriers and tourist exploitation in one place.
+Combining a street-level interactive map, verified local human guides with protected PayPal checkout, sourced local legal rules ("Know before you go"), and live Scam Radar intelligence in one unified flow.
 
 ## Who It's For
-An independent traveler visiting a foreign destination (e.g. Paris) who wants to avoid tourist traps/scams, needs local guidance in their preferred language, and wants to book/consult a trusted local.
+- **Aiko (First-time / Anxious Traveler)**: Visiting Rome, anxious about tourist scams, wants a trusted guide who speaks her language and clear safety guidance.
+- **Daniel (Independent Explorer)**: Experienced traveler who hates tourist traps and wants off-the-beaten-path hidden spots matched to his cultural taste.
+- **Marco (Verified Local Guide)**: Resident of Rome who wants to earn from his knowledge, showcase his expertise legitimately, and receive guaranteed payouts.
 
-## The Core Loop
-1. Tourist selects a destination.
-2. Tourist views common scams, average local prices (e.g., clothing/food ranges), and verified local guide profiles.
-3. Tourist filters guides by spoken language (e.g., English + Spanish).
-4. Tourist initiates a free chat with a guide for quick advice or books a guided session via PayPal integration.
+## The Vertical Slice Boundary (Rome in Depth)
+- **Primary Destination**: Rome, Italy (deep content: hand-checked rules, scams, fair prices, places, and demo guides).
+- **Core Loop**:
+  1. Traveler signs in and completes 60-second Travel DNA (role, languages, interests, pace).
+  2. Traveler explores Rome via interactive map (Places, Hidden Spots, Guide meeting hubs, Scam Radar).
+  3. Traveler consults sourced Rules & Laws (fines, allowances, etiquette) and fair prices.
+  4. Traveler matches with a verified Rome local guide, chats with translation, and books with PayPal sandbox protection.
+  5. Traveler generates or customizes an AI day-by-day safety-aware Rome itinerary.
+  6. Resident can apply via the Become a Local wizard, pass the safety quiz, and access the Host Dashboard.
 
-## Inspiration & Identity
-- OLX-style marketplace for discovering local guides.
-- Clean, trustworthy travel aesthetic with clear scam warning cards, verification badges, and direct chat/booking tools.
-
-## Why This Matters to the Learner
-Solves a real problem faced by tourists globally (language barriers, scam exploitation, and overpricing) while providing a complete end-to-end learning project to master full-stack AI-assisted application building.
-
-## What "Working" Looks Like
-In a 60-second demo:
-1. Tourist selects a destination (e.g., Paris).
-2. Screen displays curated local scam warnings and price expectation guides.
-3. Tourist filters local guides by language (English + local language).
-4. Tourist views a guide's verified badge details, opens a free chat, and triggers a PayPal checkout for a booking.
-
-## The POC Boundary
-- **Destination Dashboard**: City view with scam warnings & fair price range guides (e.g. clothing, food, transport).
-- **Verified Guide Marketplace**: Filterable directory matching languages, featuring mock background-verification badges.
-- **Interactive Chat**: Free messaging interface between tourist and local guide.
-- **PayPal Payment Integration**: PayPal payment flow for guide consultation/booking.
-
-## Later
-- Real-time video/audio call booking.
-- Automated real-time chat translation across unsupported languages.
-- Real government ID legal verification API integrations.
-
-## Explicitly Cut
-- **Actual Legal Criminal Background Checks**: Replaced with realistic mock verification badges for PoC speed.
-- **Complex Multi-Vendor Escrow Payouts**: Replaced with standard PayPal sandbox payment component.
+## Explicit Hackathon Cuts
+- Multiple cities built shallowly → Cut to 1 deep city (Rome) to guarantee full end-to-end functionality.
+- Real-time video/audio calling → Cut in favor of fast in-app chat with AI translation.
+- Commercial biometric ID checks → Replaced with transparent admin verification levels and demo badges.
+- External GitHub commits/pushes → All testing, build, and verification strictly local.

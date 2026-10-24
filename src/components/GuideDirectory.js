@@ -3,7 +3,7 @@
  * Renders the list of local guides in the sidebar
  */
 
-export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick, onBookClick, fallbackMessage = null) {
+export function renderGuideDirectory(container, guides, rankedScores = null, onChatClick, onBookClick, fallbackMessage = null, onMapClick = null) {
   let displayGuides = [...guides];
 
   // If we have AI Match scores, attach them and sort by score descending
@@ -43,7 +43,12 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
             ${guide.verified ? `<div style="position: absolute; bottom: -2px; right: -2px; background: var(--blue); color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-white);" title="Verified Local"><svg width="12" height="12" data-lucide="check"></svg></div>` : ''}
           </div>
           <div style="flex: 1;">
-            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.15rem 0;">${guide.name}</h4>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.15rem 0;">${guide.name}</h4>
+              <button class="btn-guide-map" data-guide-id="${guide.id}" style="padding: 4px 8px; background: #eff6ff; border: 1px solid #bfdbfe; color: #0284c7; border-radius: 6px; font-weight: 700; font-size: 0.72rem; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" data-lucide="map-pin"></svg> Map
+              </button>
+            </div>
             <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 0.25rem; margin-bottom: 0.25rem;">
               <svg width="14" height="14" data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></svg> ${guide.rating} (${guide.reviews})
             </div>
@@ -62,10 +67,10 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
         </div>
 
         <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-          <button class="btn-chat" data-guide-id="${guide.id}" style="flex: 1; padding: 0.75rem; background: var(--bg-gray); border: 1px solid var(--border); color: var(--text-primary); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">
+          <button class="btn-chat" data-guide-id="${guide.id}" style="flex: 1; padding: 0.75rem; background: var(--bg-gray); border: 1px solid var(--border); color: var(--text-primary); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s;">
             Message
           </button>
-          <button class="btn-book" data-guide-id="${guide.id}" style="flex: 1; padding: 0.75rem; background: var(--blue); border: none; color: white; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);">
+          <button class="btn-book" data-guide-id="${guide.id}" style="flex: 1; padding: 0.75rem; background: var(--blue); border: none; color: white; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);">
             Book Guide
           </button>
         </div>
@@ -75,6 +80,13 @@ export function renderGuideDirectory(container, guides, rankedScores = null, onC
   }).join('');
 
   if (window.lucide) window.lucide.createIcons();
+
+  container.querySelectorAll('.btn-guide-map').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const g = guides.find(x => x.id === btn.dataset.guideId);
+      if (g && onMapClick) onMapClick(g);
+    });
+  });
 
   container.querySelectorAll('.btn-chat').forEach(btn => {
     btn.addEventListener('click', () => {

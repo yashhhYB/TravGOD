@@ -1,0 +1,2130 @@
+{
+ "meta": {
+  "city": "Paris",
+  "country": "France",
+  "currency": "EUR",
+  "verified_at": "2026-10-05",
+  "status": "Hackathon seed v1. Items with conf below high must be re-verified before public launch. Coordinates are approximate (about 50 m).",
+  "demo_notice": "All guides, experiences, reviews and chats in this file are FICTIONAL demo content and must be labeled as such in the UI.",
+  "sources": {
+   "s_cdg": "https://www.airporttransferportal.com/en/airport-guides/cdg (cites the arrete of 24 Dec 2025 for taxi flat fares)",
+   "s_transit": "https://www.european-traveler.com/france/guide-to-paris-public-transport-tickets-and-prices-for-visitors/",
+   "s_transit2": "https://thebettervacation.com/paris/getting-around-paris/",
+   "s_louvre": "https://www.sortiraparis.com/en/news/in-paris/articles/339892-",
+   "s_louvre2": "https://www.gpb.org/node/1437701",
+   "s_eiffel": "https://www.toureiffel.paris/en/rates-opening-times",
+   "s_eiffel2": "https://thebettervacation.com/paris/eiffel-tower-stairs-or-elevator/amp/",
+   "s_museumpass": "https://www.trvlogue.com/en/paris-museum-pass-2026",
+   "s_scams1": "https://www.france-hotel-guide.com/en/blog/common-scams-paris/",
+   "s_scams2": "https://esim.holafly.com/travel-tips/paris-scams/",
+   "s_scams3": "https://www.solosophie.com/5-parisian-tourist-scams-to-avoid/",
+   "s_scams4": "https://europeforvisitors.com/paris/articles/string-men-of-sacre-coeur.htm",
+   "s_ees": "https://visasnews.com/en/schengen-ees-gains-momentum-ahead-of-etias-launch-in-late-2026/",
+   "s_ees_eu": "https://eu4armenia.eu/?p=56188",
+   "s_gk": "General knowledge, not re-verified on 2026-10-05"
+  }
+ },
+ "destination": {
+  "id": "paris",
+  "name": "Paris",
+  "tz": "Europe/Paris",
+  "languages": [
+   "French",
+   "English (tourist areas)"
+  ],
+  "emergency": {
+   "general": "112",
+   "police": "17",
+   "ambulance": "15 (SAMU)",
+   "fire": "18",
+   "conf": "high",
+   "src": [
+    "s_gk"
+   ]
+  },
+  "plug": "Type C/E, 230V",
+  "tipping": "Service is included by law in menu prices. Tipping is optional; rounding up or leaving a few euros for good service is a courtesy.",
+  "tap_water": "Safe. Restaurants should give a free carafe of tap water (une carafe d'eau) on request.",
+  "entry": {
+   "summary": "France is in the Schengen area. The EU Entry/Exit System has been fully operational at all Schengen external borders since 10 April 2026. ETIAS is expected to start in Q4 2026 with the exact date still to be announced. Check official EU pages before you travel.",
+   "conf": "high",
+   "src": [
+    "s_ees",
+    "s_ees_eu"
+   ]
+  },
+  "safety_snapshot": {
+   "level": "Normal caution",
+   "note": "Pickpocketing, especially on the Metro and at major sights, and tourist-targeted street scams are the main risks. Violent crime against tourists is uncommon.",
+   "conf": "medium",
+   "src": [
+    "s_scams1",
+    "s_gk"
+   ]
+  }
+ },
+ "transport": [
+  {
+   "id": "t_rerb",
+   "name": "RER B airport ticket (CDG to central Paris)",
+   "price_eur": 14,
+   "mins": 35,
+   "note": "The Paris Region-Airports ticket (14 EUR) has covered CDG rail travel since 1 Jan 2026. Load it on a Navigo Easy card or app. Stops include Gare du Nord (about 30 min) and Chatelet-Les Halles (about 35 min).",
+   "conf": "high",
+   "src": [
+    "s_cdg",
+    "s_transit"
+   ]
+  },
+  {
+   "id": "t_taxi_cdg",
+   "name": "Official taxi, CDG to Paris (flat fare)",
+   "price_eur": 56,
+   "price_alt_eur": 65,
+   "mins": 55,
+   "note": "Flat fare by decree: 56 EUR to the Right Bank, 65 EUR to the Left Bank, same day or night, up to four passengers with luggage. Disneyland and other destinations outside Paris use the meter.",
+   "conf": "high",
+   "src": [
+    "s_cdg"
+   ]
+  },
+  {
+   "id": "t_metro",
+   "name": "Metro / RER / train single ticket (inside Paris)",
+   "price_eur": 2.55,
+   "mins": null,
+   "note": "Sources differ between 2.50 and 2.55 EUR; confirm on the Ile-de-France Mobilites site. Bus and tram single about 2.05 EUR. Navigo Day pass about 12.30 EUR; weekly Navigo about 32.40 EUR (all zones).",
+   "conf": "medium",
+   "src": [
+    "s_transit",
+    "s_transit2"
+   ]
+  },
+  {
+   "id": "t_roissy",
+   "name": "RoissyBus (discontinued)",
+   "price_eur": null,
+   "mins": null,
+   "note": "One 2026 source reports the classic RoissyBus to Opera ended on 1 March 2026. Do not list it until confirmed. Bus 9517 is described as a replacement.",
+   "conf": "low",
+   "src": [
+    "s_cdg"
+   ]
+  }
+ ],
+ "safety_zones": [
+  {
+   "id": "z_sacrecoeur",
+   "name": "Sacre-Coeur steps and Montmartre base",
+   "lat": 48.8867,
+   "lng": 2.3431,
+   "r_m": 250,
+   "kind": "scam",
+   "active": "day",
+   "night_caution": false,
+   "note": "Friendship-bracelet 'string men', shell games, petitions."
+  },
+  {
+   "id": "z_eiffel",
+   "name": "Eiffel Tower and Trocadero",
+   "lat": 48.8584,
+   "lng": 2.2945,
+   "r_m": 450,
+   "kind": "pickpocket_scam",
+   "active": "any",
+   "night_caution": false,
+   "note": "Petition clipboards, gold ring, unofficial ticket sellers, pickpockets in queues."
+  },
+  {
+   "id": "z_louvre",
+   "name": "Louvre pyramid and queues",
+   "lat": 48.8606,
+   "lng": 2.3376,
+   "r_m": 300,
+   "kind": "pickpocket_scam",
+   "active": "day",
+   "night_caution": false,
+   "note": "Pickpockets in queues and crowded rooms; petition teams."
+  },
+  {
+   "id": "z_metro1",
+   "name": "Chatelet and Metro line 1 corridor",
+   "lat": 48.8584,
+   "lng": 2.347,
+   "r_m": 250,
+   "kind": "pickpocket",
+   "active": "any",
+   "night_caution": true,
+   "note": "Crowded trains, phone snatching as doors close."
+  },
+  {
+   "id": "z_gdn",
+   "name": "Gare du Nord area",
+   "lat": 48.8809,
+   "lng": 2.3553,
+   "r_m": 350,
+   "kind": "scam_pickpocket",
+   "active": "any",
+   "night_caution": true,
+   "note": "Taxi touts, pickpockets, ticket-machine helpers. Use official taxi ranks."
+  },
+  {
+   "id": "z_arc",
+   "name": "Champs-Elysees and Arc de Triomphe",
+   "lat": 48.8738,
+   "lng": 2.295,
+   "r_m": 350,
+   "kind": "pickpocket",
+   "active": "any",
+   "night_caution": false,
+   "note": "Crowds and pickpockets."
+  },
+  {
+   "id": "z_pigalle",
+   "name": "Pigalle and Barbes at night",
+   "lat": 48.8824,
+   "lng": 2.338,
+   "r_m": 350,
+   "kind": "pickpocket_night",
+   "active": "night",
+   "night_caution": true,
+   "note": "Nightlife area with aggressive touts and pickpockets; take care late at night."
+  }
+ ],
+ "places": [
+  {
+   "id": "p_eiffel",
+   "name": "Eiffel Tower",
+   "cat": "monument",
+   "hood": "7th arr.",
+   "lat": 48.8584,
+   "lng": 2.2945,
+   "why": "Paris's signature landmark with views from the second floor and summit.",
+   "price": "Adult (25+) about 14.80 EUR stairs to 2nd floor, about 23.50 EUR lift to 2nd floor, about 36.70 EUR summit by lift. Youth and child prices are lower.",
+   "book": "required",
+   "mins": 120,
+   "best": "Early morning or after sunset",
+   "crowd": "extreme",
+   "rules": [
+    "r_eiffel",
+    "r_security"
+   ],
+   "scams": [
+    "sc_tickets",
+    "sc_petition",
+    "sc_ring"
+   ],
+   "tips": [
+    "Official site: toureiffel.paris. From 29 Sept 2026 stairs tickets also need an advance reservation.",
+    "The summit and the stairs are not suitable for limited mobility."
+   ],
+   "tags": [
+    "landmark",
+    "must-see"
+   ],
+   "access": "Lift to 2nd floor and summit; stairs not accessible.",
+   "conf": "high",
+   "src": [
+    "s_eiffel",
+    "s_eiffel2"
+   ]
+  },
+  {
+   "id": "p_louvre",
+   "name": "Louvre Museum",
+   "cat": "museum",
+   "hood": "1st arr.",
+   "lat": 48.8606,
+   "lng": 2.3376,
+   "why": "The world's most visited museum: Mona Lisa, Venus de Milo, Egyptian and Islamic collections.",
+   "price": "22 EUR for EU/EEA visitors; 32 EUR for most visitors from outside the EEA since 13 Jan 2026.",
+   "book": "required",
+   "mins": 180,
+   "best": "First slot or evening opening day",
+   "crowd": "extreme",
+   "closed_weekday": "Tuesday",
+   "rules": [
+    "r_slots",
+    "r_nonEU",
+    "r_security"
+   ],
+   "scams": [
+    "sc_pickpocket",
+    "sc_petition"
+   ],
+   "tips": [
+    "Reserve a time slot online.",
+    "Pick two wings, not the whole museum."
+   ],
+   "tags": [
+    "art",
+    "must-see"
+   ],
+   "access": "Accessible with lifts; long distances.",
+   "conf": "high",
+   "src": [
+    "s_louvre",
+    "s_louvre2"
+   ]
+  },
+  {
+   "id": "p_notredame",
+   "name": "Notre-Dame de Paris",
+   "cat": "church",
+   "hood": "4th arr. (Ile de la Cite)",
+   "lat": 48.853,
+   "lng": 2.3499,
+   "why": "Gothic cathedral reopened after restoration; free to enter.",
+   "price": "Entry free. The tower climb is ticketed with advance reservation.",
+   "book": "optional",
+   "mins": 60,
+   "best": "Early morning",
+   "crowd": "high",
+   "rules": [
+    "r_dress"
+   ],
+   "scams": [
+    "sc_petition",
+    "sc_ring"
+   ],
+   "tips": [
+    "Towers need an advance reservation per a 2026 pass guide."
+   ],
+   "tags": [
+    "church",
+    "free"
+   ],
+   "access": "Step-free nave.",
+   "conf": "medium",
+   "src": [
+    "s_museumpass",
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_saintechapelle",
+   "name": "Sainte-Chapelle",
+   "cat": "monument",
+   "hood": "1st arr.",
+   "lat": 48.8554,
+   "lng": 2.345,
+   "why": "Stunning 13th-century stained-glass chapel.",
+   "price": "Higher price for non-EU visitors since Jan 2026 (about 6 EUR more); base price: verify.",
+   "book": "required",
+   "mins": 60,
+   "best": "Sunny morning for the glass",
+   "crowd": "high",
+   "rules": [
+    "r_slots",
+    "r_nonEU",
+    "r_security"
+   ],
+   "scams": [],
+   "tips": [
+    "Security line is separate from the timed ticket; arrive early."
+   ],
+   "tags": [
+    "architecture"
+   ],
+   "access": "Upper chapel by stairs; lower chapel step-free.",
+   "conf": "medium",
+   "src": [
+    "s_louvre",
+    "s_museumpass"
+   ]
+  },
+  {
+   "id": "p_arc",
+   "name": "Arc de Triomphe",
+   "cat": "monument",
+   "hood": "8th arr.",
+   "lat": 48.8738,
+   "lng": 2.295,
+   "why": "Napoleonic monument with a rooftop view down the Champs-Elysees.",
+   "price": "Rooftop ticket required (verify price).",
+   "book": "recommended",
+   "mins": 60,
+   "best": "Late afternoon",
+   "crowd": "high",
+   "rules": [
+    "r_security"
+   ],
+   "scams": [
+    "sc_pickpocket"
+   ],
+   "tips": [
+    "Use the pedestrian underpass to reach it. Never cross the roundabout traffic."
+   ],
+   "tags": [
+    "landmark",
+    "views"
+   ],
+   "access": "Stairs; limited lift.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_orsay",
+   "name": "Musee d'Orsay",
+   "cat": "museum",
+   "hood": "7th arr.",
+   "lat": 48.86,
+   "lng": 2.3266,
+   "why": "Impressionist masterpieces inside a former railway station.",
+   "price": "Roughly 16-17 EUR (verify).",
+   "book": "required",
+   "mins": 150,
+   "best": "Morning",
+   "crowd": "high",
+   "closed_weekday": "Monday",
+   "rules": [
+    "r_slots"
+   ],
+   "scams": [],
+   "tips": [
+    "Reserve a time slot."
+   ],
+   "tags": [
+    "art"
+   ],
+   "access": "Accessible.",
+   "conf": "medium",
+   "src": [
+    "s_museumpass",
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_sacrecoeur",
+   "name": "Sacre-Coeur and Montmartre",
+   "cat": "neighborhood",
+   "hood": "18th arr.",
+   "lat": 48.8867,
+   "lng": 2.3431,
+   "why": "White basilica on the hill, artists' squares and village lanes.",
+   "price": "Basilica entry free; dome paid.",
+   "book": "no",
+   "mins": 150,
+   "best": "Early morning",
+   "crowd": "high",
+   "rules": [
+    "r_dress"
+   ],
+   "scams": [
+    "sc_bracelet",
+    "sc_shell",
+    "sc_pickpocket"
+   ],
+   "tips": [
+    "Approach by the side streets; keep hands in pockets on the base steps."
+   ],
+   "tags": [
+    "views",
+    "free"
+   ],
+   "access": "Many steps; a funicular uses a standard transit ticket.",
+   "conf": "medium",
+   "src": [
+    "s_scams4",
+    "s_scams1"
+   ]
+  },
+  {
+   "id": "p_marais",
+   "name": "Le Marais",
+   "cat": "neighborhood",
+   "hood": "3rd-4th arr.",
+   "lat": 48.8566,
+   "lng": 2.3622,
+   "why": "Historic lanes, boutiques, falafel and the Place des Vosges.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 150,
+   "best": "Morning or late afternoon",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Many shops open on Sundays when others are closed."
+   ],
+   "tags": [
+    "food",
+    "walk"
+   ],
+   "access": "Mostly flat.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_lux",
+   "name": "Luxembourg Gardens",
+   "cat": "park",
+   "hood": "6th arr.",
+   "lat": 48.8462,
+   "lng": 2.3371,
+   "why": "Green chairs, a pond with model boats, a perfect pause.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 75,
+   "best": "Afternoon",
+   "crowd": "medium",
+   "rules": [
+    "r_smoking"
+   ],
+   "scams": [],
+   "tips": [
+    "Take a book and a green chair."
+   ],
+   "tags": [
+    "nature",
+    "free"
+   ],
+   "access": "Mostly flat.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_orangerie",
+   "name": "Musee de l'Orangerie",
+   "cat": "museum",
+   "hood": "1st arr.",
+   "lat": 48.8638,
+   "lng": 2.3226,
+   "why": "Monet's Water Lilies in oval rooms.",
+   "price": "Verify price.",
+   "book": "required",
+   "mins": 75,
+   "best": "Weekday morning",
+   "crowd": "medium",
+   "closed_weekday": "Tuesday",
+   "rules": [
+    "r_slots"
+   ],
+   "scams": [],
+   "tips": [
+    "A shorter, calmer art stop than the Louvre."
+   ],
+   "tags": [
+    "art"
+   ],
+   "access": "Accessible.",
+   "conf": "low",
+   "src": [
+    "s_museumpass",
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_garnier",
+   "name": "Palais Garnier (Opera)",
+   "cat": "monument",
+   "hood": "9th arr.",
+   "lat": 48.8719,
+   "lng": 2.3316,
+   "why": "Gilded 19th-century opera house with a grand staircase.",
+   "price": "Higher price for non-EU visitors since Jan 2026 (verify).",
+   "book": "recommended",
+   "mins": 75,
+   "best": "Morning",
+   "crowd": "medium",
+   "rules": [
+    "r_nonEU"
+   ],
+   "scams": [],
+   "tips": [
+    "Check closures on show days."
+   ],
+   "tags": [
+    "architecture"
+   ],
+   "access": "Accessible via a separate entrance.",
+   "conf": "low",
+   "src": [
+    "s_louvre"
+   ]
+  },
+  {
+   "id": "p_perelachaise",
+   "name": "Pere Lachaise Cemetery",
+   "cat": "cemetery",
+   "hood": "20th arr.",
+   "lat": 48.8614,
+   "lng": 2.3933,
+   "why": "Famous graves among tree-lined lanes; a peaceful walk.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 120,
+   "best": "Morning",
+   "crowd": "low",
+   "rules": [
+    "r_behavior_cem"
+   ],
+   "scams": [],
+   "tips": [
+    "A place of remembrance. Keep voices low and respect mourners."
+   ],
+   "tags": [
+    "quiet",
+    "free"
+   ],
+   "access": "Cobbles and hills.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_canal",
+   "name": "Canal Saint-Martin",
+   "cat": "neighborhood",
+   "hood": "10th arr.",
+   "lat": 48.871,
+   "lng": 2.364,
+   "why": "Footbridges, cafes and picnics along the water; very Parisian.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 90,
+   "best": "Late afternoon",
+   "crowd": "medium",
+   "rules": [
+    "r_alcohol"
+   ],
+   "scams": [],
+   "tips": [
+    "Locals picnic here. Take your litter."
+   ],
+   "tags": [
+    "local",
+    "free"
+   ],
+   "access": "Flat.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_latin",
+   "name": "Latin Quarter and Shakespeare and Company",
+   "cat": "neighborhood",
+   "hood": "5th arr.",
+   "lat": 48.8526,
+   "lng": 2.347,
+   "why": "Bookshops, student streets, the famous English-language bookstore.",
+   "price": "Free.",
+   "book": "no",
+   "mins": 120,
+   "best": "Afternoon",
+   "crowd": "high",
+   "rules": [],
+   "scams": [
+    "sc_overpriced_terrace"
+   ],
+   "tips": [
+    "Avoid restaurants with touts on the narrow tourist streets."
+   ],
+   "tags": [
+    "books",
+    "walk"
+   ],
+   "access": "Mostly flat.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_aligre",
+   "name": "Marche d'Aligre",
+   "cat": "market",
+   "hood": "12th arr.",
+   "lat": 48.8486,
+   "lng": 2.3774,
+   "why": "A local food market with cheeses, fruit and a covered hall.",
+   "price": "Free entry.",
+   "book": "no",
+   "mins": 75,
+   "best": "Morning",
+   "crowd": "medium",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Check market days and hours; the outdoor market runs most mornings."
+   ],
+   "tags": [
+    "food",
+    "local"
+   ],
+   "access": "Step-free.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_catacombs",
+   "name": "Catacombs of Paris",
+   "cat": "museum",
+   "hood": "14th arr.",
+   "lat": 48.8338,
+   "lng": 2.3324,
+   "why": "Ossuary tunnels beneath the city.",
+   "price": "Ticketed; verify price.",
+   "book": "required",
+   "mins": 90,
+   "best": "Weekday morning",
+   "crowd": "high",
+   "rules": [
+    "r_slots"
+   ],
+   "scams": [
+    "sc_tickets"
+   ],
+   "tips": [
+    "Buy official timed tickets in advance. Not suitable for claustrophobia or limited mobility."
+   ],
+   "tags": [
+    "unusual"
+   ],
+   "access": "Not accessible: spiral staircase and uneven floors.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "p_versailles",
+   "name": "Palace of Versailles (day trip)",
+   "cat": "monument",
+   "hood": "Versailles",
+   "lat": 48.8049,
+   "lng": 2.1204,
+   "why": "The royal palace, Hall of Mirrors and gardens.",
+   "price": "Up to about 35 EUR peak for non-EU visitors since Jan 2026 (verify).",
+   "book": "required",
+   "mins": 300,
+   "best": "Weekday, early",
+   "crowd": "extreme",
+   "closed_weekday": "Monday",
+   "rules": [
+    "r_slots",
+    "r_nonEU"
+   ],
+   "scams": [
+    "sc_tickets"
+   ],
+   "tips": [
+    "Take RER C. Use a timed ticket."
+   ],
+   "tags": [
+    "history",
+    "day-trip"
+   ],
+   "access": "Mostly accessible.",
+   "conf": "medium",
+   "src": [
+    "s_louvre",
+    "s_museumpass"
+   ]
+  },
+  {
+   "id": "p_pompidou",
+   "name": "Centre Pompidou (renovation closure)",
+   "cat": "museum",
+   "hood": "4th arr.",
+   "lat": 48.8606,
+   "lng": 2.3522,
+   "why": "Modern art museum in its distinctive inside-out building.",
+   "price": "n/a",
+   "book": "n/a",
+   "mins": 0,
+   "best": "n/a",
+   "crowd": "n/a",
+   "status": "closed_renovation",
+   "rules": [],
+   "scams": [],
+   "tips": [
+    "Reported as closed for a long renovation that began in 2025 and runs until about 2030. Verify before listing it in any itinerary."
+   ],
+   "tags": [
+    "closed"
+   ],
+   "access": "n/a",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "food": [
+  {
+   "id": "f_bread",
+   "kind": "dish_guide",
+   "name": "Baguette, croissant and the boulangerie",
+   "desc": "Look for a baguette 'tradition' and a croissant au beurre. Boulangeries often have a sandwich and drink 'formule' at lunch.",
+   "tip": "Greet with 'Bonjour' when you enter. It matters.",
+   "price_eur": "baguette about 1.2-1.8; croissant about 1.3-2.2",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_bistro",
+   "kind": "dish_guide",
+   "name": "Bistro classics",
+   "desc": "Steak frites, onion soup, duck confit, croque monsieur, plat du jour.",
+   "tip": "The plat du jour or a lunch 'formule' is the best value. Ask for 'une carafe d'eau' for free tap water.",
+   "price_eur": "plat du jour about 14-22",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_crepe",
+   "kind": "dish_guide",
+   "name": "Crepes and galettes",
+   "desc": "Savoury buckwheat galettes and sweet crepes, a Breton tradition around Montparnasse and the Marais.",
+   "tip": "Cidre pairs well.",
+   "price_eur": "about 8-16",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_chartier",
+   "kind": "spot",
+   "name": "Bouillon Chartier",
+   "hood": "9th arr.",
+   "lat": 48.8719,
+   "lng": 2.3436,
+   "desc": "Historic big-hall bouillon serving classic French dishes at modest prices.",
+   "tip": "No reservations; expect a queue.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_breizh",
+   "kind": "spot",
+   "name": "Breizh Cafe (Marais)",
+   "hood": "3rd arr.",
+   "lat": 48.8629,
+   "lng": 2.3614,
+   "desc": "Well-known creperie with galettes and cider.",
+   "tip": "Reserve ahead.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_fallafel",
+   "kind": "spot",
+   "name": "L'As du Fallafel",
+   "hood": "Marais (rue des Rosiers)",
+   "lat": 48.8573,
+   "lng": 2.359,
+   "desc": "Famous falafel takeaway in the old Jewish quarter.",
+   "tip": "Closed Saturdays; check hours.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_dupain",
+   "kind": "spot",
+   "name": "Du Pain et des Idees",
+   "hood": "10th arr.",
+   "lat": 48.8708,
+   "lng": 2.3629,
+   "desc": "Beloved artisan bakery near Canal Saint-Martin.",
+   "tip": "Check weekday-only opening.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_berthillon",
+   "kind": "spot",
+   "name": "Berthillon",
+   "hood": "Ile Saint-Louis",
+   "lat": 48.8517,
+   "lng": 2.3566,
+   "desc": "Classic ice cream on Ile Saint-Louis.",
+   "tip": "Check seasonal hours.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_stohrer",
+   "kind": "spot",
+   "name": "Stohrer",
+   "hood": "2nd arr.",
+   "lat": 48.8648,
+   "lng": 2.3458,
+   "desc": "One of the oldest patisseries in Paris.",
+   "tip": "Try the baba au rhum.",
+   "verify": true,
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "f_etiquette",
+   "kind": "etiquette",
+   "name": "Bonjour, the carafe and the terrace price",
+   "desc": "Say bonjour on entering shops and cafes. Tap water is free on request. Prices are lower standing at the bar (comptoir) than seated on a terrace.",
+   "tip": "Service is included. Tipping is optional.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "hidden_spots": [
+  {
+   "id": "h_panoramas",
+   "name": "Passage des Panoramas and Galerie Vivienne",
+   "lat": 48.871,
+   "lng": 2.3417,
+   "why": "Covered 19th-century arcades with tea rooms and old shops, a quiet escape from the big boulevards.",
+   "best": "Weekday morning",
+   "etiquette": "Shops and tea rooms; keep the passages calm.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_buttes",
+   "name": "Parc des Buttes-Chaumont",
+   "lat": 48.8809,
+   "lng": 2.3828,
+   "why": "Hilly park with a lake, a cliff and a hilltop temple; strongly local.",
+   "best": "Late afternoon",
+   "etiquette": "Public park; take your litter.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_cremieux",
+   "name": "Rue Cremieux",
+   "lat": 48.8493,
+   "lng": 2.3704,
+   "why": "A pedestrian street of pastel houses that is popular for photos.",
+   "best": "Early morning",
+   "etiquette": "Residents have asked for quiet. No loud groups, drones or photo shoots.",
+   "keep_quiet": true,
+   "origin": "curated",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_vertgalant",
+   "name": "Square du Vert-Galant",
+   "lat": 48.857,
+   "lng": 2.34,
+   "why": "A small park at the western tip of the Ile de la Cite with a river-level view.",
+   "best": "Sunset",
+   "etiquette": "Public park.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "h_promenade",
+   "name": "Promenade Plantee (Coulee verte Rene-Dumont)",
+   "lat": 48.8494,
+   "lng": 2.373,
+   "why": "An elevated garden walk on an old railway viaduct, a calm alternative to street-level crowds.",
+   "best": "Morning",
+   "etiquette": "Shared walkway; keep to one side.",
+   "keep_quiet": false,
+   "origin": "curated",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "scams": [
+  {
+   "id": "sc_ring",
+   "title": "The 'found' gold ring",
+   "cat": "street",
+   "sev": "medium",
+   "zones": [
+    "z_eiffel",
+    "z_sacrecoeur"
+   ],
+   "active": "day",
+   "how": "Someone pretends to pick a gold ring off the ground, offers it to you, then asks for money or a reward. The ring is worthless.",
+   "avoid": "Do not take it. Say no and walk away.",
+   "if_happened": "Do not argue; walk away to a busy place. Report persistent harassment to police.",
+   "conf": "high",
+   "src": [
+    "s_scams1",
+    "s_scams2",
+    "s_scams3"
+   ]
+  },
+  {
+   "id": "sc_bracelet",
+   "title": "Friendship-bracelet 'string men' at Sacre-Coeur",
+   "cat": "street",
+   "sev": "medium",
+   "zones": [
+    "z_sacrecoeur"
+   ],
+   "active": "day",
+   "how": "At the base of the Sacre-Coeur steps, someone grabs your wrist and ties a string bracelet, then demands payment.",
+   "avoid": "Keep your hands in your pockets or bag, say a firm no and keep walking up. Use the side routes.",
+   "if_happened": "You are not obliged to pay for something forced on you. Walk away to a busy spot and report it.",
+   "conf": "high",
+   "src": [
+    "s_scams1",
+    "s_scams4"
+   ]
+  },
+  {
+   "id": "sc_petition",
+   "title": "Clipboard petition and distraction teams",
+   "cat": "street",
+   "sev": "medium",
+   "zones": [
+    "z_eiffel",
+    "z_louvre"
+   ],
+   "active": "day",
+   "how": "Groups ask you to sign a petition or donate. While you read, accomplices go through your bag or ask for money.",
+   "avoid": "Do not stop. A clear 'no thank you' and keep walking. Keep your bag closed and in front.",
+   "if_happened": "Check your belongings immediately and report theft to police.",
+   "conf": "high",
+   "src": [
+    "s_scams1",
+    "s_scams2"
+   ]
+  },
+  {
+   "id": "sc_shell",
+   "title": "Shell game (cup and ball) near tourist sites",
+   "cat": "street",
+   "sev": "medium",
+   "zones": [
+    "z_sacrecoeur",
+    "z_eiffel"
+   ],
+   "active": "day",
+   "how": "A street 'game' appears winnable but is rigged. Pickpockets work the crowd of onlookers.",
+   "avoid": "Do not play and do not stop to watch.",
+   "if_happened": "If you lost money, you cannot get it back; check your pockets and walk away.",
+   "conf": "high",
+   "src": [
+    "s_scams3",
+    "s_scams4"
+   ]
+  },
+  {
+   "id": "sc_taxi",
+   "title": "Airport taxi overcharging and unofficial drivers",
+   "cat": "transport",
+   "sev": "high",
+   "zones": [
+    "z_gdn"
+   ],
+   "active": "any",
+   "how": "Unofficial drivers approach you inside the terminal or station and quote high prices.",
+   "avoid": "Use the official taxi rank. Flat fares between CDG and Paris are 56 EUR (Right Bank) and 65 EUR (Left Bank), day or night, for up to four passengers. Or take RER B for 14 EUR.",
+   "if_happened": "Note plate and time and report to police or the taxi authority; dispute the card payment if needed.",
+   "conf": "high",
+   "src": [
+    "s_cdg",
+    "s_scams2"
+   ]
+  },
+  {
+   "id": "sc_metro",
+   "title": "Metro ticket-machine helpers and turnstile pickpockets",
+   "cat": "transport",
+   "sev": "medium",
+   "zones": [
+    "z_metro1",
+    "z_gdn"
+   ],
+   "active": "any",
+   "how": "Helpers offer to operate the machine and then want payment or swap your ticket. Pickpockets use crowded doors and turnstiles.",
+   "avoid": "Decline help and use the app or a card. Keep phones in front pockets near doors.",
+   "if_happened": "Block cards, report to the station staff or police and use Find My Device.",
+   "conf": "high",
+   "src": [
+    "s_scams2",
+    "s_scams3"
+   ]
+  },
+  {
+   "id": "sc_pickpocket",
+   "title": "Pickpockets on busy lines and at major sights",
+   "cat": "street",
+   "sev": "high",
+   "zones": [
+    "z_metro1",
+    "z_louvre",
+    "z_eiffel",
+    "z_arc"
+   ],
+   "active": "any",
+   "how": "Thieves operate on Metro lines such as 1 and 4, in the Louvre queue and at the Eiffel Tower and Montmartre.",
+   "avoid": "Zip bags and keep them in front. Keep phones away from doors and edges.",
+   "if_happened": "Block cards, report to police for an insurance report.",
+   "conf": "high",
+   "src": [
+    "s_scams1",
+    "s_scams2"
+   ]
+  },
+  {
+   "id": "sc_tickets",
+   "title": "Fake or unofficial tickets and resellers",
+   "cat": "payment",
+   "sev": "high",
+   "zones": [
+    "z_eiffel",
+    "z_louvre"
+   ],
+   "active": "any",
+   "how": "Sellers and websites offer 'skip-the-line' tickets at inflated prices or invalid tickets.",
+   "avoid": "Buy only from the official site of each attraction. Check the web address carefully.",
+   "if_happened": "Keep screenshots and ask your card issuer for a chargeback.",
+   "conf": "medium",
+   "src": [
+    "s_eiffel",
+    "s_museumpass"
+   ]
+  },
+  {
+   "id": "sc_overpriced_terrace",
+   "title": "Overpriced terraces and tourist menus",
+   "cat": "payment",
+   "sev": "low",
+   "zones": [],
+   "active": "any",
+   "how": "Terraces facing major monuments can charge several times the usual price for a coffee or meal.",
+   "avoid": "Check prices on the board before sitting. Walk two streets away from major sights.",
+   "if_happened": "Ask for an itemised bill; you can dispute clear overcharging.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "sc_qr",
+   "title": "Fake QR codes and fake accommodation listings",
+   "cat": "digital",
+   "sev": "medium",
+   "zones": [],
+   "active": "any",
+   "how": "Stickers covering real QR codes lead to payment pages that steal card data. Fake apartment listings take deposits for flats that do not exist.",
+   "avoid": "Check for stickers on printed codes. Book accommodation only through trusted platforms and never pay by direct transfer.",
+   "if_happened": "Contact your card issuer and report to police.",
+   "conf": "medium",
+   "src": [
+    "s_scams2"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "r_entry",
+   "topic": "entry",
+   "sev": "info",
+   "title": "Entry and EU border systems",
+   "summary": "France is in Schengen. The EU Entry/Exit System has been fully operational since 10 April 2026. ETIAS is expected in Q4 2026; the exact start date is still to be announced.",
+   "instead": "Check your nationality's requirements on the official EU site.",
+   "juris": "EU/Schengen",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_ees",
+    "s_ees_eu"
+   ]
+  },
+  {
+   "id": "r_nonEU",
+   "topic": "ticketing",
+   "sev": "info",
+   "title": "Higher prices for visitors from outside the EU",
+   "summary": "Since 13 January 2026 several French institutions (including the Louvre, Versailles, Chambord, Sainte-Chapelle and the Opera Garnier) charge higher prices to visitors from outside the EU/EEA. The Louvre is 32 EUR versus 22 EUR.",
+   "instead": "Check the official site for your category and carry proof if asked.",
+   "juris": "Individual institutions",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_louvre",
+    "s_louvre2"
+   ]
+  },
+  {
+   "id": "r_slots",
+   "topic": "ticketing",
+   "sev": "info",
+   "title": "Timed reservations are required at many sites",
+   "summary": "The Louvre, Musee d'Orsay, Versailles, Sainte-Chapelle and the Orangerie require an advance time slot, even with a museum pass.",
+   "instead": "Reserve online from each official site.",
+   "juris": "Individual institutions",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_museumpass",
+    "s_louvre"
+   ]
+  },
+  {
+   "id": "r_eiffel",
+   "topic": "ticketing",
+   "sev": "info",
+   "title": "Eiffel Tower stairs now need a reservation",
+   "summary": "The official Eiffel Tower site says advance reservations are required for stairs tickets from 29 September 2026. Summit and lift tickets are sold online and on site.",
+   "instead": "Book on the official site, toureiffel.paris.",
+   "juris": "SETE (operator)",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_eiffel"
+   ]
+  },
+  {
+   "id": "r_tipping",
+   "topic": "tipping",
+   "sev": "info",
+   "title": "Service is included",
+   "summary": "Menu prices include service by law. Extra tipping is optional.",
+   "instead": "Round up or leave a few euros for good service.",
+   "juris": "France",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_carafe",
+   "topic": "restaurants",
+   "sev": "info",
+   "title": "Free tap water on request",
+   "summary": "Restaurants should give you a carafe of tap water (une carafe d'eau) at no charge with a meal if you ask.",
+   "instead": "Ask for 'une carafe d'eau' instead of paying for bottled water.",
+   "juris": "France",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_taxi",
+   "topic": "transport",
+   "sev": "info",
+   "title": "Mandatory airport taxi flat fares",
+   "summary": "Between CDG and Paris the official flat fare is 56 EUR to the Right Bank and 65 EUR to the Left Bank, mandatory, day or night, for up to four passengers (fixed by decree for 2026).",
+   "instead": "Refuse any higher quote and use the official rank.",
+   "juris": "France (arrete)",
+   "conf": "high",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_cdg"
+   ]
+  },
+  {
+   "id": "r_transit",
+   "topic": "transport",
+   "sev": "careful",
+   "title": "Keep a valid ticket until you exit",
+   "summary": "Inspectors check tickets on trains and RER. Travelling without a valid ticket leads to a fine.",
+   "instead": "Validate or tap in and keep the ticket or card until the end of the trip.",
+   "juris": "Ile-de-France Mobilites",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_transit"
+   ]
+  },
+  {
+   "id": "r_drone",
+   "topic": "drones",
+   "sev": "serious",
+   "title": "Drones are heavily restricted in Paris",
+   "summary": "Paris and its surroundings are highly restricted airspace for drones. Flying without authorisation can lead to fines or seizure.",
+   "instead": "Do not fly in or near central Paris.",
+   "juris": "France / DGAC",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_smoking",
+   "topic": "smoking",
+   "sev": "careful",
+   "title": "Smoking restrictions outdoors",
+   "summary": "France has been extending smoking bans to more outdoor public places (such as near schools and some parks and beaches). Check signs on the spot.",
+   "instead": "Smoke only where signage allows.",
+   "juris": "France",
+   "conf": "low",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_alcohol",
+   "topic": "alcohol",
+   "sev": "info",
+   "title": "Alcohol and public drinking",
+   "summary": "The legal purchase age is 18. Drinking outdoors is tolerated in many places, but some zones, quays and events have temporary bans.",
+   "instead": "Check local signs. Do not drink and disturb neighbours at night.",
+   "juris": "France / Paris",
+   "conf": "low",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_guides",
+   "topic": "guides",
+   "sev": "careful",
+   "title": "Guiding in museums and monuments is regulated",
+   "summary": "Giving paid guided tours inside museums and historic monuments in France is reserved to guides who hold the national professional card (guide-conferencier). Informal paid tours elsewhere may also be regulated.",
+   "instead": "Use licensed guides for site tours. Label informal companions as such. Needs legal verification before launch.",
+   "juris": "France / Ministry of Culture",
+   "conf": "low",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_image",
+   "topic": "photography",
+   "sev": "info",
+   "title": "Respect image rights",
+   "summary": "France has strong image-right rules. Do not publish identifiable photos of strangers, especially children, without consent.",
+   "instead": "Keep people out of the frame or ask first.",
+   "juris": "France",
+   "conf": "low",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_dress",
+   "topic": "dress",
+   "sev": "info",
+   "title": "Modest dress in churches",
+   "summary": "Churches ask for respectful clothing and quiet.",
+   "instead": "Carry a light scarf.",
+   "juris": "Church sites",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_security",
+   "topic": "security",
+   "sev": "info",
+   "title": "Security screening and bag limits",
+   "summary": "Major sites screen bags and may refuse large luggage.",
+   "instead": "Travel light and check each site's rules.",
+   "juris": "Individual sites",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "id": "r_behavior_cem",
+   "topic": "behavior",
+   "sev": "info",
+   "title": "Respect at cemeteries",
+   "summary": "Pere Lachaise is an active cemetery and a place of remembrance.",
+   "instead": "Keep noise down and do not touch or climb on graves.",
+   "juris": "City of Paris",
+   "conf": "medium",
+   "verified_at": "2026-10-05",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "fair_prices": [
+  {
+   "item": "Official taxi, CDG to Right Bank",
+   "low": 56,
+   "high": 56,
+   "unit": "EUR flat fare",
+   "note": "65 EUR to the Left Bank. Mandatory, day or night, up to four passengers.",
+   "conf": "high",
+   "src": [
+    "s_cdg"
+   ]
+  },
+  {
+   "item": "RER B airport ticket (CDG to central Paris)",
+   "low": 14,
+   "high": 14,
+   "unit": "EUR per adult",
+   "note": "Valid about two hours across zones 1-5.",
+   "conf": "high",
+   "src": [
+    "s_cdg"
+   ]
+  },
+  {
+   "item": "Metro / RER / train single ticket",
+   "low": 2.5,
+   "high": 2.55,
+   "unit": "EUR",
+   "note": "Sources differ; check Ile-de-France Mobilites.",
+   "conf": "medium",
+   "src": [
+    "s_transit",
+    "s_transit2"
+   ]
+  },
+  {
+   "item": "Navigo Day pass",
+   "low": 12.3,
+   "high": 12.3,
+   "unit": "EUR",
+   "note": "Weekly Navigo about 32.40 EUR (all zones, Monday to Sunday).",
+   "conf": "medium",
+   "src": [
+    "s_transit2"
+   ]
+  },
+  {
+   "item": "Louvre ticket (EU/EEA visitors)",
+   "low": 22,
+   "high": 22,
+   "unit": "EUR",
+   "note": "Time slot required. Tuesdays closed.",
+   "conf": "high",
+   "src": [
+    "s_louvre"
+   ]
+  },
+  {
+   "item": "Louvre ticket (visitors from outside the EEA)",
+   "low": 32,
+   "high": 32,
+   "unit": "EUR",
+   "note": "Applies since 13 January 2026.",
+   "conf": "high",
+   "src": [
+    "s_louvre",
+    "s_louvre2"
+   ]
+  },
+  {
+   "item": "Eiffel Tower, stairs to 2nd floor (adult 25+)",
+   "low": 14.8,
+   "high": 14.8,
+   "unit": "EUR",
+   "note": "Lift to 2nd about 23.50; summit about 36.70. Advance booking needed for stairs from 29 Sept 2026.",
+   "conf": "high",
+   "src": [
+    "s_eiffel",
+    "s_eiffel2"
+   ]
+  },
+  {
+   "item": "Coffee standing at the bar (comptoir)",
+   "low": 1.5,
+   "high": 3,
+   "unit": "EUR",
+   "note": "Seated terraces in tourist spots can be double.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Baguette tradition",
+   "low": 1.2,
+   "high": 1.8,
+   "unit": "EUR",
+   "note": "Plain baguettes are cheaper.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Plat du jour or lunch formule in a bistro",
+   "low": 14,
+   "high": 22,
+   "unit": "EUR",
+   "note": "Much higher beside major monuments.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Tap water (carafe d'eau) with a meal",
+   "low": 0,
+   "high": 0,
+   "unit": "EUR",
+   "note": "Free on request.",
+   "conf": "medium",
+   "src": [
+    "s_gk"
+   ]
+  },
+  {
+   "item": "Half-day private guide (marketplace estimate)",
+   "low": 120,
+   "high": 300,
+   "unit": "EUR",
+   "note": "Varies with language and licence.",
+   "conf": "low",
+   "src": [
+    "s_gk"
+   ]
+  }
+ ],
+ "phrases": [
+  {
+   "id": "ph_taxi",
+   "en": "I know the flat fare, please. Right Bank.",
+   "local": "Je connais le forfait, s'il vous plait. Rive droite.",
+   "say": "zhuh kon-NEH luh for-FEH, seel voo PLEH. reev DRWAHT",
+   "card": true
+  },
+  {
+   "id": "ph_noguide",
+   "en": "No thank you, I am not interested.",
+   "local": "Non merci, ca ne m'interesse pas.",
+   "say": "noh mehr-SEE, sah nuh man-teh-REHS pah",
+   "card": true
+  },
+  {
+   "id": "ph_noheed",
+   "en": "I do not need help, thank you.",
+   "local": "Je n'ai pas besoin d'aide, merci.",
+   "say": "zhuh neh pah buh-ZWAN dehd, mehr-SEE",
+   "card": true
+  },
+  {
+   "id": "ph_bill",
+   "en": "The bill, please.",
+   "local": "L'addition, s'il vous plait.",
+   "say": "lah-dee-SYOHN, seel voo PLEH",
+   "card": true
+  },
+  {
+   "id": "ph_water",
+   "en": "A carafe of tap water, please.",
+   "local": "Une carafe d'eau, s'il vous plait.",
+   "say": "oon kah-RAF DOH, seel voo PLEH",
+   "card": true
+  },
+  {
+   "id": "ph_doctor",
+   "en": "I need a doctor.",
+   "local": "J'ai besoin d'un medecin.",
+   "say": "zheh buh-ZWAN duhn mehd-SAN",
+   "card": true
+  },
+  {
+   "id": "ph_police",
+   "en": "Please call the police.",
+   "local": "Appelez la police, s'il vous plait.",
+   "say": "ah-play lah poh-LEES, seel voo PLEH",
+   "card": true
+  },
+  {
+   "id": "ph_stop",
+   "en": "Leave me alone.",
+   "local": "Laissez-moi tranquille.",
+   "say": "leh-say MWAH trahn-KEEL",
+   "card": true
+  },
+  {
+   "id": "ph_hello",
+   "en": "Hello / Good evening.",
+   "local": "Bonjour / Bonsoir.",
+   "say": "bohn-ZHOOR / bohn-SWAHR",
+   "card": false
+  },
+  {
+   "id": "ph_thanks",
+   "en": "Thank you very much.",
+   "local": "Merci beaucoup.",
+   "say": "mehr-SEE boh-KOO",
+   "card": false
+  },
+  {
+   "id": "ph_where",
+   "en": "Where is the toilet?",
+   "local": "Ou sont les toilettes ?",
+   "say": "oo sohn lay twah-LET",
+   "card": false
+  },
+  {
+   "id": "ph_wallet",
+   "en": "My wallet has been stolen.",
+   "local": "On m'a vole mon portefeuille.",
+   "say": "ohn mah voh-LAY mohn port-FUH-yuh",
+   "card": true
+  }
+ ],
+ "guides": [
+  {
+   "id": "g_pa1",
+   "demo": true,
+   "name": "Camille D. (Demo)",
+   "langs": [
+    [
+     "French",
+     "native"
+    ],
+    [
+     "English",
+     "C1"
+    ]
+   ],
+   "specialties": [
+    "Food",
+    "Markets",
+    "Pastry"
+   ],
+   "rate_eur": 42,
+   "level": 2,
+   "licence": "none_companion",
+   "bio": "Demo profile. Shows visitors the neighborhood bakeries and markets she shops at herself.",
+   "response_h": 1
+  },
+  {
+   "id": "g_pa2",
+   "demo": true,
+   "name": "Thomas N. (Demo)",
+   "langs": [
+    [
+     "French",
+     "native"
+    ],
+    [
+     "English",
+     "C2"
+    ],
+    [
+     "German",
+     "B2"
+    ]
+   ],
+   "specialties": [
+    "History",
+    "Revolution",
+    "Architecture"
+   ],
+   "rate_eur": 60,
+   "level": 3,
+   "licence": "licensed_guide_demo",
+   "bio": "Demo profile. Licensed-guide example for museum and monument tours.",
+   "response_h": 3
+  },
+  {
+   "id": "g_pa3",
+   "demo": true,
+   "name": "Yuki S. (Demo)",
+   "langs": [
+    [
+     "Japanese",
+     "native"
+    ],
+    [
+     "French",
+     "C1"
+    ],
+    [
+     "English",
+     "B2"
+    ]
+   ],
+   "specialties": [
+    "Art",
+    "Fashion",
+    "First-timers"
+   ],
+   "rate_eur": 55,
+   "level": 2,
+   "licence": "licensed_guide_demo",
+   "bio": "Demo profile. Japanese-speaking art and fashion guide.",
+   "response_h": 2
+  },
+  {
+   "id": "g_pa4",
+   "demo": true,
+   "name": "Ines B. (Demo)",
+   "langs": [
+    [
+     "French",
+     "native"
+    ],
+    [
+     "Spanish",
+     "native"
+    ],
+    [
+     "English",
+     "C1"
+    ]
+   ],
+   "specialties": [
+    "Montmartre",
+    "Street art",
+    "Spanish-speaking visitors"
+   ],
+   "rate_eur": 45,
+   "level": 2,
+   "licence": "none_companion",
+   "bio": "Demo profile. Montmartre local who shows visitors how to avoid the scams on the steps.",
+   "response_h": 2
+  },
+  {
+   "id": "g_pa5",
+   "demo": true,
+   "name": "Karim A. (Demo)",
+   "langs": [
+    [
+     "Arabic",
+     "native"
+    ],
+    [
+     "French",
+     "C1"
+    ],
+    [
+     "English",
+     "C1"
+    ]
+   ],
+   "specialties": [
+    "Family-friendly",
+    "Accessibility-aware"
+   ],
+   "rate_eur": 44,
+   "level": 3,
+   "licence": "none_companion",
+   "bio": "Demo profile. Plans step-free routes and kid-friendly stops.",
+   "response_h": 2
+  }
+ ],
+ "experiences": [
+  {
+   "id": "x_pa1",
+   "guide": "g_pa1",
+   "title": "Marche d'Aligre and a bakery crawl",
+   "hours": 3,
+   "price_eur": 125,
+   "max": 4,
+   "type": "local_companion",
+   "stops": [
+    "p_aligre",
+    "f_dupain"
+   ],
+   "includes": "Guide time; tastings paid separately.",
+   "hub": "Ledru-Rollin metro exit",
+   "safety": "Public meeting place. Pay through the app only."
+  },
+  {
+   "id": "x_pa2",
+   "guide": "g_pa2",
+   "title": "Louvre highlights with a licensed guide",
+   "hours": 2.5,
+   "price_eur": 210,
+   "max": 6,
+   "type": "licensed_tour",
+   "stops": [
+    "p_louvre"
+   ],
+   "includes": "Guide time. Entry tickets are booked separately (time slot required).",
+   "hub": "Pyramid meeting point",
+   "safety": "Official tickets only. Watch for pickpockets in the queue."
+  },
+  {
+   "id": "x_pa3",
+   "guide": "g_pa3",
+   "title": "Orsay and Orangerie in Japanese",
+   "hours": 3,
+   "price_eur": 185,
+   "max": 5,
+   "type": "licensed_tour",
+   "stops": [
+    "p_orsay",
+    "p_orangerie"
+   ],
+   "includes": "Guide time; entry separate.",
+   "hub": "Solferino metro exit",
+   "safety": "Orsay is closed Mondays and Orangerie Tuesdays; plan accordingly."
+  },
+  {
+   "id": "x_pa4",
+   "guide": "g_pa4",
+   "title": "Montmartre without the scams",
+   "hours": 2.5,
+   "price_eur": 105,
+   "max": 4,
+   "type": "local_companion",
+   "stops": [
+    "p_sacrecoeur"
+   ],
+   "includes": "Guide time and a scam-aware route.",
+   "hub": "Abbesses metro exit",
+   "safety": "Keep valuables in front; avoid the base steps crowd."
+  },
+  {
+   "id": "x_pa5",
+   "guide": "g_pa5",
+   "title": "Step-free family Paris: Luxembourg Gardens and the Latin Quarter",
+   "hours": 3,
+   "price_eur": 118,
+   "max": 5,
+   "type": "local_companion",
+   "stops": [
+    "p_lux",
+    "p_latin"
+   ],
+   "includes": "Guide time and a route for strollers.",
+   "hub": "Luxembourg RER exit",
+   "safety": "Accessible route confirmed ahead."
+  },
+  {
+   "id": "x_pa6",
+   "guide": "g_pa1",
+   "title": "Hidden Paris: arcades, Buttes-Chaumont and the Green Walk",
+   "hours": 3,
+   "price_eur": 120,
+   "max": 4,
+   "type": "local_companion",
+   "stops": [
+    "h_panoramas",
+    "h_buttes",
+    "h_promenade"
+   ],
+   "includes": "Guide time.",
+   "hub": "Grands Boulevards metro exit",
+   "safety": "Quiet residential areas; respect neighbours."
+  }
+ ],
+ "reviews": [
+  {
+   "id": "rv_pa1",
+   "demo": true,
+   "experience": "x_pa1",
+   "rating": 5,
+   "text": "Demo review. We learned how to order like locals and nobody rushed us.",
+   "checkin": true
+  },
+  {
+   "id": "rv_pa2",
+   "demo": true,
+   "experience": "x_pa2",
+   "rating": 5,
+   "text": "Demo review. A clear route through a huge museum, with the time slot already sorted.",
+   "checkin": true
+  },
+  {
+   "id": "rv_pa3",
+   "demo": true,
+   "experience": "x_pa3",
+   "rating": 5,
+   "text": "Demo review. Explaining the art in Japanese made it much easier to enjoy.",
+   "checkin": true
+  },
+  {
+   "id": "rv_pa4",
+   "demo": true,
+   "experience": "x_pa4",
+   "rating": 4,
+   "text": "Demo review. We walked up a quieter route and politely refused every bracelet.",
+   "checkin": true
+  },
+  {
+   "id": "rv_pa5",
+   "demo": true,
+   "experience": "x_pa5",
+   "rating": 5,
+   "text": "Demo review. The step-free route was planned in advance.",
+   "checkin": true
+  },
+  {
+   "id": "rv_pa6",
+   "demo": true,
+   "experience": "x_pa6",
+   "rating": 5,
+   "text": "Demo review. Quiet places we would never have found. We were asked to keep voices down.",
+   "checkin": true
+  }
+ ],
+ "sample_trip": {
+  "id": "trip_pa_3d",
+  "title": "Paris in 3 days: icons and quiet corners, scam-aware",
+  "traveler": "Daniel (demo persona)",
+  "party": 2,
+  "pace": "balanced",
+  "base": "Le Marais",
+  "start_weekday": "Saturday",
+  "days": [
+   {
+    "day": 1,
+    "title": "Ile de la Cite and the Marais",
+    "weekday": "Saturday",
+    "stops": [
+     {
+      "time": "10:00",
+      "place": "t_rerb",
+      "note": "RER B to Chatelet then walk. Hold bags in front.",
+      "cost_eur": 28,
+      "flags": [
+       "scam:sc_metro",
+       "scam:sc_taxi"
+      ]
+     },
+     {
+      "time": "14:00",
+      "place": "p_notredame",
+      "mins": 60,
+      "note": "Free entry.",
+      "cost_eur": 0,
+      "flags": [
+       "scam:sc_petition",
+       "scam:sc_ring"
+      ]
+     },
+     {
+      "time": "15:30",
+      "place": "p_saintechapelle",
+      "mins": 60,
+      "note": "Timed ticket; non-EU price applies if relevant.",
+      "cost_eur": 30,
+      "flags": [
+       "book:required",
+       "rule:r_nonEU"
+      ]
+     },
+     {
+      "time": "17:30",
+      "place": "p_marais",
+      "mins": 120,
+      "note": "Walk and falafel.",
+      "cost_eur": 20,
+      "flags": []
+     }
+    ]
+   },
+   {
+    "day": 2,
+    "title": "Louvre and the river",
+    "weekday": "Sunday",
+    "stops": [
+     {
+      "time": "09:00",
+      "place": "p_louvre",
+      "mins": 180,
+      "note": "Reserve a slot. Choose two wings.",
+      "cost_eur": 64,
+      "flags": [
+       "book:required",
+       "scam:sc_pickpocket",
+       "scam:sc_petition",
+       "rule:r_nonEU"
+      ]
+     },
+     {
+      "time": "13:00",
+      "place": "f_bistro",
+      "mins": 75,
+      "note": "Lunch formule, ask for a carafe d'eau.",
+      "cost_eur": 40,
+      "flags": [
+       "rule:r_carafe"
+      ]
+     },
+     {
+      "time": "15:00",
+      "place": "p_lux",
+      "mins": 90,
+      "note": "Relax in the gardens.",
+      "cost_eur": 0,
+      "flags": []
+     },
+     {
+      "time": "19:30",
+      "place": "p_eiffel",
+      "mins": 120,
+      "note": "Book the 2nd floor or summit via the official site; evening views.",
+      "cost_eur": 47,
+      "flags": [
+       "book:required",
+       "scam:sc_tickets",
+       "scam:sc_petition",
+       "rule:r_eiffel"
+      ]
+     }
+    ]
+   },
+   {
+    "day": 3,
+    "title": "Montmartre and the canal",
+    "weekday": "Monday",
+    "stops": [
+     {
+      "time": "09:00",
+      "place": "p_sacrecoeur",
+      "mins": 150,
+      "note": "Approach by side streets; refuse bracelets and games.",
+      "cost_eur": 0,
+      "flags": [
+       "scam:sc_bracelet",
+       "scam:sc_shell"
+      ]
+     },
+     {
+      "time": "13:00",
+      "place": "h_panoramas",
+      "mins": 60,
+      "note": "Quiet covered arcades.",
+      "cost_eur": 0,
+      "flags": []
+     },
+     {
+      "time": "17:00",
+      "place": "p_canal",
+      "mins": 90,
+      "note": "Picnic on the quay; take litter.",
+      "cost_eur": 15,
+      "flags": [
+       "rule:r_alcohol"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "audit_demo": {
+  "draft": [
+   {
+    "day": 1,
+    "date_weekday": "Tuesday",
+    "time": "09:00",
+    "place": "p_louvre"
+   },
+   {
+    "day": 1,
+    "time": "09:30",
+    "place": "p_saintechapelle"
+   },
+   {
+    "day": 1,
+    "time": "14:00",
+    "place": "p_pompidou"
+   },
+   {
+    "day": 1,
+    "time": "17:00",
+    "place": "p_eiffel",
+    "tickets": "stairs, not reserved",
+    "booked": false
+   }
+  ],
+  "expected_findings": [
+   {
+    "code": "CLOSED_DAY",
+    "severity": "blocking",
+    "stop": "p_louvre",
+    "msg": "The Louvre is normally closed on Tuesdays. Move it to another day."
+   },
+   {
+    "code": "OVERLAP",
+    "severity": "blocking",
+    "stop": "p_saintechapelle",
+    "msg": "Louvre (09:00, about three hours) overlaps with Sainte-Chapelle at 09:30."
+   },
+   {
+    "code": "CLOSED_VENUE",
+    "severity": "blocking",
+    "stop": "p_pompidou",
+    "msg": "The Centre Pompidou is reported closed for a long renovation. Remove it or verify before keeping it."
+   },
+   {
+    "code": "RESERVATION_MISSING",
+    "severity": "blocking",
+    "stop": "p_eiffel",
+    "msg": "Stairs tickets at the Eiffel Tower require advance reservation from 29 September 2026."
+   }
+  ],
+  "draft_weekday": "Tuesday"
+ },
+ "sample_chat": [
+  {
+   "from": "traveler",
+   "lang": "es",
+   "text": "Hola Ines, queremos subir a Montmartre sin que nos molesten con las pulseras. Es posible?",
+   "text_en": "Hi Ines, we want to go up Montmartre without being bothered by the bracelet sellers. Is that possible?",
+   "translated_fr": "Bonjour Ines, nous voulons monter a Montmartre sans etre importunes par les vendeurs de bracelets. C'est possible ?"
+  },
+  {
+   "from": "guide",
+   "lang": "es",
+   "text": "Si. Subimos por calles laterales y yo te explico como decir que no con firmeza.",
+   "text_en": "Yes. We go up by side streets and I will show you how to say no firmly.",
+   "flag": null
+  },
+  {
+   "from": "guide",
+   "lang": "fr",
+   "text": "Tu peux me payer directement par virement, ce sera moins cher.",
+   "text_en": "You can pay me directly by bank transfer, it will be cheaper.",
+   "flag": "offplatform_payment",
+   "warning": "Requests to pay outside the app are a common scam pattern. Only pay through Local Guide Connect."
+  }
+ ]
+}

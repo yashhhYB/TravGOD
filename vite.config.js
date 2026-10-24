@@ -5,7 +5,7 @@ export default defineConfig({
     port: 5173,
     open: true,
     watch: {
-      ignored: ['**/*.mp4', '**/*.mkv', '**/*.avi', '**/*.mov']
+      ignored: ['**/*.mp4', '**/*.mkv', '**/*.avi', '**/*.mov', '**/mock/**']
     }
   },
 });
