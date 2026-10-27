@@ -149,10 +149,7 @@ config_drift_check:
   stage: configure
   needs: ["package_build"]
   script:
-    - echo "⚙️ [CONFIGURE] Checking configuration schema & runtime environment integrity..."
-    - test -f package.json || (echo "Missing package.json" && exit 1)
-    - test -f vite.config.js || (echo "Missing vite.config.js" && exit 1)
-    - echo "Config schema verified. Zero configuration drift detected."
+    - node scripts/ci/config-check.mjs
   rules:
     - when: always
 
@@ -163,7 +160,6 @@ synthetic_health_check:
   stage: monitor
   needs: ["package_build"]
   script:
-    - echo "📈 [MONITOR] Running synthetic health checks and bundle budget monitor..."
     - node scripts/ci/ai-health-monitor.mjs
   artifacts:
     name: "health-monitor-${CI_COMMIT_SHORT_SHA}"
@@ -180,7 +176,6 @@ green_sci_carbon_audit:
   stage: govern
   needs: ["synthetic_health_check"]
   script:
-    - echo "🌱 [GOVERN] Calculating Software Carbon Intensity (SCI ISO/IEC 21031)..."
     - node scripts/ci/green-sci-audit.mjs
   artifacts:
     name: "green-sci-sustainability-${CI_COMMIT_SHORT_SHA}"
@@ -194,10 +189,7 @@ green_sci_carbon_audit:
 license_compliance:
   stage: govern
   script:
-    - echo "⚖️ [GOVERN] Verifying repository MIT License compliance..."
-    - test -f LICENSE || (echo "FATAL: LICENSE file missing" && exit 1)
-    - grep -q "MIT License" LICENSE || (echo "FATAL: Non-MIT License detected" && exit 1)
-    - echo "MIT License compliance verified 100%."
+    - node scripts/ci/license-check.mjs
   rules:
     - when: always
 

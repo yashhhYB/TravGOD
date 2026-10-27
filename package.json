@@ -13,8 +13,11 @@
     "ci:security": "node scripts/ci/ai-security-remediation.mjs",
     "ci:sci": "node scripts/ci/green-sci-audit.mjs",
     "ci:monitor": "node scripts/ci/ai-health-monitor.mjs",
-    "ci:release": "node scripts/ci/ai-release-notes.mjs"
+    "ci:release": "node scripts/ci/ai-release-notes.mjs",
+    "ci:config": "node scripts/ci/config-check.mjs",
+    "ci:license": "node scripts/ci/license-check.mjs"
   },
+  "license": "MIT",
   "devDependencies": {
     "vite": "^5.0.0"
   },
