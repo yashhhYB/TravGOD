@@ -4,8 +4,8 @@
  * Key: hack_2c9f994fb5f3a206108cfdbb2813a247fadb5d95
  */
 
-const QLOO_API_URL = 'https://hackathon.api.qloo.com';
-const QLOO_API_KEY = 'hack_2c9f994fb5f3a206108cfdbb2813a247fadb5d95';
+const QLOO_API_URL = import.meta.env?.VITE_QLOO_API_URL || 'https://hackathon.api.qloo.com';
+const QLOO_API_KEY = import.meta.env?.VITE_QLOO_API_KEY || 'hack_2c9f994fb5f3a206108cfdbb2813a247fadb5d95';
 
 const headers = {
   'X-Api-Key': QLOO_API_KEY,

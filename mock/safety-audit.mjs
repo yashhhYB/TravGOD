@@ -3,6 +3,7 @@
 // Usage: node safety-audit.mjs   (runs the built-in demo against seed/rome.json and seed/paris.json)
 
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const SEV_W = { low: 5, medium: 12, high: 20 };
 const CROWD_W = { extreme: 15, high: 10, medium: 5, controlled: 3, low: 0 };
@@ -13,6 +14,7 @@ const toMin = (hhmm) => { const [h, m] = hhmm.split(':').map(Number); return h *
 const hourOf = (hhmm) => Math.floor(toMin(hhmm) / 60);
 
 export function haversineM(a, b) {
+  if (!a || !b || a.lat == null || b.lat == null) return 0;
   const R = 6371000, rad = (x) => (x * Math.PI) / 180;
   const dLat = rad(b.lat - a.lat), dLng = rad(b.lng - a.lng);
   const s = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng / 2) ** 2;
@@ -120,9 +122,9 @@ export function auditTrip(trip, city) {
 
 // ---- demo ----
 if (process.argv[1] && process.argv[1].endsWith('safety-audit.mjs')) {
-  const dir = new URL('.', import.meta.url).pathname;
   for (const name of ['rome', 'paris']) {
-    const city = JSON.parse(fs.readFileSync(dir + name + '.json', 'utf8'));
+    const filePath = fileURLToPath(new URL(`${name}.json`, import.meta.url));
+    const city = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     const good = auditTrip(city.sample_trip, city);
     console.log(`\n=== ${city.meta.city}: sample trip ===`);
     console.log(`grade ${good.grade}, mean risk ${good.mean}, blocking ${good.blocking}`);

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/mcp.json",
+  "name": "travgod-gitlab-duo-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server integration for GitLab Duo Agent Platform",
+  "mcpServers": {
+    "gitlab-duo-agent": {
+      "command": "node",
+      "args": ["scripts/ci/ai-plan-triage.mjs"],
+      "env": {
+        "GITLAB_DUO_ENABLED": "true",
+        "NODE_ENV": "production"
+      },
+      "tools": [
+        {
+          "name": "gitlab_plan_triage",
+          "description": "Analyzes merge requests or commits and categorizes changes across the 9 DevSecOps lifecycle stages.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "commit_sha": { "type": "string", "description": "Git commit hash to evaluate" }
+            }
+          }
+        },
+        {
+          "name": "gitlab_code_reviewer",
+          "description": "Executes automated architectural and security code review according to TravGOD guidelines.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "file_paths": { "type": "array", "items": { "type": "string" }, "description": "Files to review" }
+            }
+          }
+        },
+        {
+          "name": "gitlab_security_remediation",
+          "description": "Scans repository for secrets, SAST patterns, and provides automated remediation patches.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "scan_depth": { "type": "string", "enum": ["quick", "deep"] }
+            }
+          }
+        },
+        {
+          "name": "gitlab_green_sci_calculator",
+          "description": "Calculates Software Carbon Intensity (SCI) score under Green Software Foundation ISO/IEC 21031 standard.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "pipeline_duration_sec": { "type": "number" },
+              "grid_intensity": { "type": "number" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

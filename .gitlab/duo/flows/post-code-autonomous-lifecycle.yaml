@@ -1,0 +1,127 @@
+# ==============================================================================
+# GitLab Duo Agent Platform — Flow Registry v1 Specification
+# Path: .gitlab/duo/flows/post-code-autonomous-lifecycle.yaml
+# Flow: Autonomous Post-Code DevSecOps Lifecycle Orchestrator
+# Autonomy Level: Hands-off / Supervised Multi-Agent Flow
+# ==============================================================================
+
+version: "v1"
+environment: "ambient"
+
+metadata:
+  name: "travgod-post-code-autonomous-lifecycle"
+  description: "End-to-end multi-agent orchestration taking over the DevSecOps lifecycle from commit to production."
+  author: "Yash B. (TravGOD Project)"
+  hackathon: "GitLab Transcend: Life After Code"
+  stages_covered:
+    - "plan"
+    - "create"
+    - "verify"
+    - "package"
+    - "secure"
+    - "release"
+    - "configure"
+    - "monitor"
+    - "govern"
+
+# ------------------------------------------------------------------------------
+# Reusable Agent Prompts
+# ------------------------------------------------------------------------------
+prompts:
+  - id: "plan_triage_prompt"
+    content: |
+      You are the GitLab Duo Plan Sentinel. Analyze the commit or MR diff against devpost/prd.md and devpost/spec.md.
+      Map the touched files across the 9 DevSecOps stages. Evaluate blast radius, check financial escrow
+      integrity, and output a structured plan triage summary.
+
+  - id: "code_reviewer_prompt"
+    content: |
+      You are the GitLab Duo Code Review Agent. Review code modifications for architectural integrity.
+      Enforce the following rules:
+      1. PayPal Sandbox Escrow state transitions must be strictly preserved.
+      2. Deterministic Safety Audit Engine (src/utils/safetyAudit.js) must never use non-deterministic functions.
+      3. Geofencing calculations must use standard Earth mean radius (6,371,000m).
+      4. Client data isolation must prevent personal data leakage.
+
+  - id: "security_remediation_prompt"
+    content: |
+      You are the GitLab Duo Security Remediation Agent. Inspect secret detection alerts, SAST findings,
+      and npm audit outputs. Generate automated remediation patches, isolate tokens to GitLab CI/CD Variables,
+      and certify zero critical CVEs.
+
+  - id: "release_sentinel_prompt"
+    content: |
+      You are the GitLab Duo Release Sentinel. Summarize commit logs, categorize features and fixes,
+      generate semantic release notes, and prepare production deployment manifests.
+
+  - id: "green_governance_prompt"
+    content: |
+      You are the GitLab Duo Green Governance Auditor. Evaluate the Software Carbon Intensity (SCI)
+      according to ISO/IEC 21031. Verify client-side compute efficiency, calculate energy savings over
+      heavy cloud LLMs, and confirm 100% MIT License compliance.
+
+# ------------------------------------------------------------------------------
+# Agent Components
+# ------------------------------------------------------------------------------
+components:
+  - name: "plan_triage_agent"
+    type: "AgentComponent"
+    prompt_id: "plan_triage_prompt"
+    inputs:
+      - from: "context:mr"
+        as: "merge_request"
+      - from: "context:diff"
+        as: "git_diff"
+
+  - name: "code_reviewer_agent"
+    type: "AgentComponent"
+    prompt_id: "code_reviewer_prompt"
+    inputs:
+      - from: "component:plan_triage_agent:output"
+        as: "plan_context"
+      - from: "context:files"
+        as: "source_files"
+
+  - name: "security_remediation_agent"
+    type: "AgentComponent"
+    prompt_id: "security_remediation_prompt"
+    inputs:
+      - from: "component:code_reviewer_agent:output"
+        as: "review_context"
+
+  - name: "release_sentinel_agent"
+    type: "AgentComponent"
+    prompt_id: "release_sentinel_prompt"
+    inputs:
+      - from: "component:security_remediation_agent:output"
+        as: "security_context"
+
+  - name: "green_governance_agent"
+    type: "AgentComponent"
+    prompt_id: "green_governance_prompt"
+    inputs:
+      - from: "component:release_sentinel_agent:output"
+        as: "release_context"
+
+# ------------------------------------------------------------------------------
+# Multi-Agent Sequential & Parallel Execution Flow
+# ------------------------------------------------------------------------------
+flow:
+  - component: "plan_triage_agent"
+  - component: "code_reviewer_agent"
+  - component: "security_remediation_agent"
+  - component: "release_sentinel_agent"
+  - component: "green_governance_agent"
+
+# ------------------------------------------------------------------------------
+# Event Triggers
+# ------------------------------------------------------------------------------
+triggers:
+  - event: "merge_request.created"
+    target: "plan_triage_agent"
+  - event: "merge_request.updated"
+    target: "code_reviewer_agent"
+  - event: "pipeline.failed"
+    target: "security_remediation_agent"
+  - event: "push.default_branch"
+    target: "release_sentinel_agent"

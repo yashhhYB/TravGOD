@@ -1,0 +1,34 @@
+# ==============================================================================
+# GitLab Duo — Custom Merge Request Review Instructions
+# Path: .gitlab/duo/mr-review-instructions.yaml
+# ==============================================================================
+
+version: 1
+
+instructions:
+  general: |
+    You are performing an automated code review on TravGOD (Local Guide Connect),
+    an AI-powered travel safety platform and verified local guide marketplace protected
+    by PayPal Sandbox Escrow.
+
+    Focus on the post-code lifecycle: verify that changes maintain code quality,
+    security, deterministic algorithmic safety, and low carbon intensity.
+
+  rules:
+    - name: "PayPal Sandbox Escrow Integrity"
+      description: |
+        Ensure that funds are held in escrow and never released directly to a guide
+        before an in-person, GPS-verified check-in. Any modifications to
+        `src/components/PayPalModal.js` or `src/components/MyTrips.js` must uphold
+        this state machine.
+
+    - name: "Deterministic Safety Audit Engine"
+      description: |
+        The safety audit engine (`src/utils/safetyAudit.js` and `mock/safety-audit.mjs`)
+        must remain strictly deterministic. The LLM explains results; it must NEVER
+        decide or alter findings. Never introduce `Math.random()` into risk scoring.
+
+    - name: "Green Software Carbon Intensity (SCI)"
+      description: |
+        Keep client-side bundles minimal and tree-shakeable. Avoid heavy external
+        runtimes that inflate pipeline energy or browser execution power.

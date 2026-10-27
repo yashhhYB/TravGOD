@@ -5,7 +5,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test test/*.test.mjs",
+    "lint": "node scripts/ci/lint-check.mjs",
+    "ci:plan": "node scripts/ci/ai-plan-triage.mjs",
+    "ci:review": "node scripts/ci/ai-code-review.mjs",
+    "ci:security": "node scripts/ci/ai-security-remediation.mjs",
+    "ci:sci": "node scripts/ci/green-sci-audit.mjs",
+    "ci:monitor": "node scripts/ci/ai-health-monitor.mjs",
+    "ci:release": "node scripts/ci/ai-release-notes.mjs"
   },
   "devDependencies": {
     "vite": "^5.0.0"

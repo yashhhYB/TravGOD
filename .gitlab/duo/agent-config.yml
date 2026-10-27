@@ -1,0 +1,34 @@
+# ==============================================================================
+# GitLab Duo Agent Platform — Execution Configuration
+# Location: .gitlab/duo/agent-config.yml
+# Specification: GitLab Duo Agent Runtime Environment
+# ==============================================================================
+
+# Container image containing project toolchain
+image: node:20-alpine
+
+# Shell commands executed before agent execution
+setup_script:
+  - npm install --prefer-offline --no-audit
+
+# Cache configuration for persisting dependencies between flow executions
+cache:
+  paths:
+    - node_modules/
+    - .npm/
+
+# Network policy for Duo Agent sandboxed execution
+network_policy:
+  allowed_domains:
+    - "gitlab.com"
+    - "registry.npmjs.org"
+    - "hackathon.api.qloo.com"
+    - "carto.com"
+  include_recommended_allowed: true
+  allow_all_unix_sockets: false
+
+# Agent operational settings
+execution_limits:
+  max_runtime_seconds: 300
+  max_memory_mb: 2048
+  timeout_action: "graceful_shutdown"
