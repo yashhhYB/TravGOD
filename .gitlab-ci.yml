@@ -95,10 +95,10 @@ package_build:
   stage: package
   needs: ["unit_tests"]
   before_script:
-    - npm install
+    - npm install --include=dev
   script:
     - echo "Bundling production application via Vite 5"
-    - npx vite build
+    - npx --yes vite build
   artifacts:
     name: "travgod-dist-${CI_COMMIT_SHORT_SHA}"
     paths:
