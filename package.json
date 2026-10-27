@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "ag-grid-community": "^36.2.0",
-    "leaflet": "^1.9.4"
+    "leaflet": "^1.9.4",
+    "vite": "^5.0.0"
   },
   "allowScripts": {
     "esbuild@0.21.5": true
